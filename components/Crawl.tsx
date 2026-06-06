@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import type { Project } from "@/lib/projects";
 
 /**
- * Star Wars opening crawl. Plays the project's title + brief receding into
- * space, then calls onDone(). Skippable.
+ * Star Wars opening crawl. Plays the project's title + brief receding up and
+ * away into space, then calls onDone(). Skippable.
  */
 export default function Crawl({
   project,
@@ -17,7 +17,7 @@ export default function Crawl({
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => finish(), 19000); // crawl length + buffer
+    const t = setTimeout(() => finish(), 26000); // crawl length + buffer
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -25,7 +25,7 @@ export default function Crawl({
   const finish = () => {
     if (hidden) return;
     setHidden(true);
-    setTimeout(onDone, 600);
+    setTimeout(onDone, 700);
   };
 
   return (
@@ -37,26 +37,25 @@ export default function Crawl({
       {/* starfield */}
       <div className="absolute inset-0 starfield" />
 
-      {/* intro "A long time ago" line */}
+      {/* intro line */}
       <p className="intro absolute left-1/2 top-1/3 w-[80%] -translate-x-1/2 text-center text-[clamp(1rem,2.4vw,1.6rem)] font-light text-[#4aa3ff]">
         In a market far, far away....
       </p>
 
-      {/* crawl */}
-      <div className="crawl-viewport">
-        <div className="crawl-content">
-          <p className="crawl-episode">{project.crawlTitle}</p>
-          <h1 className="crawl-title">{project.name}</h1>
-          {project.crawl.map((para, i) => (
-            <p key={i} className="crawl-para">
-              {para}
-            </p>
-          ))}
+      {/* crawl: .fade holds perspective, .crawl tilts, .crawl-content scrolls up */}
+      <div className="fade">
+        <div className="crawl">
+          <div className="crawl-content">
+            <p className="crawl-episode">{project.crawlTitle}</p>
+            <h1 className="crawl-title">{project.name}</h1>
+            {project.crawl.map((para, i) => (
+              <p key={i} className="crawl-para">
+                {para}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* fade to space at top */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-black to-transparent" />
 
       <button
         onClick={finish}
@@ -75,18 +74,19 @@ export default function Crawl({
             radial-gradient(1px 1px at 10% 60%, #9fe, transparent),
             radial-gradient(1px 1px at 90% 75%, #fff, transparent);
           background-repeat: repeat;
-          background-size: 400px 400px;
+          background-size: 360px 360px;
           opacity: 0.7;
         }
         .intro {
           opacity: 0;
           animation: introFade 5s ease-in-out forwards;
+          z-index: 2;
         }
         @keyframes introFade {
           0% {
             opacity: 0;
           }
-          20% {
+          25% {
             opacity: 1;
           }
           80% {
@@ -96,40 +96,61 @@ export default function Crawl({
             opacity: 0;
           }
         }
-        .crawl-viewport {
+
+        /* perspective container */
+        .fade {
           position: absolute;
           left: 0;
           right: 0;
           bottom: 0;
           top: 0;
-          perspective: 380px;
-          perspective-origin: 50% 100%;
+          /* larger perspective = text stays closer/flatter = far more readable */
+          perspective: 650px;
           overflow: hidden;
+          /* darken text as it recedes toward the top */
+          -webkit-mask-image: linear-gradient(
+            to top,
+            transparent 0%,
+            #000 14%,
+            #000 72%,
+            transparent 96%
+          );
+          mask-image: linear-gradient(
+            to top,
+            transparent 0%,
+            #000 14%,
+            #000 72%,
+            transparent 96%
+          );
         }
+        /* the tilted plane — fixed tilt, no movement, no translateX */
+        .crawl {
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          width: min(680px, 88vw);
+          margin-left: calc(min(680px, 88vw) / -2);
+          height: 100%;
+          transform-origin: 50% 100%;
+          /* gentler tilt so lines stay legible as they rise */
+          transform: rotateX(42deg);
+        }
+        /* the text — only translateY animates, so it slides straight up the plane */
         .crawl-content {
           position: absolute;
           top: 100%;
-          left: 50%;
-          width: min(720px, 86vw);
-          transform-origin: 50% 0%;
-          transform: translateX(-50%) rotateX(28deg);
           color: #ffd54a;
           text-align: justify;
           font-weight: 600;
-          animation: crawlUp 18s linear 4.5s forwards;
-          opacity: 0;
+          animation: crawlUp 24s linear 4.5s forwards;
+          will-change: transform;
         }
         @keyframes crawlUp {
           0% {
-            top: 100%;
-            opacity: 1;
-          }
-          95% {
-            opacity: 1;
+            top: 95%;
           }
           100% {
-            top: -160%;
-            opacity: 0;
+            top: -300%;
           }
         }
         .crawl-episode {
@@ -137,19 +158,20 @@ export default function Crawl({
           font-size: clamp(0.9rem, 2vw, 1.3rem);
           letter-spacing: 0.06em;
           margin-bottom: 0.6em;
+          color: #ffe27a;
         }
         .crawl-title {
           text-align: center;
           font-family: var(--font-sora), sans-serif;
           font-weight: 800;
-          font-size: clamp(1.8rem, 5vw, 3.4rem);
+          font-size: clamp(1.8rem, 5vw, 3.2rem);
           line-height: 1.05;
           margin-bottom: 1.1em;
           text-shadow: 0 0 24px rgba(255, 213, 74, 0.4);
         }
         .crawl-para {
-          font-size: clamp(1.1rem, 2.6vw, 1.9rem);
-          line-height: 1.5;
+          font-size: clamp(1.15rem, 2.6vw, 1.8rem);
+          line-height: 1.55;
           margin-bottom: 1em;
         }
       `}</style>

@@ -5,16 +5,25 @@ import dynamic from "next/dynamic";
 import type { Project } from "@/lib/projects";
 import Crawl from "./Crawl";
 
-// Planet is heavy (three.js) — load only on the client, after crawl.
+// Planet is heavy (three.js) — client-only, but we mount it UNDER the crawl
+// so it preloads while the crawl plays. No load gap when the crawl ends.
 const Planet = dynamic(() => import("./Planet"), { ssr: false });
 
 export default function ProjectExperience({ project }: { project: Project }) {
-  const [phase, setPhase] = useState<"crawl" | "planet">("crawl");
+  const [crawlDone, setCrawlDone] = useState(false);
 
   return (
     <>
-      {phase === "planet" && <Planet project={project} />}
-      {phase === "crawl" && <Crawl project={project} onDone={() => setPhase("planet")} />}
+      {/* planet always mounted underneath, fades in when crawl finishes */}
+      <div
+        className={`transition-opacity duration-700 ${
+          crawlDone ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <Planet project={project} />
+      </div>
+
+      {!crawlDone && <Crawl project={project} onDone={() => setCrawlDone(true)} />}
     </>
   );
 }

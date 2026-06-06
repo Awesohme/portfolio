@@ -126,19 +126,25 @@ export default function WarpTransition({
       <canvas ref={canvasRef} className="absolute inset-0" />
       {/* Millennium-Falcon-style ship flying out of the jump */}
       <div className="falcon" aria-hidden>
-        <Falcon />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/assets/millennium-falcon.png" alt="" width={220} height={220} />
       </div>
       <style jsx>{`
         .falcon {
           position: absolute;
           left: 50%;
           top: 50%;
-          width: 120px;
-          height: 90px;
+          width: 220px;
+          height: 220px;
           transform: translate(-50%, -50%) scale(0.05) rotate(8deg);
           opacity: 0;
           animation: flyout 2.2s cubic-bezier(0.5, 0, 0.7, 1) forwards;
-          filter: drop-shadow(0 0 18px rgba(52, 211, 153, 0.8));
+          filter: drop-shadow(0 0 22px rgba(52, 211, 153, 0.8));
+        }
+        .falcon img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
         }
         @keyframes flyout {
           0% {
@@ -164,38 +170,4 @@ export default function WarpTransition({
 
 function easeInOut(t: number) {
   return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-}
-
-/** Simplified top-down Millennium-Falcon silhouette in SVG. */
-function Falcon() {
-  return (
-    <svg viewBox="0 0 120 90" width="120" height="90">
-      <defs>
-        <radialGradient id="hull" cx="50%" cy="45%" r="60%">
-          <stop offset="0%" stopColor="#cfeede" />
-          <stop offset="70%" stopColor="#7f9c8e" />
-          <stop offset="100%" stopColor="#4a5d54" />
-        </radialGradient>
-        <linearGradient id="engine" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#6ee7b7" />
-          <stop offset="100%" stopColor="#10b981" />
-        </linearGradient>
-      </defs>
-      {/* main disc */}
-      <ellipse cx="60" cy="46" rx="44" ry="34" fill="url(#hull)" stroke="#36473f" strokeWidth="1.5" />
-      {/* mandible prongs */}
-      <path d="M96 38 L120 30 L120 40 L100 46 Z" fill="url(#hull)" stroke="#36473f" strokeWidth="1" />
-      <path d="M96 54 L120 50 L120 60 L100 50 Z" fill="url(#hull)" stroke="#36473f" strokeWidth="1" />
-      {/* cockpit (side) */}
-      <circle cx="92" cy="62" r="7" fill="#9fc7b6" stroke="#36473f" strokeWidth="1.2" />
-      {/* central dome */}
-      <circle cx="60" cy="46" r="13" fill="#b9d8c9" stroke="#36473f" strokeWidth="1" />
-      <circle cx="60" cy="46" r="5" fill="#5b7468" />
-      {/* panel lines */}
-      <path d="M60 12 L60 80 M16 46 L104 46" stroke="#3a4d44" strokeWidth="0.8" opacity="0.5" />
-      {/* rear engine glow */}
-      <rect x="18" y="40" width="6" height="12" rx="2" fill="url(#engine)" />
-      <ellipse cx="14" cy="46" rx="10" ry="7" fill="#6ee7b7" opacity="0.6" />
-    </svg>
-  );
 }

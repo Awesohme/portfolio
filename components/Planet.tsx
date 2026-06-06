@@ -19,15 +19,47 @@ function latLngToVec(lat: number, lng: number, radius = R) {
   );
 }
 
-// spread continents around the globe
-const POSITIONS = [
-  { lat: 22, lng: -30 },
-  { lat: -18, lng: 60 },
-  { lat: 40, lng: 150 },
-  { lat: -35, lng: -120 },
-  { lat: 5, lng: 110 },
-  { lat: 55, lng: 20 },
-];
+/** deterministic PRNG so each project's planet looks distinct but stable */
+function makeRng(seedStr: string) {
+  let h = 1779033703 ^ seedStr.length;
+  for (let i = 0; i < seedStr.length; i++) {
+    h = Math.imul(h ^ seedStr.charCodeAt(i), 3432918353);
+    h = (h << 13) | (h >>> 19);
+  }
+  return () => {
+    h = Math.imul(h ^ (h >>> 16), 2246822507);
+    h = Math.imul(h ^ (h >>> 13), 3266489909);
+    h ^= h >>> 16;
+    return (h >>> 0) / 4294967296;
+  };
+}
+
+/** per-continent lat/lng — independent seed per index so it's reproducible anywhere */
+function continentLatLng(slug: string, i: number, n: number) {
+  const rng = makeRng(`${slug}-pos-${i}`);
+  return {
+    lng: (i / n) * 360 - 180 + (rng() - 0.5) * 50,
+    lat: (rng() - 0.5) * 110,
+  };
+}
+
+/** an organic, irregular landmass outline as a flat THREE.Shape */
+function makeContinentShape(rng: () => number) {
+  const pts = 9 + Math.floor(rng() * 4);
+  const base = 0.32 + rng() * 0.16;
+  const shape = new THREE.Shape();
+  const radii: number[] = [];
+  for (let i = 0; i < pts; i++) radii.push(base * (0.55 + rng() * 0.9));
+  for (let i = 0; i <= pts; i++) {
+    const a = (i / pts) * Math.PI * 2;
+    const r = radii[i % pts];
+    const x = Math.cos(a) * r;
+    const y = Math.sin(a) * r * (0.7 + rng() * 0.5);
+    if (i === 0) shape.moveTo(x, y);
+    else shape.lineTo(x, y);
+  }
+  return shape;
+}
 
 function Globe({
   project,
@@ -47,9 +79,33 @@ function Globe({
       group.current.rotation.y += dt * 0.08;
   });
 
-  // procedural land bumps via a second, displaced sphere look (simplified: glowing patches)
   const landColor = new THREE.Color(project.planet.land);
   const baseColor = new THREE.Color(project.planet.base);
+
+  // seeded, randomized continent layout — distinct per project, stable across renders
+  const layout = useMemo(() => {
+    const n = project.continents.length;
+    return project.continents.map((_, i) => {
+      const { lat, lng } = continentLatLng(project.slug, i, n);
+      const v = latLngToVec(lat, lng, R);
+      const normal = v.clone().normalize();
+      const quat = new THREE.Quaternion().setFromUnitVectors(
+        new THREE.Vector3(0, 0, 1),
+        normal
+      );
+      const rng = makeRng(`${project.slug}-shape-${i}`);
+      // randomize spin of the landmass on the surface
+      const spin = new THREE.Quaternion().setFromAxisAngle(
+        new THREE.Vector3(0, 0, 1),
+        rng() * Math.PI * 2
+      );
+      quat.multiply(spin);
+      const shape = makeContinentShape(rng);
+      const geometry = new THREE.ShapeGeometry(shape, 24);
+      const scale = 0.85 + rng() * 0.7;
+      return { v, quat, geometry, scale };
+    });
+  }, [project]);
 
   return (
     <group ref={group}>
@@ -77,21 +133,17 @@ function Globe({
 
       {/* continents = features/outcomes */}
       {project.continents.map((c, i) => {
-        const pos = POSITIONS[i % POSITIONS.length];
-        const v = latLngToVec(pos.lat, pos.lng, R);
-        const surf = latLngToVec(pos.lat, pos.lng, R * 0.999);
+        const { v, quat, geometry, scale } = layout[i];
+        const surf = v.clone().normalize().multiplyScalar(R * 1.002);
         const isActive = hover === i || selectedIdx === i;
-        const normal = v.clone().normalize();
-        const quat = new THREE.Quaternion().setFromUnitVectors(
-          new THREE.Vector3(0, 0, 1),
-          normal
-        );
         return (
           <group key={i}>
-            {/* landmass patch */}
+            {/* organic landmass */}
             <mesh
+              geometry={geometry}
               position={surf.toArray()}
               quaternion={quat}
+              scale={isActive ? scale * 1.12 : scale}
               onPointerOver={(e) => {
                 e.stopPropagation();
                 setHover(i);
@@ -106,18 +158,18 @@ function Globe({
                 onSelect(i);
               }}
             >
-              <circleGeometry args={[isActive ? 0.62 : 0.5, 32]} />
               <meshStandardMaterial
                 color={landColor}
                 emissive={landColor}
-                emissiveIntensity={isActive ? 1.1 : 0.5}
-                roughness={0.5}
+                emissiveIntensity={isActive ? 1.1 : 0.45}
+                roughness={0.6}
                 transparent
-                opacity={0.95}
+                opacity={0.96}
+                side={THREE.DoubleSide}
               />
             </mesh>
             {/* marker pin + label */}
-            <Html position={v.clone().multiplyScalar(1.14).toArray()} center distanceFactor={8}>
+            <Html position={v.clone().multiplyScalar(1.16).toArray()} center distanceFactor={8}>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -162,9 +214,9 @@ export default function Planet({ project }: { project: Project }) {
   const [selected, setSelected] = useState<number | null>(null);
   const target = useMemo(() => {
     if (selected === null) return null;
-    const pos = POSITIONS[selected % POSITIONS.length];
-    return latLngToVec(pos.lat, pos.lng, R);
-  }, [selected]);
+    const { lat, lng } = continentLatLng(project.slug, selected, project.continents.length);
+    return latLngToVec(lat, lng, R);
+  }, [selected, project]);
 
   const active: Continent | null = selected !== null ? project.continents[selected] : null;
 

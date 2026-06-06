@@ -64,24 +64,41 @@ export default function Hero() {
     }
     build();
 
-    // twinkling background stars
-    const stars = Array.from({ length: 150 }, () => ({
+    // twinkling background stars (all glow)
+    const stars = Array.from({ length: 180 }, () => ({
       x: Math.random() * W,
       y: Math.random() * H,
-      r: Math.random() * 1.4 + 0.2,
-      a: Math.random(),
-      s: Math.random() * 0.02 + 0.003,
+      r: Math.random() * 1.5 + 0.5,
+      a: Math.random() * Math.PI * 2,
+      s: Math.random() * 0.025 + 0.006,
+      hue: Math.random() < 0.25 ? 160 : 0, // some emerald-tinted, rest white
     }));
 
     function draw() {
       ctx.clearRect(0, 0, W, H);
-      // stars
+      // stars — every star glows + twinkles
       for (const s of stars) {
         s.a += s.s;
-        const tw = 0.4 + Math.abs(Math.sin(s.a)) * 0.6;
+        const tw = 0.55 + Math.abs(Math.sin(s.a)) * 0.45; // floor 0.55 so all stay visible
+        // soft glow halo
+        const halo = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 4);
+        if (s.hue) {
+          halo.addColorStop(0, `rgba(110,231,183,${tw * 0.5})`);
+          halo.addColorStop(1, "rgba(110,231,183,0)");
+        } else {
+          halo.addColorStop(0, `rgba(220,255,240,${tw * 0.45})`);
+          halo.addColorStop(1, "rgba(220,255,240,0)");
+        }
+        ctx.fillStyle = halo;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 4, 0, 7);
+        ctx.fill();
+        // bright core
+        ctx.fillStyle = s.hue
+          ? `rgba(180,255,220,${tw})`
+          : `rgba(255,255,255,${tw})`;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, 7);
-        ctx.fillStyle = `rgba(220,255,240,${tw * 0.7})`;
         ctx.fill();
       }
 
