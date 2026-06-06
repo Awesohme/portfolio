@@ -127,7 +127,7 @@ export default function WarpTransition({
       {/* Millennium-Falcon-style ship flying out of the jump */}
       <div className="falcon" aria-hidden>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/millennium-falcon.png" alt="" width={220} height={220} />
+        <img src="/assets/fighter.png" alt="" width={220} height={220} />
       </div>
       <style jsx>{`
         .falcon {

@@ -1,6 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Sora, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0b0f0d",
+};
 
 const sora = Sora({
   subsets: ["latin"],
@@ -26,8 +32,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sora.variable} ${grotesk.variable}`}>
-      <body className="font-grotesk antialiased">{children}</body>
+    <html
+      lang="en"
+      className={`${sora.variable} ${grotesk.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="font-grotesk antialiased" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

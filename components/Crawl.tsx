@@ -17,7 +17,9 @@ export default function Crawl({
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => finish(), 26000); // crawl length + buffer
+    // safety net only — the real handoff happens on the crawl's onAnimationEnd
+    // (1.5s delay + 21s anim = 22.5s); fire slightly after as a fallback
+    const t = setTimeout(() => finish(), 23500);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -25,7 +27,7 @@ export default function Crawl({
   const finish = () => {
     if (hidden) return;
     setHidden(true);
-    setTimeout(onDone, 700);
+    setTimeout(onDone, 600);
   };
 
   return (
@@ -45,7 +47,7 @@ export default function Crawl({
       {/* crawl: .fade holds perspective, .crawl tilts, .crawl-content scrolls up */}
       <div className="fade">
         <div className="crawl">
-          <div className="crawl-content">
+          <div className="crawl-content" onAnimationEnd={finish}>
             <p className="crawl-episode">{project.crawlTitle}</p>
             <h1 className="crawl-title">{project.name}</h1>
             {project.crawl.map((para, i) => (
@@ -79,7 +81,7 @@ export default function Crawl({
         }
         .intro {
           opacity: 0;
-          animation: introFade 5s ease-in-out forwards;
+          animation: introFade 2.4s ease-in-out forwards;
           z-index: 2;
         }
         @keyframes introFade {
@@ -105,7 +107,7 @@ export default function Crawl({
           bottom: 0;
           top: 0;
           /* larger perspective = text stays closer/flatter = far more readable */
-          perspective: 650px;
+          perspective: 900px;
           overflow: hidden;
           /* darken text as it recedes toward the top */
           -webkit-mask-image: linear-gradient(
@@ -128,12 +130,12 @@ export default function Crawl({
           position: absolute;
           left: 50%;
           bottom: 0;
-          width: min(680px, 88vw);
-          margin-left: calc(min(680px, 88vw) / -2);
+          width: min(820px, 92vw);
+          margin-left: calc(min(820px, 92vw) / -2);
           height: 100%;
           transform-origin: 50% 100%;
-          /* gentler tilt so lines stay legible as they rise */
-          transform: rotateX(42deg);
+          /* gentle tilt so text stays close + legible as it rises */
+          transform: rotateX(28deg);
         }
         /* the text — only translateY animates, so it slides straight up the plane */
         .crawl-content {
@@ -142,36 +144,38 @@ export default function Crawl({
           color: #ffd54a;
           text-align: justify;
           font-weight: 600;
-          animation: crawlUp 24s linear 4.5s forwards;
+          /* comfortable reading pace; minimal overshoot so there's no dead black
+             tail before handoff */
+          animation: crawlUp 21s linear 1.5s forwards;
           will-change: transform;
         }
         @keyframes crawlUp {
           0% {
-            top: 95%;
+            top: 88%;
           }
           100% {
-            top: -300%;
+            top: -110%;
           }
         }
         .crawl-episode {
           text-align: center;
-          font-size: clamp(0.9rem, 2vw, 1.3rem);
+          font-size: clamp(1.05rem, 2.4vw, 1.6rem);
           letter-spacing: 0.06em;
-          margin-bottom: 0.6em;
+          margin-bottom: 0.7em;
           color: #ffe27a;
         }
         .crawl-title {
           text-align: center;
           font-family: var(--font-sora), sans-serif;
           font-weight: 800;
-          font-size: clamp(1.8rem, 5vw, 3.2rem);
+          font-size: clamp(2.2rem, 6vw, 4rem);
           line-height: 1.05;
           margin-bottom: 1.1em;
           text-shadow: 0 0 24px rgba(255, 213, 74, 0.4);
         }
         .crawl-para {
-          font-size: clamp(1.15rem, 2.6vw, 1.8rem);
-          line-height: 1.55;
+          font-size: clamp(1.4rem, 3.2vw, 2.3rem);
+          line-height: 1.6;
           margin-bottom: 1em;
         }
       `}</style>

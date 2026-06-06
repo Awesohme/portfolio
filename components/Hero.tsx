@@ -13,6 +13,9 @@ type Node = {
   vx: number;
   vy: number;
   r: number;
+  side: "left" | "right";
+  minX: number;
+  maxX: number;
 };
 
 export default function Hero() {
@@ -41,6 +44,12 @@ export default function Hero() {
     if (pendingSlug.current) router.push(`/work/${pendingSlug.current}`);
   }, [router]);
 
+  // ---- preload the heavy Planet (three.js) chunk while on the hero, so the
+  // project page has it cached and the planet appears instantly ----
+  useEffect(() => {
+    import("./Planet").catch(() => {});
+  }, []);
+
   // ---- constellation canvas ----
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -52,15 +61,31 @@ export default function Hero() {
     function build() {
       W = canvas.width = window.innerWidth;
       H = canvas.height = window.innerHeight;
-      nodesRef.current = projects.map((p) => ({
-        slug: p.slug,
-        label: p.node,
-        x: Math.random() * W * 0.8 + W * 0.1,
-        y: Math.random() * H * 0.55 + H * 0.18,
-        vx: (Math.random() - 0.5) * 0.28,
-        vy: (Math.random() - 0.5) * 0.28,
-        r: 0,
-      }));
+      // Nodes live ONLY in the left & right gutters so the centre text column
+      // stays clear and every node is easy to click.
+      const leftMin = W * 0.02;
+      const leftMax = W * 0.26;
+      const rightMin = W * 0.74;
+      const rightMax = W * 0.98;
+      const topBand = H * 0.16;
+      const botBand = H * 0.92;
+      nodesRef.current = projects.map((p, i) => {
+        const side: "left" | "right" = i % 2 === 0 ? "left" : "right";
+        const minX = side === "left" ? leftMin : rightMin;
+        const maxX = side === "left" ? leftMax : rightMax;
+        return {
+          slug: p.slug,
+          label: p.node,
+          x: Math.random() * (maxX - minX) + minX,
+          y: Math.random() * (botBand - topBand) + topBand,
+          vx: (Math.random() - 0.5) * 0.26,
+          vy: (Math.random() - 0.5) * 0.26,
+          r: 0,
+          side,
+          minX,
+          maxX,
+        };
+      });
     }
     build();
 
@@ -107,8 +132,9 @@ export default function Hero() {
       for (const n of nodes) {
         n.x += n.vx;
         n.y += n.vy;
-        if (n.x < 60 || n.x > W - 60) n.vx *= -1;
-        if (n.y < 90 || n.y > H * 0.82) n.vy *= -1;
+        // confine each node to its own gutter (left or right), never the centre
+        if (n.x < n.minX || n.x > n.maxX) n.vx *= -1;
+        if (n.y < H * 0.15 || n.y > H * 0.93) n.vy *= -1;
       }
       // links between nodes
       for (let i = 0; i < nodes.length; i++) {
@@ -162,7 +188,8 @@ export default function Hero() {
       }
 
       // cursor style hint
-      canvas.style.cursor = hovered.current ? "pointer" : "default";
+      // ship IS the cursor on desktop; keep native pointer on touch/no-ship
+      canvas.style.cursor = "none";
       raf = requestAnimationFrame(draw);
     }
     draw();
@@ -192,26 +219,50 @@ export default function Hero() {
     };
   }, [launchWarp]);
 
-  // ---- magnetic cursor ----
+  // ---- spaceship cursor + afterburner trail ----
+  const trailLayer = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (window.matchMedia("(max-width: 640px)").matches) return; // touch: skip
     let cx = innerWidth / 2,
       cy = innerHeight / 2,
       tx = cx,
       ty = cy,
+      angle = 0,
       raf = 0;
     const move = (e: MouseEvent) => {
       tx = e.clientX;
       ty = e.clientY;
     };
     const loop = () => {
-      cx += (tx - cx) * 0.18;
-      cy += (ty - cy) * 0.18;
+      const px = cx,
+        py = cy;
+      cx += (tx - cx) * 0.2;
+      cy += (ty - cy) * 0.2;
+      const dx = cx - px,
+        dy = cy - py;
+      const speed = Math.hypot(dx, dy);
+      if (speed > 0.6) angle = Math.atan2(dy, dx); // face direction of travel
       if (cursor.current) {
         cursor.current.style.left = cx + "px";
         cursor.current.style.top = cy + "px";
-        cursor.current.style.width = hovered.current ? "10px" : "32px";
-        cursor.current.style.height = hovered.current ? "10px" : "32px";
-        cursor.current.style.background = hovered.current ? "#34D399" : "transparent";
+        // image points right by default; +90deg so nose leads, scale up a touch when moving
+        cursor.current.style.transform = `translate(-50%,-50%) rotate(${
+          angle + Math.PI / 2
+        }rad) scale(${hovered.current ? 0.7 : 1})`;
+      }
+      // emit afterburner particles behind the ship when moving fast enough
+      if (speed > 2 && trailLayer.current) {
+        const back = 20; // px behind the engines
+        const bx = cx - Math.cos(angle) * back;
+        const by = cy - Math.sin(angle) * back;
+        const p = document.createElement("span");
+        p.className = "burn";
+        p.style.left = bx + "px";
+        p.style.top = by + "px";
+        const sz = 4 + Math.random() * 5;
+        p.style.width = p.style.height = sz + "px";
+        trailLayer.current.appendChild(p);
+        setTimeout(() => p.remove(), 600);
       }
       raf = requestAnimationFrame(loop);
     };
@@ -314,12 +365,26 @@ export default function Hero() {
           maskImage: "radial-gradient(circle at 50% 30%, #000 0%, transparent 75%)",
         }}
       />
-      <canvas ref={canvasRef} className="absolute inset-0 z-0" />
+      {/* constellation canvas — desktop only; on mobile it crowds the text, so
+          we hide it and use the clean project list below as the clickable path */}
+      <canvas ref={canvasRef} className="absolute inset-0 z-0 hidden md:block" />
+
+      {/* afterburner trail layer */}
+      <div ref={trailLayer} className="pointer-events-none fixed inset-0 z-[85] hidden md:block" />
+      {/* fighter-jet cursor */}
       <div
         ref={cursor}
-        className="pointer-events-none fixed z-[90] hidden -translate-x-1/2 -translate-y-1/2 rounded-full border border-emerald transition-[width,height,background] duration-200 md:block"
-        style={{ mixBlendMode: "screen" }}
-      />
+        className="pointer-events-none fixed left-0 top-0 z-[90] hidden h-11 w-11 md:block"
+        style={{ willChange: "transform" }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/fighter.png"
+          alt=""
+          className="h-full w-full"
+          style={{ filter: "drop-shadow(0 0 8px rgba(52,211,153,.7))" }}
+        />
+      </div>
 
       {/* nav */}
       <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[6vw] py-5 backdrop-blur-md">
@@ -344,7 +409,7 @@ export default function Hero() {
       </nav>
 
       {/* hero content */}
-      <header className="relative z-10 mx-auto max-w-[1180px] px-[6vw] pb-24 pt-[170px] text-center">
+      <header className="relative z-10 mx-auto max-w-[1180px] px-[6vw] pb-24 pt-28 text-center sm:pt-[170px]">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-emerald/[.06] px-[18px] py-[9px] text-[.76rem] font-semibold uppercase tracking-[.18em] text-emerald-soft">
           <span className="h-[7px] w-[7px] animate-pulse rounded-full bg-emerald-glow shadow-glow" />
           Open to senior product roles
@@ -367,12 +432,12 @@ export default function Hero() {
           B2B SaaS across emerging markets.
         </p>
 
-        {/* ticker */}
-        <div className="mx-auto mt-10 inline-flex flex-wrap items-stretch overflow-hidden rounded-2xl border border-white/10 bg-white/[.02] backdrop-blur">
+        {/* ticker — 2×2 grid on mobile, single row on sm+ */}
+        <div className="mx-auto mt-10 grid w-full max-w-md grid-cols-2 overflow-hidden rounded-2xl border border-white/10 bg-white/[.02] backdrop-blur sm:inline-flex sm:w-auto sm:max-w-none sm:flex-nowrap sm:items-stretch">
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className="flex min-w-[150px] flex-col gap-1 border-r border-white/10 px-6 py-[18px] last:border-r-0"
+              className="flex flex-col gap-1 border-b border-r border-white/10 px-4 py-4 [&:nth-child(2)]:border-r-0 [&:nth-child(n+3)]:border-b-0 sm:min-w-[150px] sm:border-b-0 sm:px-6 sm:py-[18px] sm:[&:nth-child(2)]:border-r sm:last:border-r-0"
             >
               <span
                 ref={(el) => {
@@ -406,19 +471,21 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* constellation hint */}
+        {/* project list — the clickable path (and the ONLY one on mobile, where
+            the constellation canvas is hidden). Shows all projects. */}
         <div id="work" className="mt-16 scroll-mt-24 text-[.74rem] uppercase tracking-[.18em] text-muted">
-          — Click a glowing project to jump in —
+          <span className="md:hidden">— Tap a project to jump in —</span>
+          <span className="hidden md:inline">— Click a glowing project to jump in —</span>
         </div>
-        <div className="mt-3.5 flex flex-wrap justify-center gap-x-5 gap-y-2">
-          {projects.slice(0, 8).map((p) => (
+        <div className="mt-4 flex flex-wrap justify-center gap-2.5 md:gap-x-5 md:gap-y-2">
+          {projects.map((p) => (
             <button
               key={p.slug}
               onClick={() => {
                 const n = nodesRef.current.find((nd) => nd.slug === p.slug);
                 launchWarp(p.slug, n ? n.x : innerWidth / 2, n ? n.y : innerHeight / 2);
               }}
-              className="flex items-center gap-2 text-sm text-muted transition hover:text-emerald-soft"
+              className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[.03] px-3.5 py-2 text-sm text-emerald-soft transition hover:border-emerald hover:text-white active:scale-95 md:border-transparent md:bg-transparent md:px-0 md:py-0 md:text-muted md:hover:text-emerald-soft"
             >
               <span className="h-2 w-2 rounded-full bg-emerald shadow-glow" />
               {p.node}
