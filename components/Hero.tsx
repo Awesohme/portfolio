@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { projects } from "@/lib/projects";
 import WarpTransition from "./WarpTransition";
+import ContactModal from "./ContactModal";
 
 type Node = {
   slug: string;
@@ -20,6 +22,7 @@ type Node = {
 
 export default function Hero() {
   const router = useRouter();
+  const [contactOpen, setContactOpen] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nodesRef = useRef<Node[]>([]);
   const mouse = useRef({ x: -999, y: -999 });
@@ -396,15 +399,18 @@ export default function Hero() {
           <a href="#work" className="hidden rounded-full px-4 py-2 text-sm font-medium text-muted transition hover:text-white sm:block">
             Work
           </a>
-          <a href="#about" className="hidden rounded-full px-4 py-2 text-sm font-medium text-muted transition hover:text-white sm:block">
+          <Link href="/about" className="hidden rounded-full px-4 py-2 text-sm font-medium text-muted transition hover:text-white sm:block">
             About
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link href="/musings" className="hidden rounded-full px-4 py-2 text-sm font-medium text-muted transition hover:text-white sm:block">
+            Musings
+          </Link>
+          <button
+            onClick={() => setContactOpen(true)}
             className="rounded-full border border-white/10 px-4 py-2 text-sm font-medium transition hover:border-emerald hover:shadow-glow"
           >
             Let&apos;s talk →
-          </a>
+          </button>
         </div>
       </nav>
 
@@ -457,6 +463,7 @@ export default function Hero() {
 
         {/* actions */}
         <div className="mt-9 flex flex-wrap justify-center gap-3.5">
+          {/* TODO future: warp straight into a featured case study instead of scroll */}
           <a
             href="#work"
             className="inline-flex items-center gap-2 rounded-2xl bg-emerald px-7 py-[15px] font-semibold text-[#06150f] shadow-glow transition hover:-translate-y-0.5"
@@ -465,6 +472,8 @@ export default function Hero() {
           </a>
           <a
             href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[.02] px-7 py-[15px] font-semibold transition hover:-translate-y-0.5 hover:border-emerald"
           >
             ⬇ Résumé
@@ -495,6 +504,7 @@ export default function Hero() {
       </header>
 
       <WarpTransition active={warp} origin={warpOrigin} onComplete={onWarpComplete} />
+      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
     </main>
   );
 }
