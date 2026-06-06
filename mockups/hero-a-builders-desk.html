@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero A — The Builder's Desk · Olamide Irojah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#FF914D; --primary-dark:#E5822D; --primary-soft:#FFF1E7;
+    --bg:#FBFAF8; --card:#ffffff; --text:#15131F; --muted:#6A6678; --border:#EFEAE2;
+    --ring:rgba(255,145,77,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+  /* ambient blobs */
+  .blob{position:fixed;border-radius:50%;filter:blur(80px);opacity:.5;z-index:0;pointer-events:none}
+  .blob.b1{width:520px;height:520px;background:#FFD9BE;top:-160px;right:-120px;animation:float1 14s ease-in-out infinite}
+  .blob.b2{width:420px;height:420px;background:#FFE7D2;bottom:-160px;left:-120px;animation:float2 18s ease-in-out infinite}
+  @keyframes float1{50%{transform:translate(-40px,40px) scale(1.1)}}
+  @keyframes float2{50%{transform:translate(40px,-30px) scale(1.05)}}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+    padding:18px 6vw;backdrop-filter:blur(14px);background:rgba(251,250,248,.72);border-bottom:1px solid transparent;transition:.3s}
+  nav.scrolled{border-color:var(--border);box-shadow:0 6px 24px rgba(0,0,0,.04)}
+  .brand{font-weight:700;letter-spacing:-.02em;font-size:1.05rem;display:flex;align-items:center;gap:9px}
+  .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 4px var(--primary-soft)}
+  .navlinks{display:flex;gap:8px;align-items:center}
+  .navlinks a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;padding:8px 14px;border-radius:999px;transition:.2s}
+  .navlinks a:hover{color:var(--text);background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  .navlinks a.cta{background:var(--text);color:#fff}
+  .navlinks a.cta:hover{background:var(--primary);transform:translateY(-1px)}
+
+  .hero{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:160px 6vw 90px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--primary-dark);background:var(--primary-soft);padding:8px 16px;border-radius:999px;
+    opacity:0;transform:translateY(14px);animation:rise .7s .1s forwards}
+  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:#2ecc71;box-shadow:0 0 0 0 rgba(46,204,113,.6);animation:pulse 2s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(46,204,113,0)}100%{box-shadow:0 0 0 0 rgba(46,204,113,0)}}
+
+  h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2.6rem,6.5vw,5.4rem);line-height:1.02;letter-spacing:-.02em;margin:26px 0 8px}
+  h1 .l1,h1 .l2{display:block;opacity:0;transform:translateY(20px)}
+  h1 .l1{animation:rise .7s .25s forwards}
+  h1 .l2{animation:rise .7s .4s forwards}
+  .accent{color:var(--primary)}
+  .typed-wrap{display:inline-flex;align-items:baseline}
+  #typed{color:var(--primary)}
+  .caret{display:inline-block;width:4px;height:.82em;background:var(--primary);margin-left:4px;border-radius:2px;animation:blink 1s steps(1) infinite;transform:translateY(2px)}
+  @keyframes blink{50%{opacity:0}}
+
+  .sub{max-width:620px;color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.22rem);line-height:1.6;margin-top:18px;
+    opacity:0;transform:translateY(16px);animation:rise .7s .55s forwards}
+  .sub b{color:var(--text);font-weight:600}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:42px 0 36px;max-width:680px}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px 20px;
+    box-shadow:0 10px 30px -18px rgba(0,0,0,.25);opacity:0;transform:translateY(20px);transition:transform .3s,box-shadow .3s}
+  .stat.in{animation:rise .7s forwards}
+  .stat:nth-child(1){animation-delay:.7s}.stat:nth-child(2){animation-delay:.82s}.stat:nth-child(3){animation-delay:.94s}
+  .stat:hover{transform:translateY(-6px);box-shadow:0 24px 50px -20px rgba(255,145,77,.4)}
+  .stat .num{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.7rem,3.5vw,2.5rem);letter-spacing:-.02em;line-height:1}
+  .stat .lbl{color:var(--muted);font-size:.82rem;font-weight:500;margin-top:8px}
+  .stat .up{color:#2ecc71;font-size:.78rem;font-weight:600}
+
+  .actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;transform:translateY(16px);animation:rise .7s 1.05s forwards}
+  .btn{font-family:'Poppins';font-weight:600;font-size:.98rem;padding:15px 28px;border-radius:14px;text-decoration:none;border:none;cursor:pointer;transition:.25s;display:inline-flex;align-items:center;gap:9px}
+  .btn-primary{background:var(--primary);color:#fff;box-shadow:0 12px 30px -10px var(--ring)}
+  .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 18px 38px -10px var(--ring)}
+  .btn-ghost{background:#fff;color:var(--text);border:1px solid var(--border)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:0 12px 26px -14px rgba(0,0,0,.3)}
+
+  /* project preview row */
+  .proj-strip{margin-top:78px;opacity:0;transform:translateY(20px);animation:rise .8s 1.2s forwards}
+  .proj-strip .cap{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .proj-strip .cap::after{content:"";flex:1;height:1px;background:var(--border)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .pcard{position:relative;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px 22px;
+    overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;cursor:default}
+  .pcard::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--primary-soft),transparent 60%);opacity:0;transition:.35s}
+  .pcard:hover{transform:translateY(-10px) rotateX(4deg);box-shadow:0 30px 60px -28px rgba(255,145,77,.5)}
+  .pcard:hover::before{opacity:1}
+  .pcard .tag{font-size:.72rem;font-weight:600;color:var(--primary-dark);background:var(--primary-soft);padding:4px 10px;border-radius:999px}
+  .pcard h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.22rem;margin:14px 0 6px;position:relative}
+  .pcard p{color:var(--muted);font-size:.88rem;line-height:1.5;position:relative}
+  .pcard .metric{margin-top:14px;font-weight:700;color:var(--text);font-size:.95rem;position:relative}
+
+  @keyframes rise{to{opacity:1;transform:none}}
+  .note{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:60;background:var(--text);color:#fff;
+    font-size:.8rem;padding:9px 18px;border-radius:999px;opacity:.9}
+  @media(max-width:640px){.stats{grid-template-columns:1fr 1fr}.navlinks a:not(.cta){display:none}}
+</style>
+</head>
+<body>
+  <div class="blob b1"></div><div class="blob b2"></div>
+
+  <nav id="nav">
+    <div class="brand"><span class="dot"></span>Olamide Irojah</div>
+    <div class="navlinks">
+      <a href="#">Work</a><a href="#">Builds</a><a href="#">About</a>
+      <a href="#" class="cta">Let's talk →</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="eyebrow"><span class="pulse"></span>Open to senior product roles</span>
+    <h1>
+      <span class="l1">Product Lead who</span>
+      <span class="l2"><span class="typed-wrap"><span id="typed"></span><span class="caret"></span></span></span>
+    </h1>
+    <p class="sub">I build products by starting with what the business needs to be true — then ship fast with <b>AI-native prototyping</b>, validate before burning engineering, and kill what doesn't work. <b>4+ years</b> scaling B2B SaaS in emerging markets.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num" data-to="5.2" data-pre="$" data-suf="M">$0M</div><div class="lbl">Annual GMV at QShop</div><div class="up">▲ owned end-to-end</div></div>
+      <div class="stat"><div class="num" data-to="59700" data-suf="+">0</div><div class="lbl">Business users scaled to</div><div class="up">▲ 18k+ monthly orders</div></div>
+      <div class="stat"><div class="num" data-to="12" data-suf="" data-plain="1">0</div><div class="lbl">Products shipped & live</div><div class="up">▲ + 13 dev-workflow skills</div></div>
+    </div>
+
+    <div class="actions">
+      <a href="#" class="btn btn-primary">See my work →</a>
+      <a href="#" class="btn btn-ghost">⬇ Download résumé</a>
+    </div>
+
+    <section class="proj-strip">
+      <div class="cap">Selected builds</div>
+      <div class="cards">
+        <div class="pcard"><span class="tag">Live PWA</span><h3>Morph Ops Control Room</h3><p>Role-aware cohort-ops app that replaced an Excel workbook for a full team.</p><div class="metric">Next 15 · React 19 · Supabase</div></div>
+        <div class="pcard"><span class="tag">Field tech</span><h3>TractaIQ</h3><p>WhatsApp + offline PWA for distributed field workers in low-connectivity areas.</p><div class="metric">NestJS · CQRS · offline-first</div></div>
+        <div class="pcard"><span class="tag">AI build</span><h3>QTrack</h3><p>WhatsApp AI expense tracker, built with AI tools at 10× normal speed.</p><div class="metric">500+ users in 2 months</div></div>
+        <div class="pcard"><span class="tag">Resort</span><h3>Sunset Haven</h3><p>Luxury resort site + full admin, RBAC and Paystack payments.</p><div class="metric">Next 14 · Supabase · Paystack</div></div>
+      </div>
+    </section>
+  </header>
+
+  <div class="note">Hero A — “The Builder's Desk” · light & kinetic</div>
+
+<script>
+  // nav shadow on scroll
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+
+  // typed roles
+  const roles=["ships the thing.","scales B2B SaaS.","prototypes with AI.","kills bad bets.","drives growth."];
+  const el=document.getElementById('typed');
+  let r=0,c=0,del=false;
+  (function type(){
+    const w=roles[r];
+    el.textContent=del?w.slice(0,c--):w.slice(0,c++);
+    if(!del&&c===w.length+1){del=true;setTimeout(type,1400);return;}
+    if(del&&c<0){del=false;r=(r+1)%roles.length;c=0;}
+    setTimeout(type,del?42:78);
+  })();
+
+  // count-up
+  function ease(t){return 1-Math.pow(1-t,3);}
+  function run(node){
+    const to=parseFloat(node.dataset.to),pre=node.dataset.pre||"",suf=node.dataset.suf||"";
+    const dur=1500,start=performance.now(),dec=(to%1!==0);
+    function step(now){
+      const p=Math.min((now-start)/dur,1),v=ease(p)*to;
+      let out= to>=1000 ? Math.floor(v).toLocaleString() : (dec? v.toFixed(1): Math.floor(v));
+      node.textContent=pre+out+suf;
+      if(p<1)requestAnimationFrame(step);else node.textContent=pre+(dec?to.toFixed(1):to.toLocaleString())+suf;
+    }
+    requestAnimationFrame(step);
+  }
+  // trigger when stats reveal
+  setTimeout(()=>document.querySelectorAll('.stat .num').forEach(run),900);
+</script>
+</body>
+</html>
