@@ -8,3 +8,5 @@ next-env.d.ts
 shots/
 verify.mjs
 .env.github.local
+.sessions/
+mockup-*.html
