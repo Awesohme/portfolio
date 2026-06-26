@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SpecNav from "@/components/SpecNav";
 import { getMusings } from "@/lib/musings";
+import { getSiteSettings } from "@/lib/siteSettings";
 
 export const metadata = {
   title: "Musings · Spec · Olamide Irojah",
@@ -11,7 +12,7 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function SpecMusings() {
-  const drafts = await getMusings();
+  const [drafts, s] = await Promise.all([getMusings(), getSiteSettings()]);
 
   return (
     <main className="spec-doc">
@@ -79,7 +80,7 @@ export default async function SpecMusings() {
       <div className="spec-signoff">
         <div className="spec-cta" style={{ flexDirection: "column" }}>
           <a
-            href="mailto:irojaholamide@gmail.com"
+            href={`mailto:${s.email}`}
             className="spec-btn spec-btn-fill"
             style={{ textAlign: "center", width: "100%" }}
           >
@@ -89,7 +90,9 @@ export default async function SpecMusings() {
             ← Back to home
           </Link>
         </div>
-        <div className="spec-stamp">OLAMIDE IROJAH · PRODUCT MANAGER · irojaholamide@gmail.com</div>
+        <div className="spec-stamp">
+          {s.fullName.toUpperCase()} · {s.jobTitle.toUpperCase()} · {s.email}
+        </div>
       </div>
     </main>
   );

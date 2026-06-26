@@ -15,6 +15,13 @@ export type SiteSettings = {
   aboutHero: string;
   aboutOrigin: string;
   aboutOperatingInstinct: string;
+  fullName: string;
+  jobTitle: string;
+  email: string;
+  whatsapp: string;
+  githubUrl: string;
+  linkedinUrl: string;
+  contactMessage: string;
   resumeUrl: string;
   profileImageUrl: string;
   show: {
@@ -48,6 +55,14 @@ const FALLBACK: SiteSettings = {
     "I started in agriculture. Literally, a B.Sc. in Agricultural Administration. Then I became COO of an EdTech and scaled it to 9,000+ users across West Africa with no playbook to copy. That zero-to-one taught me the thing I still build on: start with the user's problem, then build the business around it.",
   aboutOperatingInstinct:
     "It was deciding what not to build. The real work is killing the twenty requests that didn't earn their place so the few that matter can actually land. I ship fast, validate before I spend a team's engineering, and I build the tools that build the products too.",
+  fullName: "Olamide Irojah",
+  jobTitle: "Product Manager",
+  email: "irojaholamide@gmail.com",
+  whatsapp: "2348121364213",
+  githubUrl: "https://github.com/awesohme",
+  linkedinUrl: "https://www.linkedin.com/in/irojaholamide/",
+  contactMessage:
+    "Hi Olamide, I came across your portfolio and I'd love to talk about a product role / opportunity. When are you free for a quick chat?",
   resumeUrl: "/resume.pdf",
   profileImageUrl: "/olamide.jpg",
   show: {
@@ -92,6 +107,13 @@ export async function getSiteSettings(): Promise<SiteSettings> {
       aboutHero: pick(s.aboutHero, FALLBACK.aboutHero),
       aboutOrigin: pick(s.aboutOrigin, FALLBACK.aboutOrigin),
       aboutOperatingInstinct: pick(s.aboutOperatingInstinct, FALLBACK.aboutOperatingInstinct),
+      fullName: pick(s.fullName, FALLBACK.fullName),
+      jobTitle: pick(s.jobTitle, FALLBACK.jobTitle),
+      email: pick(s.email, FALLBACK.email),
+      whatsapp: pick(s.whatsapp, FALLBACK.whatsapp),
+      githubUrl: pick(s.githubUrl, FALLBACK.githubUrl),
+      linkedinUrl: pick(s.linkedinUrl, FALLBACK.linkedinUrl),
+      contactMessage: pick(s.contactMessage, FALLBACK.contactMessage),
       resumeUrl: mediaUrl(base, s.resume, FALLBACK.resumeUrl),
       profileImageUrl: mediaUrl(base, s.profileImage, FALLBACK.profileImageUrl),
       show: {

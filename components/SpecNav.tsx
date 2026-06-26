@@ -32,7 +32,15 @@ export default async function SpecNav({
           {s.show.shipped && <Link href="/v2#shipped">Shipped</Link>}
           <Link href="/v2/about">About</Link>
           {s.show.musingsNav && <Link href="/v2/musings">Musings</Link>}
-          {s.show.contact && <SpecContactTrigger />}
+          {s.show.contact && (
+            <SpecContactTrigger
+              email={s.email}
+              whatsapp={s.whatsapp}
+              github={s.githubUrl}
+              linkedin={s.linkedinUrl}
+              message={s.contactMessage}
+            />
+          )}
         </nav>
       </div>
     </header>

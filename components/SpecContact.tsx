@@ -46,25 +46,48 @@ const I = {
   ),
 };
 
-const EMAIL = "irojaholamide@gmail.com";
-const WHATSAPP = "2348121364213";
-const GITHUB = "https://github.com/awesohme";
-const LINKEDIN = "https://www.linkedin.com/in/irojaholamide/";
-const SUBJECT = "Let's talk: opportunity for Olamide";
-const MESSAGE =
+// defaults (used if no props are passed / CMS unavailable)
+const DEF_EMAIL = "irojaholamide@gmail.com";
+const DEF_WHATSAPP = "2348121364213";
+const DEF_GITHUB = "https://github.com/awesohme";
+const DEF_LINKEDIN = "https://www.linkedin.com/in/irojaholamide/";
+const DEF_MESSAGE =
   "Hi Olamide, I came across your portfolio and I'd love to talk about a product role / opportunity. When are you free for a quick chat?";
+const SUBJECT = "Let's talk: opportunity for Olamide";
 
 const enc = encodeURIComponent;
 
-const links = {
-  gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(EMAIL)}&su=${enc(SUBJECT)}&body=${enc(MESSAGE)}`,
-  outlook: `https://outlook.office.com/mail/deeplink/compose?to=${enc(EMAIL)}&subject=${enc(SUBJECT)}&body=${enc(MESSAGE)}`,
-  default: `mailto:${EMAIL}?subject=${enc(SUBJECT)}&body=${enc(MESSAGE)}`,
-  whatsapp: `https://wa.me/${WHATSAPP}?text=${enc(MESSAGE)}`,
-};
+function buildLinks(email: string, whatsapp: string, message: string) {
+  return {
+    gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(email)}&su=${enc(SUBJECT)}&body=${enc(message)}`,
+    outlook: `https://outlook.office.com/mail/deeplink/compose?to=${enc(email)}&subject=${enc(SUBJECT)}&body=${enc(message)}`,
+    default: `mailto:${email}?subject=${enc(SUBJECT)}&body=${enc(message)}`,
+    whatsapp: `https://wa.me/${whatsapp}?text=${enc(message)}`,
+  };
+}
 
 /** Light, PRD-themed contact popup (WhatsApp + Email). Scoped under .spec. */
-export default function SpecContact({ open, onClose }: { open: boolean; onClose: () => void }) {
+export default function SpecContact({
+  open,
+  onClose,
+  email = DEF_EMAIL,
+  whatsapp = DEF_WHATSAPP,
+  github = DEF_GITHUB,
+  linkedin = DEF_LINKEDIN,
+  message = DEF_MESSAGE,
+}: {
+  open: boolean;
+  onClose: () => void;
+  email?: string;
+  whatsapp?: string;
+  github?: string;
+  linkedin?: string;
+  message?: string;
+}) {
+  const links = buildLinks(email, whatsapp, message);
+  const EMAIL = email;
+  const GITHUB = github;
+  const LINKEDIN = linkedin;
   const [mounted, setMounted] = useState(false);
   const [emailOpen, setEmailOpen] = useState(false);
 

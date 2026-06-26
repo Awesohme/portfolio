@@ -216,9 +216,11 @@ export default async function SpecHome() {
           )}
         </div>
         <div className="spec-stamp">
-          SIGNED · OLAMIDE IROJAH · PRODUCT MANAGER · irojaholamide@gmail.com · REV 2026.06
+          SIGNED · {s.fullName.toUpperCase()} · {s.jobTitle.toUpperCase()} · {s.email} · REV 2026.06
         </div>
-        {s.show.socials && <SpecSocials className="spec-stamp-socials" />}
+        {s.show.socials && (
+          <SpecSocials className="spec-stamp-socials" github={s.githubUrl} linkedin={s.linkedinUrl} />
+        )}
       </div>
       </main>
     </>

@@ -132,8 +132,12 @@ export default async function SpecAbout() {
             </a>
           )}
         </div>
-        <div className="spec-stamp">SIGNED · OLAMIDE IROJAH · PRODUCT MANAGER · irojaholamide@gmail.com</div>
-        {s.show.socials && <SpecSocials className="spec-stamp-socials" />}
+        <div className="spec-stamp">
+          SIGNED · {s.fullName.toUpperCase()} · {s.jobTitle.toUpperCase()} · {s.email}
+        </div>
+        {s.show.socials && (
+          <SpecSocials className="spec-stamp-socials" github={s.githubUrl} linkedin={s.linkedinUrl} />
+        )}
       </div>
     </main>
   );

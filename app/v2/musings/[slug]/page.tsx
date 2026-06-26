@@ -4,6 +4,7 @@ import SpecNav from "@/components/SpecNav";
 import MusingBody from "@/components/MusingBody";
 import ReadProgress from "@/components/ReadProgress";
 import { getMusing } from "@/lib/musings";
+import { getSiteSettings } from "@/lib/siteSettings";
 
 // always render fresh so edits/publishes in Strapi appear on refresh
 export const dynamic = "force-dynamic";
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function MusingPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const m = await getMusing(slug);
+  const [m, s] = await Promise.all([getMusing(slug), getSiteSettings()]);
   // only published musings have a readable page
   if (!m || !m.published) notFound();
 
@@ -48,14 +49,16 @@ export default async function MusingPost({ params }: { params: Promise<{ slug: s
             ← All musings
           </Link>
           <a
-            href="mailto:irojaholamide@gmail.com"
+            href={`mailto:${s.email}`}
             className="spec-btn spec-btn-out"
             style={{ textAlign: "center", width: "100%" }}
           >
             ✉ Get notified of the next one
           </a>
         </div>
-        <div className="spec-stamp">OLAMIDE IROJAH · PRODUCT MANAGER · irojaholamide@gmail.com</div>
+        <div className="spec-stamp">
+          {s.fullName.toUpperCase()} · {s.jobTitle.toUpperCase()} · {s.email}
+        </div>
       </div>
     </main>
   );

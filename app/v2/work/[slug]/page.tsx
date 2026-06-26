@@ -4,6 +4,7 @@ import SpecMotion from "@/components/SpecMotion";
 import SpecNav from "@/components/SpecNav";
 import MikanoReport from "@/components/MikanoReport";
 import { getProjects, getProjectBySlug, allProjectSlugs } from "@/lib/projectsCms";
+import { getSiteSettings } from "@/lib/siteSettings";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function SpecWorkPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const all = await getProjects();
+  const [all, s] = await Promise.all([getProjects(), getSiteSettings()]);
   const p = all.find((x) => x.slug === slug);
   if (!p) notFound();
 
@@ -114,7 +115,7 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
           </Link>
         </div>
         <div className="spec-stamp">
-          SPEC {String(idx + 1).padStart(2, "0")} · {p.name.toUpperCase()} · OLAMIDE IROJAH · REV 2026.06
+          SPEC {String(idx + 1).padStart(2, "0")} · {p.name.toUpperCase()} · {s.fullName.toUpperCase()} · REV 2026.06
         </div>
       </div>
     </main>
