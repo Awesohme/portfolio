@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { projects } from "@/lib/projects";
 import SpecMotion from "@/components/SpecMotion";
 import SpecTagline from "@/components/SpecTagline";
 import SpecNav from "@/components/SpecNav";
 import SpecSocials from "@/components/SpecSocials";
 import SpecToolField from "@/components/SpecToolField";
-import { cleanDashes as clean } from "@/lib/specText";
-import { getSpecCase } from "@/lib/specCases";
+import { getProjects } from "@/lib/projectsCms";
+
+export const dynamic = "force-dynamic";
 
 // one-line outcome shown in the §04 shipped index, per project
 const OUTCOME: Record<string, string> = {
@@ -24,12 +24,11 @@ const OUTCOME: Record<string, string> = {
   "claude-skills": "13 dev-skills",
 };
 
-export default function SpecHome() {
+export default async function SpecHome() {
+  const projects = await getProjects();
   // split for §04: product cases primary, tool/personal builds in "Also built"
-  const productCases = projects.filter((p) => (getSpecCase(p.slug)?.category ?? "product") === "product");
-  const toolCases = projects.filter((p) => getSpecCase(p.slug)?.category === "tool");
-  const roleOf = (slug: string, fallback: string) => getSpecCase(slug)?.roleLabel ?? fallback;
-  const periodOf = (slug: string, fallback: string) => getSpecCase(slug)?.period ?? clean(fallback);
+  const productCases = projects.filter((p) => p.category === "product");
+  const toolCases = projects.filter((p) => p.category === "tool");
 
   return (
     <>
@@ -162,7 +161,7 @@ export default function SpecHome() {
             <div className="nm">
               {p.name}
               <small>
-                {roleOf(p.slug, p.role)} · {periodOf(p.slug, p.period)}
+                {p.roleLabel} · {p.period}
               </small>
             </div>
             <span className="out">{OUTCOME[p.slug] ?? p.tag} →</span>
@@ -190,7 +189,7 @@ export default function SpecHome() {
             <div className="nm">
               {p.name}
               <small>
-                {roleOf(p.slug, p.role)} · {periodOf(p.slug, p.period)}
+                {p.roleLabel} · {p.period}
               </small>
             </div>
             <span className="out">{OUTCOME[p.slug] ?? p.tag} →</span>

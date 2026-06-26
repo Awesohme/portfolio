@@ -1,43 +1,34 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { projects, getProject } from "@/lib/projects";
 import SpecMotion from "@/components/SpecMotion";
 import SpecNav from "@/components/SpecNav";
 import MikanoReport from "@/components/MikanoReport";
-import { cleanDashes as clean } from "@/lib/specText";
-import { getSpecCase } from "@/lib/specCases";
+import { getProjects, getProjectBySlug, allProjectSlugs } from "@/lib/projectsCms";
+
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return allProjectSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const p = getProject(slug);
+  const p = await getProjectBySlug(slug);
   return {
     title: p ? `${p.name} · Spec · Olamide Irojah` : "Project · Olamide Irojah",
     description: p?.tagline,
   };
 }
 
-// fallback labels if a project has no /v2 case override yet
-const FALLBACK_LABELS = ["Context", "Approach", "So what"];
-
 export default async function SpecWorkPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const p = getProject(slug);
+  const all = await getProjects();
+  const p = all.find((x) => x.slug === slug);
   if (!p) notFound();
 
-  const idx = projects.findIndex((x) => x.slug === slug);
-  const next = projects[(idx + 1) % projects.length];
-
-  // /v2 case copy (first-person PRD voice); fall back to cleaned projects.ts data
-  const sc = getSpecCase(slug);
-  const role = sc?.roleLabel ?? p.role;
-  const period = sc?.period ?? clean(p.period);
-  const tagline = sc?.tagline ?? clean(p.tagline);
-  const sections =
-    sc?.sections ?? p.crawl.map((para, i) => ({ label: FALLBACK_LABELS[i] ?? "Note", body: clean(para) }));
+  const idx = all.findIndex((x) => x.slug === slug);
+  const next = all[(idx + 1) % all.length];
+  const { sections, features } = p;
 
   return (
     <main className="spec-doc">
@@ -46,7 +37,7 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
 
       <div className="spec-hero">
         <div className="spec-doctype">
-          {p.tag} · {role} · {period}
+          {p.tag} · {p.roleLabel} · {p.period}
         </div>
         <h1 className="spec-name">{p.name}</h1>
         <div className="spec-meta-row" style={{ marginTop: 22 }}>
@@ -56,7 +47,7 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
             </span>
           ))}
         </div>
-        <p style={{ marginTop: 22, maxWidth: "60ch", color: "#3b372e", lineHeight: 1.6 }}>{tagline}</p>
+        <p style={{ marginTop: 22, maxWidth: "60ch", color: "#3b372e", lineHeight: 1.6 }}>{p.tagline}</p>
       </div>
 
       {/* narrative: Problem / What I did / Outcome */}
@@ -78,7 +69,7 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
       {/* Mikano-only: the image-dimension report it produces */}
       {p.slug === "mikano" && <MikanoReport />}
 
-      {/* features & outcomes from continents */}
+      {/* features & outcomes */}
       <section className="spec-sec spec-reveal">
         <div className="ln">{String(sections.length + 1).padStart(2, "0")}</div>
         <div className="body">
@@ -86,22 +77,22 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
             <span className="n">{String(sections.length + 1).padStart(2, "0")} ·</span> Features &amp; outcomes
           </h2>
           <div className="spec-otable" style={{ maxWidth: 640, marginTop: 18 }}>
-            {p.continents.map((c) => (
+            {features.map((c) => (
               <div className="spec-orow" key={c.name}>
                 <div className="k">
                   {c.kind === "outcome" ? "◆ " : "□ "}
                   {c.name}
                 </div>
                 <div className="v" style={{ color: c.kind === "outcome" ? "var(--accent)" : "var(--ink)" }}>
-                  <span>{clean(c.blurb)}</span>
+                  <span>{c.blurb}</span>
                 </div>
               </div>
             ))}
           </div>
           <div style={{ marginTop: 18, display: "grid", gap: 12, maxWidth: "64ch" }}>
-            {p.continents.map((c) => (
+            {features.map((c) => (
               <p key={c.name} style={{ margin: 0, fontSize: ".95rem", color: "#3b372e", lineHeight: 1.55 }}>
-                <b style={{ color: "var(--ink)" }}>{c.name}.</b> {clean(c.detail)}
+                <b style={{ color: "var(--ink)" }}>{c.name}.</b> {c.detail}
               </p>
             ))}
           </div>
