@@ -5,6 +5,7 @@ import SpecNav from "@/components/SpecNav";
 import SpecSocials from "@/components/SpecSocials";
 import SpecToolField from "@/components/SpecToolField";
 import { getProjects } from "@/lib/projectsCms";
+import { getSiteSettings } from "@/lib/siteSettings";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +26,7 @@ const OUTCOME: Record<string, string> = {
 };
 
 export default async function SpecHome() {
-  const projects = await getProjects();
+  const [projects, s] = await Promise.all([getProjects(), getSiteSettings()]);
   // split for §04: product cases primary, tool/personal builds in "Also built"
   const productCases = projects.filter((p) => p.category === "product");
   const toolCases = projects.filter((p) => p.category === "tool");
@@ -67,52 +68,45 @@ export default async function SpecHome() {
             fontSize: "1.02rem",
           }}
         >
-          I&apos;m a <b style={{ color: "var(--ink)" }}>product manager who designs and builds</b>. I think
-          in outcomes, not features. It starts with discovery: I sit with users, learn the problem deeper
-          than the brief, then prototype the bet and put it in front of them before the team spends a sprint
-          on a guess. Strategy, design, code, I&apos;ve shipped all three.
+          {s.heroThesis}
         </p>
         <SpecTagline />
       </div>
 
+      {s.show.problem && (
       <section className="spec-sec spec-reveal">
         <div className="ln">01</div>
         <div className="body">
           <h2>
             <span className="n">01 ·</span> Problem
           </h2>
-          <div className="spec-lead">Most products ship features. Few move the number that matters.</div>
-          <p>
-            The job isn&apos;t to build. It&apos;s to find the problem worth solving and chase the
-            outcome that proves it. I start with the <i>user&apos;s problem</i>, then build the
-            business around it.
-          </p>
+          <div className="spec-lead">{s.problemLead}</div>
+          <p>{s.problemBody}</p>
         </div>
       </section>
+      )}
 
+      {s.show.bet && (
       <section className="spec-sec spec-reveal">
         <div className="ln">02</div>
         <div className="body">
           <h2>
             <span className="n">02 ·</span> Bet
           </h2>
-          <div className="spec-lead">At QShop, onboarding leaked 70% of new businesses.</div>
-          <p>
-            The obvious fix was to strip out onboarding steps. I tested the activation flow and read the
-            results <mark>quantitatively and qualitatively</mark>, and the data pointed somewhere subtler:
-            people wanted to explore the product before committing their own data. So I let them, and cut
-            time-to-value instead of just cutting steps.
-          </p>
+          <div className="spec-lead">{s.betLead}</div>
+          <p>{s.betBody}</p>
         </div>
       </section>
+      )}
 
+      {s.show.outcome && (
       <section className="spec-sec spec-reveal">
         <div className="ln">03</div>
         <div className="body">
           <h2>
             <span className="n">03 ·</span> Outcome
           </h2>
-          <div className="spec-lead">One change. Compounded across activation, retention, revenue.</div>
+          <div className="spec-lead">{s.outcomeLead}</div>
           <div className="spec-otable">
             <div className="spec-orow">
               <div className="k">Onboarding drop-off</div>
@@ -141,7 +135,10 @@ export default async function SpecHome() {
           </div>
         </div>
       </section>
+      )}
 
+      {s.show.shipped && (
+      <>
       <section id="shipped" className="spec-sec spec-reveal" style={{ scrollMarginTop: 72 }}>
         <div className="ln">04</div>
         <div className="body" style={{ paddingBottom: 0 }}>
@@ -149,7 +146,7 @@ export default async function SpecHome() {
             <span className="n">04 ·</span> Shipped
           </h2>
           <div className="spec-lead" style={{ marginBottom: 8 }}>
-            Five products. One operating instinct.
+            {productCases.length} products. One operating instinct.
           </div>
         </div>
       </section>
@@ -168,7 +165,11 @@ export default async function SpecHome() {
           </Link>
         ))}
       </div>
+      </>
+      )}
 
+      {s.show.alsoBuilt && toolCases.length > 0 && (
+      <>
       {/* Also built — tools & experiments (kept distinct from the product cases) */}
       <section className="spec-sec spec-reveal">
         <div className="ln">05</div>
@@ -196,6 +197,8 @@ export default async function SpecHome() {
           </Link>
         ))}
       </div>
+      </>
+      )}
 
       <div className="spec-signoff spec-reveal">
         <div className="spec-lead">
@@ -206,14 +209,16 @@ export default async function SpecHome() {
           <Link href="/v2/about" className="spec-btn spec-btn-fill">
             My Background →
           </Link>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-out">
-            ⬇ Résumé.pdf
-          </a>
+          {s.show.resume && (
+            <a href={s.resumeUrl} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-out">
+              ⬇ Résumé.pdf
+            </a>
+          )}
         </div>
         <div className="spec-stamp">
           SIGNED · OLAMIDE IROJAH · PRODUCT MANAGER · irojaholamide@gmail.com · REV 2026.06
         </div>
-        <SpecSocials className="spec-stamp-socials" />
+        {s.show.socials && <SpecSocials className="spec-stamp-socials" />}
       </div>
       </main>
     </>

@@ -323,6 +323,8 @@ body {
 
 /* ---- About §00 portrait ---- */
 .spec .spec-origin { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: start; }
+/* when the photo is toggled off, text reflows to fill the full width */
+.spec .spec-origin--noimage { grid-template-columns: 1fr; }
 .spec .spec-origin-text p { margin-top: 14px; }
 .spec .spec-origin-text p:first-child { margin-top: 0; }
 /* ID badge with lanyard clip */
