@@ -388,13 +388,58 @@ body {
 .spec .mus-title { font-weight: 700; font-size: 1.02rem; letter-spacing: -0.01em; }
 .spec .mus-note { margin: 4px 0 0; font-size: 0.9rem; color: #3b372e; line-height: 1.5; max-width: 60ch; }
 .spec .mus-status { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; white-space: nowrap; align-self: center; }
-.spec .mus-status.drafting { background: var(--mark); color: var(--accent); }
-.spec .mus-status.outline { background: #fdeccd; color: #9a6b16; }
+.spec .mus-status.drafting { background: #d4e8f5; color: #2c6a92; }
+.spec .mus-status.outline { background: #fbf3c4; color: #8a6d12; }
 .spec .mus-status.queued { background: rgba(0, 0, 0, 0.05); color: var(--dim); }
+/* a published musing is a clickable post: preview + Read link */
+.spec a.mus-item--read { color: inherit; text-decoration: none; cursor: pointer; }
+.spec a.mus-item--read:hover { background: rgba(15, 122, 85, 0.06); }
+.spec a.mus-item--read:hover .mus-title { color: var(--accent); }
+.spec a.mus-item--read:hover .mus-read { gap: 10px; }
+.spec .mus-read { display: inline-flex; align-items: center; gap: 5px; margin-top: 9px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--accent); transition: gap 0.2s; }
 @media (max-width: 680px) {
   .spec .mus-item { grid-template-columns: 1fr auto; gap: 8px 12px; }
   .spec .mus-id { grid-column: 1 / -1; padding-top: 0; }
 }
+
+/* ---- reading progress bar: sits ON the nav's bottom border line, black ---- */
+.spec .read-progress {
+  position: fixed; top: var(--spec-nav-h, 71px); left: 0; right: 0; height: 2px; z-index: 50;
+  transform: translateY(-1px); /* center on the 1px border line */
+  background: transparent; pointer-events: none;
+}
+.spec .read-progress-fill {
+  height: 100%; width: 0;
+  background: var(--ink);
+}
+@media (max-width: 680px) {
+  .spec .read-progress { top: var(--spec-nav-h, 84px); }
+}
+
+/* ---- Musings article (single post) — themed Markdown reading column ---- */
+.spec .mus-article { max-width: 68ch; color: #2c2a22; }
+.spec .mus-article > :first-child { margin-top: 0; }
+.spec .mus-article > :last-child { margin-bottom: 0; }
+.spec .mus-article p { margin: 0 0 1.15em; font-size: 1.06rem; line-height: 1.75; letter-spacing: 0.002em; }
+.spec .mus-article h2 { font-family: var(--font-sora), sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; margin: 1.8em 0 0.5em; color: var(--ink); }
+.spec .mus-article h3 { font-family: var(--font-sora), sans-serif; font-size: 1.2rem; font-weight: 700; margin: 1.5em 0 0.4em; color: var(--ink); }
+.spec .mus-article h1 { font-family: var(--font-sora), sans-serif; font-size: 1.7rem; font-weight: 800; margin: 1.5em 0 0.5em; color: var(--ink); }
+.spec .mus-article strong { color: var(--ink); font-weight: 700; }
+.spec .mus-article em { font-style: italic; }
+.spec .mus-article a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.spec .mus-article a:hover { text-decoration-thickness: 2px; }
+.spec .mus-article ul { list-style: disc outside; margin: 0 0 1.15em; padding-left: 1.5em; line-height: 1.7; }
+.spec .mus-article ol { list-style: decimal outside; margin: 0 0 1.15em; padding-left: 1.6em; line-height: 1.7; }
+.spec .mus-article li { display: list-item; margin: 0.3em 0; font-size: 1.04rem; padding-left: 0.2em; }
+.spec .mus-article li::marker { color: var(--accent); }
+.spec .mus-article ul ul, .spec .mus-article ol ol, .spec .mus-article ul ol, .spec .mus-article ol ul { margin: 0.3em 0 0.3em; }
+.spec .mus-article blockquote { margin: 1.4em 0; padding: 0.2em 0 0.2em 1.1em; border-left: 3px solid var(--mark); color: #514d40; font-style: italic; }
+.spec .mus-article blockquote p { font-size: 1.08rem; }
+.spec .mus-article code { font-family: var(--mono); font-size: 0.9em; background: rgba(0, 0, 0, 0.05); padding: 0.1em 0.35em; border-radius: 4px; }
+.spec .mus-article pre { background: var(--ink); color: var(--bg); padding: 16px 18px; border-radius: 8px; overflow-x: auto; margin: 0 0 1.15em; }
+.spec .mus-article pre code { background: none; padding: 0; color: inherit; }
+.spec .mus-article hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
+.spec .mus-article img { max-width: 100%; border-radius: 8px; border: 1px solid var(--line); }
 
 /* ---- Mikano case-study custom block ---- */
 .spec .mik-ba { display: grid; grid-template-columns: 1fr 32px 1fr; gap: 14px; align-items: stretch; margin-top: 18px; }

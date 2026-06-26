@@ -1,12 +1,18 @@
 import Link from "next/link";
 import SpecNav from "@/components/SpecNav";
+import { getMusings } from "@/lib/musings";
 
 export const metadata = {
   title: "Musings · Spec · Olamide Irojah",
   description: "Notes on product, building, and the hard part: deciding what not to build. Coming soon.",
 };
 
-export default function SpecMusings() {
+// always render fresh so edits published in Strapi show up on refresh
+export const dynamic = "force-dynamic";
+
+export default async function SpecMusings() {
+  const drafts = await getMusings();
+
   return (
     <main className="spec-doc">
       <SpecNav back={{ href: "/v2", label: "← Back to home" }} />
@@ -31,41 +37,41 @@ export default function SpecMusings() {
             <span className="n">01 ·</span> Drafts
           </h2>
           <div className="mus-list">
-            {[
-              {
-                id: "001",
-                title: "On killing features",
-                note: "Why saying no to twenty good ideas is the whole job, and how I decide which one survives.",
-                status: "drafting",
-              },
-              {
-                id: "002",
-                title: "Validate before you build",
-                note: "The 48-hour WhatsApp-bot test, and why a prototype beats a PRD when the bet is uncertain.",
-                status: "outline",
-              },
-              {
-                id: "003",
-                title: "AI-native PM, in practice",
-                note: "Shipping solo at team speed: the tools, the workflow, and where judgment still wins.",
-                status: "queued",
-              },
-              {
-                id: "004",
-                title: "Start from the problem",
-                note: "Working backwards from the user's pain to a business, not the other way round.",
-                status: "queued",
-              },
-            ].map((d) => (
-              <div className="mus-item" key={d.id}>
-                <span className="mus-id">{d.id}</span>
-                <div className="mus-body">
-                  <div className="mus-title">{d.title}</div>
-                  <p className="mus-note">{d.note}</p>
+            {drafts.map((d, i) => {
+              const pill = (
+                <span
+                  className={`mus-status ${d.stage}`}
+                  style={d.hex ? { background: d.hex, color: "var(--ink)" } : undefined}
+                >
+                  {d.stage}
+                </span>
+              );
+              // a published musing is a real readable post → preview + Read link
+              if (d.published) {
+                return (
+                  <Link href={`/v2/musings/${d.slug}`} className="mus-item mus-item--read" key={`${d.order}-${i}`}>
+                    <span className="mus-id">{String(d.order).padStart(3, "0")}</span>
+                    <div className="mus-body">
+                      <div className="mus-title">{d.title}</div>
+                      <p className="mus-note">{d.preview}</p>
+                      <span className="mus-read">Read →</span>
+                    </div>
+                    {pill}
+                  </Link>
+                );
+              }
+              // drafts: just the note line, no link (nothing to read yet)
+              return (
+                <div className="mus-item" key={`${d.order}-${i}`}>
+                  <span className="mus-id">{String(d.order).padStart(3, "0")}</span>
+                  <div className="mus-body">
+                    <div className="mus-title">{d.title}</div>
+                    <p className="mus-note">{d.note}</p>
+                  </div>
+                  {pill}
                 </div>
-                <span className={`mus-status ${d.status}`}>{d.status}</span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
