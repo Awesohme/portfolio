@@ -324,13 +324,13 @@ body {
 .spec-reveal.in { opacity: 1; transform: none; }
 
 /* ---- About §00 portrait ---- */
-.spec .spec-origin { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: start; }
+.spec .spec-origin { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; margin-bottom: -14px; }
 /* when the photo is toggled off, text reflows to fill the full width */
 .spec .spec-origin--noimage { grid-template-columns: 1fr; }
 .spec .spec-origin-text p { margin-top: 14px; }
 .spec .spec-origin-text p:first-child { margin-top: 0; }
 /* ID badge with lanyard clip */
-.spec .spec-idcard { margin: 18px 0 0; width: 160px; flex-shrink: 0; position: relative; }
+.spec .spec-idcard { margin: 10px 0 0; width: 160px; flex-shrink: 0; position: relative; }
 .spec .spec-id-clip {
   position: absolute; top: -16px; left: 50%; transform: translateX(-50%); z-index: 3;
   width: 46px; height: 26px;
