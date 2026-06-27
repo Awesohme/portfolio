@@ -381,8 +381,8 @@ body {
 }
 @media (max-width: 680px) {
   .spec .spec-origin { display: flex; flex-direction: column; }
-  .spec .spec-origin-text { padding-right: 0; order: 1; }
-  .spec .spec-idcard { position: relative; width: 140px; margin: 20px auto 16px; order: 2; }
+  .spec .spec-origin-text { padding-right: 0; order: 2; }
+  .spec .spec-idcard { position: relative; width: 140px; margin: 20px auto 16px 0; order: 1; }
 }
 
 /* ---- Musings draft list ---- */
