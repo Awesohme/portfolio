@@ -330,7 +330,7 @@ body {
 .spec .spec-origin-text p { margin-top: 14px; }
 .spec .spec-origin-text p:first-child { margin-top: 0; }
 /* ID badge with lanyard clip */
-.spec .spec-idcard { margin: 18px 0 0; width: 196px; flex-shrink: 0; position: relative; }
+.spec .spec-idcard { margin: 18px 0 0; width: 160px; flex-shrink: 0; position: relative; }
 .spec .spec-id-clip {
   position: absolute; top: -16px; left: 50%; transform: translateX(-50%); z-index: 3;
   width: 46px; height: 26px;
@@ -363,7 +363,7 @@ body {
   margin: 6px 0 10px; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.06em; color: var(--dim);
 }
 .spec .spec-id-photo {
-  display: block; width: 100%; height: 188px; object-fit: cover;
+  display: block; width: 100%; height: 150px; object-fit: cover;
   border: 1px solid var(--line); border-radius: 3px;
   filter: grayscale(100%) contrast(1.03);
 }
