@@ -324,13 +324,14 @@ body {
 .spec-reveal.in { opacity: 1; transform: none; }
 
 /* ---- About §00 portrait ---- */
-.spec .spec-origin { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; margin-bottom: -14px; }
-/* when the photo is toggled off, text reflows to fill the full width */
-.spec .spec-origin--noimage { grid-template-columns: 1fr; }
+.spec .spec-origin { position: relative; min-height: 0; }
+.spec .spec-origin--noimage { }
+.spec .spec-origin-text { padding-right: 190px; }
+.spec .spec-origin--noimage .spec-origin-text { padding-right: 0; }
 .spec .spec-origin-text p { margin-top: 14px; }
 .spec .spec-origin-text p:first-child { margin-top: 0; }
 /* ID badge with lanyard clip */
-.spec .spec-idcard { margin: 10px 0 0; width: 160px; flex-shrink: 0; position: relative; }
+.spec .spec-idcard { position: absolute; top: 0; right: 0; width: 160px; z-index: 2; }
 .spec .spec-id-clip {
   position: absolute; top: -16px; left: 50%; transform: translateX(-50%); z-index: 3;
   width: 46px; height: 26px;
@@ -349,7 +350,7 @@ body {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.8);
 }
 .spec .spec-id-body {
-  position: relative; z-index: 1; padding: 16px 14px 13px;
+  position: relative; z-index: 1; padding: 14px 12px 10px;
   background: #fbfaf6; border: 1px solid var(--ink); border-radius: 8px;
   box-shadow: 0 14px 30px -16px rgba(22, 20, 15, 0.5);
 }
@@ -363,13 +364,13 @@ body {
   margin: 6px 0 10px; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.06em; color: var(--dim);
 }
 .spec .spec-id-photo {
-  display: block; width: 100%; height: 150px; object-fit: cover;
+  display: block; width: 100%; height: 110px; object-fit: cover; object-position: top;
   border: 1px solid var(--line); border-radius: 3px;
   filter: grayscale(100%) contrast(1.03);
 }
 .spec .spec-id-info {
-  margin-top: 11px; font-family: var(--mono); font-size: 11px; line-height: 1.6;
-  border-top: 1px solid var(--line); padding-top: 9px;
+  margin-top: 8px; font-family: var(--mono); font-size: 10px; line-height: 1.5;
+  border-top: 1px solid var(--line); padding-top: 7px;
 }
 .spec .spec-id-info b { display: block; color: var(--ink); font-size: 12.5px; letter-spacing: 0.01em; }
 .spec .spec-id-info .role { display: block; color: var(--accent); }
@@ -379,8 +380,9 @@ body {
   background: var(--accent); margin-right: 6px; vertical-align: 1px; animation: blink 1.6s infinite;
 }
 @media (max-width: 680px) {
-  .spec .spec-origin { grid-template-columns: 1fr; gap: 26px; }
-  .spec .spec-idcard { order: -1; width: 178px; margin: 18px 0 0; }
+  .spec .spec-origin { display: flex; flex-direction: column; }
+  .spec .spec-origin-text { padding-right: 0; order: 1; }
+  .spec .spec-idcard { position: relative; width: 140px; margin: 20px auto 16px; order: 2; }
 }
 
 /* ---- Musings draft list ---- */
