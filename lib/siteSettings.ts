@@ -22,6 +22,7 @@ export type SiteSettings = {
   githubUrl: string;
   linkedinUrl: string;
   contactMessage: string;
+  signoffText: string;
   resumeUrl: string;
   profileImageUrl: string;
   show: {
@@ -36,6 +37,7 @@ export type SiteSettings = {
     musingsNav: boolean;
     socials: boolean;
     contact: boolean;
+    signoff: boolean;
   };
 };
 
@@ -54,7 +56,7 @@ const FALLBACK: SiteSettings = {
   aboutOrigin:
     "I started in agriculture. Literally, a B.Sc. in Agricultural Administration. Then I became COO of an EdTech and scaled it to 9,000+ users across West Africa with no playbook to copy. That zero-to-one taught me the thing I still build on: start with the user's problem, then build the business around it.",
   aboutOperatingInstinct:
-    "It was deciding what not to build. The real work is killing the twenty requests that didn't earn their place so the few that matter can actually land. I ship fast, validate before I spend a team's engineering, and I build the tools that build the products too.",
+    "It was deciding what not to build. The real work is killing the twenty requests that didn't earn their place so the few that matter can actually land. I ship fast, validate before I spend a team's engineering, and I build the tools that build the products too.\n\nHonestly, the part I love is the people. I enjoy sitting with users, understanding their problems, and learning more than I expect to, then turning that into how we'll actually solve it without ever losing sight of the business we're trying to build. And I'm always watching the industry: spotting trends, noticing patterns, connecting dots other people walk past. That's the work I'd do for free.",
   fullName: "Olamide Irojah",
   jobTitle: "Product Manager",
   email: "irojaholamide@gmail.com",
@@ -63,6 +65,8 @@ const FALLBACK: SiteSettings = {
   linkedinUrl: "https://www.linkedin.com/in/irojaholamide/",
   contactMessage:
     "Hi Olamide, I came across your portfolio and I'd love to talk about a product role / opportunity. When are you free for a quick chat?",
+  signoffText:
+    "I'm looking for the next hard problem. Somewhere that wants a PM who'll do the thinking and ship the prototype to prove it.",
   resumeUrl: "/resume.pdf",
   profileImageUrl: "/olamide.jpg",
   show: {
@@ -77,6 +81,7 @@ const FALLBACK: SiteSettings = {
     musingsNav: true,
     socials: true,
     contact: true,
+    signoff: true,
   },
 };
 
@@ -114,6 +119,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
       githubUrl: pick(s.githubUrl, FALLBACK.githubUrl),
       linkedinUrl: pick(s.linkedinUrl, FALLBACK.linkedinUrl),
       contactMessage: pick(s.contactMessage, FALLBACK.contactMessage),
+      signoffText: pick(s.signoffText, FALLBACK.signoffText),
       resumeUrl: mediaUrl(base, s.resume, FALLBACK.resumeUrl),
       profileImageUrl: mediaUrl(base, s.profileImage, FALLBACK.profileImageUrl),
       show: {
@@ -128,6 +134,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
         musingsNav: bool(s.showMusingsNav, true),
         socials: bool(s.showSocials, true),
         contact: bool(s.showContact, true),
+        signoff: bool(s.showSignoff, true),
       },
     };
   } catch {

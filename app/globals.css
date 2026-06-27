@@ -203,11 +203,11 @@ body {
   position: relative; isolation: isolate; overflow: hidden;
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--ink); color: #f4f2ec !important; border: 1px solid var(--ink);
-  padding: 11px 22px; cursor: pointer;
-  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 7px 17px; cursor: pointer;
+  font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
   box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.16);
   -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
-  border-radius: 12px;
+  border-radius: 10px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 /* travelling liquid-glass specular highlight */
@@ -248,7 +248,7 @@ body {
   .spec-nav-id { display: none; }
   .spec-nav-links { gap: 14px; width: 100%; justify-content: space-between; }
   .spec-nav-links a { font-size: 11px; }
-  .spec-nav-cta { padding: 8px 14px; }
+  .spec-nav-cta { padding: 6px 12px; }
 }
 
 .spec-hero { padding: 56px 34px 38px; border-bottom: 1px solid var(--line); }
@@ -284,7 +284,9 @@ body {
 .spec-orow .v.go:before { width: var(--w); }
 .spec-orow .v span { position: relative; z-index: 1; }
 
-.spec-windex .wrow { display: grid; grid-template-columns: 54px 1fr auto; align-items: center; padding: 18px 34px; border-bottom: 1px solid var(--line); transition: background 0.2s, padding-left 0.25s; }
+.spec-windex .wrow { display: grid; grid-template-columns: 54px 1fr auto 20px; align-items: center; padding: 18px 34px; border-bottom: 1px solid var(--line); transition: background 0.2s, padding-left 0.25s; }
+.spec-windex .wrow::after { content: "\203A"; font-size: 1.4rem; color: var(--dim); transition: color 0.2s, transform 0.2s; justify-self: end; }
+.spec-windex .wrow:hover::after { color: var(--accent); transform: translateX(3px); }
 .spec-windex .wrow:hover { background: rgba(15, 122, 85, 0.05); padding-left: 42px; }
 .spec-windex .wrow .id { font-family: var(--mono); font-size: 12px; color: var(--dim); }
 .spec-windex .wrow .nm { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
@@ -443,6 +445,16 @@ body {
 .spec .mus-article hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
 .spec .mus-article img { max-width: 100%; border-radius: 8px; border: 1px solid var(--line); }
 
+.spec .spec-prose p { margin: 0 0 1em; line-height: 1.7; }
+.spec .spec-prose > :first-child { margin-top: 0; }
+.spec .spec-prose > :last-child { margin-bottom: 0; }
+.spec .spec-prose strong { color: var(--ink); font-weight: 700; }
+.spec .spec-prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.spec .spec-prose ul { list-style: disc outside; margin: 0 0 1em; padding-left: 1.5em; line-height: 1.7; }
+.spec .spec-prose ol { list-style: decimal outside; margin: 0 0 1em; padding-left: 1.6em; line-height: 1.7; }
+.spec .spec-prose li { display: list-item; margin: 0.3em 0; padding-left: 0.2em; }
+.spec .spec-prose li::marker { color: var(--accent); }
+
 /* ---- Mikano case-study custom block ---- */
 .spec .mik-ba { display: grid; grid-template-columns: 1fr 32px 1fr; gap: 14px; align-items: stretch; margin-top: 18px; }
 .spec .mik-ba-col { border: 1px solid var(--line); border-radius: 5px; padding: 16px; background: rgba(255, 255, 255, 0.4); }
@@ -539,7 +551,7 @@ body {
 @media (max-width: 680px) {
   .spec-sec { grid-template-columns: 34px 1fr; }
   .spec-sec .ln { font-size: 9px; }
-  .spec-windex .wrow { grid-template-columns: 34px 1fr; }
+  .spec-windex .wrow { grid-template-columns: 34px 1fr 20px; }
   .spec-windex .wrow .out { display: none; }
   .spec-meta-row { gap: 16px; }
   .spec-hero, .spec-signoff { padding-left: 20px; padding-right: 20px; }

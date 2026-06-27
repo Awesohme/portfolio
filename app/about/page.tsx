@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SpecMotion from "@/components/SpecMotion";
 import SpecNav from "@/components/SpecNav";
+import SpecProse from "@/components/SpecProse";
 import SpecSocials from "@/components/SpecSocials";
 import { getExperience } from "@/lib/experience";
 import { getSiteSettings } from "@/lib/siteSettings";
@@ -38,7 +39,7 @@ export default async function SpecAbout() {
           </h2>
           <div className={`spec-origin${s.show.profileImage ? "" : " spec-origin--noimage"}`}>
             <div className="spec-origin-text">
-              <p>{s.aboutOrigin}</p>
+              <SpecProse content={s.aboutOrigin} />
             </div>
             {s.show.profileImage && (
               <figure className="spec-idcard">
@@ -80,14 +81,7 @@ export default async function SpecAbout() {
             <span className="n">01 ·</span> Operating instinct
           </h2>
           <div className="spec-lead">The hard part was never the building.</div>
-          <p>{s.aboutOperatingInstinct}</p>
-          <p>
-            Honestly, the part I love is the people. I enjoy sitting with users, understanding their
-            problems, and learning more than I expect to, then turning that into how we&apos;ll actually
-            solve it without ever losing sight of the business we&apos;re trying to build. And
-            I&apos;m always watching the industry: spotting trends, noticing patterns, connecting dots other
-            people walk past. That&apos;s the work I&apos;d do for free.
-          </p>
+          <SpecProse content={s.aboutOperatingInstinct} />
         </div>
       </section>
 
@@ -106,9 +100,9 @@ export default async function SpecAbout() {
                     <b style={{ fontFamily: "var(--font-grotesk)" }}>{t.role}</b>
                     <span style={{ color: "var(--accent)" }}>{t.when}</span>
                   </div>
-                  <p style={{ margin: "8px 0 0", fontFamily: "var(--font-grotesk)", color: "#3b372e", lineHeight: 1.55, fontWeight: 400 }}>
-                    {t.note}
-                  </p>
+                  <div style={{ margin: "8px 0 0", fontFamily: "var(--font-grotesk)", color: "#3b372e", lineHeight: 1.55, fontWeight: 400 }}>
+                    <SpecProse content={t.note} />
+                  </div>
                 </div>
               </div>
             ))}
@@ -118,17 +112,19 @@ export default async function SpecAbout() {
       )}
 
       <div className="spec-signoff spec-reveal">
+        {s.show.signoff && (
         <div className="spec-lead">
-          Now I&apos;m after the next hard problem. A team that wants a PM who&apos;ll do the thinking and
-          ship the prototype to prove it.
+          {s.signoffText}
         </div>
+        )}
         <div className="spec-cta">
           <Link href="/" className="spec-btn spec-btn-fill">
             ← Back to home
           </Link>
           {s.show.resume && (
-            <a href={s.resumeUrl} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-out">
-              ⬇ Résumé.pdf
+            <a href={s.resumeUrl} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-out" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Résumé.pdf
             </a>
           )}
         </div>
