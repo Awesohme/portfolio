@@ -27,7 +27,7 @@ export default async function MusingPost({ params }: { params: Promise<{ slug: s
   return (
     <main className="spec-doc">
       <ReadProgress />
-      <SpecNav back={{ href: "/v2/musings", label: "← All musings" }} />
+      <SpecNav back={{ href: "/musings", label: "← All musings" }} />
 
       <div className="spec-hero">
         <div className="spec-doctype">Musings · Olamide Irojah</div>
@@ -45,7 +45,7 @@ export default async function MusingPost({ params }: { params: Promise<{ slug: s
 
       <div className="spec-signoff">
         <div className="spec-cta" style={{ flexDirection: "column" }}>
-          <Link href="/v2/musings" className="spec-btn spec-btn-fill" style={{ textAlign: "center", width: "100%" }}>
+          <Link href="/musings" className="spec-btn spec-btn-fill" style={{ textAlign: "center", width: "100%" }}>
             ← All musings
           </Link>
           <a

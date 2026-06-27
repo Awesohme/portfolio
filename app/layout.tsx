@@ -5,7 +5,7 @@ import "./globals.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0b0f0d",
+  themeColor: "#f4f2ec",
 };
 
 const sora = Sora({
@@ -21,9 +21,9 @@ const grotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Olamide Irojah — Product Lead | From bet to business outcome",
+  title: "Olamide Irojah · Product Manager | Spec",
   description:
-    "Product Lead scaling B2B SaaS in emerging markets. 59,700+ users, $5.2M GMV, AI-native prototyping. Explore the work as a galaxy of outcomes.",
+    "Product Manager scaling B2B SaaS in emerging markets. 59,700+ stores, $5.2M GMV, AI-native prototyping, laid out as a product spec.",
 };
 
 export default function RootLayout({
@@ -38,7 +38,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-grotesk antialiased" suppressHydrationWarning>
-        {children}
+        <div className="spec">{children}</div>
       </body>
     </html>
   );

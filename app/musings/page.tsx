@@ -1,46 +1,97 @@
 import Link from "next/link";
-import Gargantua from "@/components/Gargantua";
+import SpecNav from "@/components/SpecNav";
+import { getMusings } from "@/lib/musings";
+import { getSiteSettings } from "@/lib/siteSettings";
 
 export const metadata = {
-  title: "Musings — Olamide Irojah",
+  title: "Musings · Spec · Olamide Irojah",
   description: "Notes on product, building, and the hard part: deciding what not to build. Coming soon.",
 };
 
-export default function MusingsPage() {
+// always render fresh so edits published in Strapi show up on refresh
+export const dynamic = "force-dynamic";
+
+export default async function SpecMusings() {
+  const [drafts, s] = await Promise.all([getMusings(), getSiteSettings()]);
+
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-ink px-6 text-center text-[#f1f6f3]">
-      {/* starfield backdrop */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-60"
-        style={{
-          backgroundImage:
-            "radial-gradient(1px 1px at 15% 25%, #fff, transparent), radial-gradient(1px 1px at 75% 35%, #cfe, transparent), radial-gradient(1.5px 1.5px at 45% 70%, #9fe, transparent), radial-gradient(1px 1px at 85% 80%, #fff, transparent), radial-gradient(1px 1px at 30% 85%, #fff, transparent)",
-          backgroundSize: "320px 320px",
-        }}
-      />
+    <main className="spec-doc">
+      <SpecNav back={{ href: "/", label: "← Back to home" }} />
 
-      <Link
-        href="/"
-        className="absolute left-[6vw] top-8 z-10 inline-flex items-center gap-2 text-sm text-muted transition hover:text-emerald-soft"
-      >
-        ← Back to the galaxy
-      </Link>
+      <div className="spec-hero">
+        <div className="spec-doctype">Writing · drafts in the pipeline</div>
+        <h1 className="spec-name" style={{ fontSize: "clamp(1.9rem,5vw,3.4rem)", lineHeight: 1.04 }}>
+          Musings.
+          <br />
+          Shipping soon.
+        </h1>
+        <p style={{ marginTop: 22, maxWidth: "52ch", color: "#3b372e", lineHeight: 1.6 }}>
+          Short notes on product, building, and the hard part: deciding what <i>not</i> to build. Treated
+          like any other backlog, written when the idea has earned its place.
+        </p>
+      </div>
 
-      <div className="relative z-[1] flex flex-col items-center">
-        <Gargantua />
+      <section className="spec-sec">
+        <div className="ln">01</div>
+        <div className="body">
+          <h2>
+            <span className="n">01 ·</span> Drafts
+          </h2>
+          <div className="mus-list">
+            {drafts.map((d, i) => {
+              const pill = (
+                <span
+                  className={`mus-status ${d.stage}`}
+                  style={d.hex ? { background: d.hex, color: "var(--ink)" } : undefined}
+                >
+                  {d.stage}
+                </span>
+              );
+              // a published musing is a real readable post → preview + Read link
+              if (d.published) {
+                return (
+                  <Link href={`/musings/${d.slug}`} className="mus-item mus-item--read" key={`${d.order}-${i}`}>
+                    <span className="mus-id">{String(d.order).padStart(3, "0")}</span>
+                    <div className="mus-body">
+                      <div className="mus-title">{d.title}</div>
+                      <p className="mus-note">{d.preview}</p>
+                      <span className="mus-read">Read →</span>
+                    </div>
+                    {pill}
+                  </Link>
+                );
+              }
+              // drafts: just the note line, no link (nothing to read yet)
+              return (
+                <div className="mus-item" key={`${d.order}-${i}`}>
+                  <span className="mus-id">{String(d.order).padStart(3, "0")}</span>
+                  <div className="mus-body">
+                    <div className="mus-title">{d.title}</div>
+                    <p className="mus-note">{d.note}</p>
+                  </div>
+                  {pill}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-        <div className="-mt-8 sm:-mt-10">
-          <p className="text-[.72rem] uppercase tracking-[.22em] text-emerald-soft">
-            Musings
-          </p>
-          <h1 className="mt-3 font-sora text-[clamp(2rem,6vw,3.5rem)] font-extrabold leading-none">
-            Coming soon
-          </h1>
-          <p className="mx-auto mt-4 max-w-md text-muted">
-            Notes on product, building, and the hard part — deciding what{" "}
-            <span className="text-white">not</span> to build. Pulled past the
-            horizon shortly.
-          </p>
+      <div className="spec-signoff">
+        <div className="spec-cta" style={{ flexDirection: "column" }}>
+          <a
+            href={`mailto:${s.email}`}
+            className="spec-btn spec-btn-fill"
+            style={{ textAlign: "center", width: "100%" }}
+          >
+            ✉ Get Notified
+          </a>
+          <Link href="/" className="spec-btn spec-btn-out" style={{ textAlign: "center", width: "100%" }}>
+            ← Back to home
+          </Link>
+        </div>
+        <div className="spec-stamp">
+          {s.fullName.toUpperCase()} · {s.jobTitle.toUpperCase()} · {s.email}
         </div>
       </div>
     </main>
