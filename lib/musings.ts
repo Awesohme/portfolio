@@ -1,14 +1,16 @@
 /**
  * Musings data for /v2/musings.
  *
- * Reads from the local Strapi CMS (the "content kitchen") at NEXT_PUBLIC_STRAPI_URL.
- * If Strapi is unreachable (e.g. not running), we fall back to the hardcoded list
- * below so the website NEVER breaks just because the CMS is off.
+ * Reads from the hosted Sanity CMS (the "content kitchen"). If Sanity is
+ * unreachable, we fall back to the hardcoded list below so the website NEVER
+ * breaks just because the CMS is off.
  *
- * Strapi field names (confirmed from the live /api/musings response):
- *   Title (string) · Notes (string) · stage (enum) · order (number)
+ * Sanity field names (musing document):
+ *   title (string) · notes (text) · stage (enum) · order (number)
  *   color (optional enum: named theme colour) · colorHex (optional custom hex)
  */
+
+import { sanityFetch } from "@/lib/sanityFetch";
 
 export type Musing = {
   title: string;
@@ -73,7 +75,7 @@ const FALLBACK: Musing[] = FALLBACK_RAW.map((m) => ({
   preview: makePreview(m.note),
 }));
 
-type StrapiMusing = {
+type CmsMusing = {
   Title?: string;
   Notes?: string;
   stage?: string;
@@ -83,7 +85,7 @@ type StrapiMusing = {
 };
 
 /** Decide the pill colour: custom hex wins, then named theme colour, then "" (CSS stage default). */
-function resolveHex(m: StrapiMusing): string {
+function resolveHex(m: CmsMusing): string {
   const custom = (m.colorHex || "").trim();
   if (custom) return custom.startsWith("#") ? custom : `#${custom}`;
   const named = (m.color || "").trim().toLowerCase();
@@ -91,19 +93,17 @@ function resolveHex(m: StrapiMusing): string {
   return "";
 }
 
+// Project Sanity's lowercase fields back to the Title/Notes shape the mapper expects.
+const MUSINGS_QUERY = `*[_type == "musing"] | order(order asc){
+  "Title": title, "Notes": notes, stage, order, color, colorHex
+}`;
+
 export async function getMusings(): Promise<Musing[]> {
-  const base = process.env.NEXT_PUBLIC_STRAPI_URL;
-  if (!base) return FALLBACK;
+  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return FALLBACK;
 
   try {
-    const res = await fetch(`${base}/api/musings?sort=order&pagination[pageSize]=100`, {
-      // always fetch fresh so edits in Strapi appear on refresh
-      cache: "no-store",
-    });
-    if (!res.ok) return FALLBACK;
-    const json = await res.json();
-    const rows: StrapiMusing[] = Array.isArray(json?.data) ? json.data : [];
-    if (rows.length === 0) return FALLBACK;
+    const rows = await sanityFetch<CmsMusing[]>(MUSINGS_QUERY);
+    if (!Array.isArray(rows) || rows.length === 0) return FALLBACK;
 
     return rows.map((m, i) => {
       const title = (m.Title || "").trim();
@@ -121,7 +121,7 @@ export async function getMusings(): Promise<Musing[]> {
       };
     });
   } catch {
-    // Strapi not running / network error → safety net
+    // Sanity unreachable / network error → safety net
     return FALLBACK;
   }
 }

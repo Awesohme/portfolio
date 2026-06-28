@@ -1,13 +1,14 @@
 /**
  * Case-study / project data for /v2.
- * Reads from Strapi (api/projects with components); falls back to the local
- * code data (lib/projects.ts + lib/specCases.ts) if the CMS is unreachable,
- * so the site never breaks.
+ * Reads from Sanity (project documents with inline sections/features); falls back
+ * to the local code data (lib/projects.ts + lib/specCases.ts) if the CMS is
+ * unreachable, so the site never breaks.
  */
 
 import { projects as localProjects } from "@/lib/projects";
 import { specCases } from "@/lib/specCases";
 import { cleanDashes } from "@/lib/specText";
+import { sanityFetch } from "@/lib/sanityFetch";
 
 export type CmsSection = { label: string; body: string };
 export type CmsFeature = { name: string; blurb: string; detail: string; kind: "feature" | "outcome" };
@@ -57,7 +58,7 @@ function localFallback(): CmsProject[] {
   });
 }
 
-type StrapiProject = {
+type SanityProject = {
   slug?: string;
   name?: string;
   tag?: string;
@@ -72,18 +73,18 @@ type StrapiProject = {
   features?: { name?: string; blurb?: string; detail?: string; kind?: string }[];
 };
 
+const PROJECTS_QUERY = `*[_type == "project"] | order(order asc){
+  "slug": slug.current,
+  name, tag, roleLabel, period, tagline, category, stack, link, order,
+  sections[]{ label, body },
+  features[]{ name, blurb, detail, kind }
+}`;
+
 export async function getProjects(): Promise<CmsProject[]> {
-  const base = process.env.NEXT_PUBLIC_STRAPI_URL;
-  if (!base) return localFallback();
+  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return localFallback();
   try {
-    const res = await fetch(
-      `${base}/api/projects?sort=order&populate=*&pagination[pageSize]=100`,
-      { cache: "no-store" }
-    );
-    if (!res.ok) return localFallback();
-    const json = await res.json();
-    const rows: StrapiProject[] = Array.isArray(json?.data) ? json.data : [];
-    if (rows.length === 0) return localFallback();
+    const rows = await sanityFetch<SanityProject[]>(PROJECTS_QUERY);
+    if (!Array.isArray(rows) || rows.length === 0) return localFallback();
     return rows.map((r, i) => ({
       slug: (r.slug || "").trim(),
       name: (r.name || "").trim(),

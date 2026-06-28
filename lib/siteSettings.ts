@@ -1,9 +1,12 @@
 /**
  * Site-wide settings: editable copy, file refs (resume/profile image), and
- * show/hide toggles for sections. Read from Strapi's Site Settings single-type.
+ * show/hide toggles for sections. Read from Sanity's siteSettings singleton.
  * Falls back to sensible defaults (all sections ON, copy = current, files = /public)
  * if the CMS is unreachable.
  */
+
+import { sanityFetch } from "@/lib/sanityFetch";
+import { urlForImage, fileUrl } from "@/sanity/client";
 
 export type SiteSettings = {
   heroThesis: string;
@@ -85,20 +88,33 @@ const FALLBACK: SiteSettings = {
   },
 };
 
-function mediaUrl(base: string, m: any, fallback: string): string {
-  const url = m?.url || m?.data?.attributes?.url;
-  if (!url) return fallback;
-  return url.startsWith("http") ? url : `${base}${url}`;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function imageUrl(img: any, fallback: string): string {
+  try {
+    if (img?.asset?._ref) return urlForImage(img) || fallback;
+  } catch {
+    /* ignore */
+  }
+  return fallback;
 }
 
+const SITE_SETTINGS_QUERY = `*[_id == "siteSettings"][0]{
+  heroThesis, problemLead, problemBody, betLead, betBody, outcomeLead,
+  aboutHero, aboutOrigin, aboutOperatingInstinct,
+  fullName, jobTitle, email, whatsapp, githubUrl, linkedinUrl,
+  contactMessage, signoffText,
+  "resumeRef": resume.asset._ref,
+  profileImage,
+  showProfileImage, showResume, showProblem, showBet, showOutcome,
+  showShipped, showAlsoBuilt, showTimeline, showMusingsNav, showSocials,
+  showContact, showSignoff
+}`;
+
 export async function getSiteSettings(): Promise<SiteSettings> {
-  const base = process.env.NEXT_PUBLIC_STRAPI_URL;
-  if (!base) return FALLBACK;
+  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return FALLBACK;
   try {
-    const res = await fetch(`${base}/api/site-setting?populate=*`, { cache: "no-store" });
-    if (!res.ok) return FALLBACK;
-    const json = await res.json();
-    const s = json?.data;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const s = await sanityFetch<any>(SITE_SETTINGS_QUERY);
     if (!s) return FALLBACK;
     const pick = (v: any, fb: string) => (typeof v === "string" && v.trim() ? v : fb);
     const bool = (v: any, fb: boolean) => (typeof v === "boolean" ? v : fb);
@@ -120,8 +136,8 @@ export async function getSiteSettings(): Promise<SiteSettings> {
       linkedinUrl: pick(s.linkedinUrl, FALLBACK.linkedinUrl),
       contactMessage: pick(s.contactMessage, FALLBACK.contactMessage),
       signoffText: pick(s.signoffText, FALLBACK.signoffText),
-      resumeUrl: mediaUrl(base, s.resume, FALLBACK.resumeUrl),
-      profileImageUrl: mediaUrl(base, s.profileImage, FALLBACK.profileImageUrl),
+      resumeUrl: fileUrl(s.resumeRef) || FALLBACK.resumeUrl,
+      profileImageUrl: imageUrl(s.profileImage, FALLBACK.profileImageUrl),
       show: {
         profileImage: bool(s.showProfileImage, true),
         resume: bool(s.showResume, true),
