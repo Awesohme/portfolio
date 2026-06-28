@@ -1,8 +1,10 @@
 /**
  * About-page timeline/changelog.
- * Reads from Strapi (api/experiences); falls back to the hardcoded list if the
- * CMS is unreachable, so the site never breaks.
+ * Reads from Sanity (experience documents); falls back to the hardcoded list if
+ * the CMS is unreachable, so the site never breaks.
  */
+
+import { sanityFetch } from "@/lib/sanityFetch";
 
 export type Experience = { role: string; when: string; note: string };
 
@@ -29,19 +31,15 @@ const FALLBACK: Experience[] = [
   },
 ];
 
-type StrapiExp = { role?: string; when?: string; note?: string };
+type SanityExp = { role?: string; when?: string; note?: string };
+
+const EXPERIENCE_QUERY = `*[_type == "experience"] | order(order asc){ role, when, note }`;
 
 export async function getExperience(): Promise<Experience[]> {
-  const base = process.env.NEXT_PUBLIC_STRAPI_URL;
-  if (!base) return FALLBACK;
+  if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return FALLBACK;
   try {
-    const res = await fetch(`${base}/api/experiences?sort=order&pagination[pageSize]=100`, {
-      cache: "no-store",
-    });
-    if (!res.ok) return FALLBACK;
-    const json = await res.json();
-    const rows: StrapiExp[] = Array.isArray(json?.data) ? json.data : [];
-    if (rows.length === 0) return FALLBACK;
+    const rows = await sanityFetch<SanityExp[]>(EXPERIENCE_QUERY);
+    if (!Array.isArray(rows) || rows.length === 0) return FALLBACK;
     return rows.map((r) => ({
       role: (r.role || "").trim(),
       when: (r.when || "").trim(),
