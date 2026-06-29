@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import SpecNav from "@/components/SpecNav";
 import MusingBody from "@/components/MusingBody";
 import ReadProgress from "@/components/ReadProgress";
+import NotifyButton from "@/components/NotifyButton";
 import { getMusing } from "@/lib/musings";
 import { getSiteSettings } from "@/lib/siteSettings";
 
@@ -48,13 +49,11 @@ export default async function MusingPost({ params }: { params: Promise<{ slug: s
           <Link href="/musings" className="spec-btn spec-btn-fill" style={{ textAlign: "center", width: "100%" }}>
             ← All musings
           </Link>
-          <a
-            href={`mailto:${s.email}`}
+          <NotifyButton
+            label="✉ Get notified of the next one"
             className="spec-btn spec-btn-out"
-            style={{ textAlign: "center", width: "100%" }}
-          >
-            ✉ Get notified of the next one
-          </a>
+            style={{ textAlign: "center", width: "100%", cursor: "pointer", background: "transparent" }}
+          />
         </div>
         <div className="spec-stamp">
           {s.fullName.toUpperCase()} · {s.jobTitle.toUpperCase()} · {s.email}

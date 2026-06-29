@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SpecNav from "@/components/SpecNav";
+import NotifyButton from "@/components/NotifyButton";
 import { getMusings } from "@/lib/musings";
 import { getSiteSettings } from "@/lib/siteSettings";
 
@@ -79,13 +80,11 @@ export default async function SpecMusings() {
 
       <div className="spec-signoff">
         <div className="spec-cta" style={{ flexDirection: "column" }}>
-          <a
-            href={`mailto:${s.email}`}
+          <NotifyButton
+            label="✉ Get Notified"
             className="spec-btn spec-btn-fill"
-            style={{ textAlign: "center", width: "100%" }}
-          >
-            ✉ Get Notified
-          </a>
+            style={{ textAlign: "center", width: "100%", border: "none", cursor: "pointer" }}
+          />
           <Link href="/" className="spec-btn spec-btn-out" style={{ textAlign: "center", width: "100%" }}>
             ← Back to home
           </Link>
