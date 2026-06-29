@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone Sanity Studio for the Portfolio site",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy"
+  },
+  "dependencies": {
+    "@sanity/vision": "^5.31.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "sanity": "^5.31.1",
+    "styled-components": "^6.4.3"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^5.0.0",
+    "@types/react": "^19",
+    "typescript": "^5"
+  }
+}
