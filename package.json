@@ -9,11 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/swc-darwin-arm64": "^16.2.9",
     "@react-three/drei": "^10.0.0",
     "@react-three/fiber": "^9.0.0",
     "@sanity/image-url": "^2.1.1",
-    "@sanity/vision": "^5.31.1",
     "browserslist": "^4.28.4",
     "caniuse-lite": "^1.0.30001799",
     "framer-motion": "^11.18.0",
@@ -23,10 +21,9 @@
     "react-dom": "^19.2.7",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
-    "sanity": "^5.31.1",
     "simple-icons": "^16.24.0",
-    "styled-components": "^6.4.3",
-    "three": "^0.172.0"
+    "three": "^0.172.0",
+    "three-stdlib": "^2.36.1"
   },
   "devDependencies": {
     "@types/node": "^22",
