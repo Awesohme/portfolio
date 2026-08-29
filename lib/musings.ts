@@ -80,6 +80,7 @@ type CmsMusing = {
   Notes?: string;
   stage?: string;
   order?: number;
+  updatedAt?: string;
   color?: string | null;
   colorHex?: string | null;
 };
@@ -95,8 +96,29 @@ function resolveHex(m: CmsMusing): string {
 
 // Project Sanity's lowercase fields back to the Title/Notes shape the mapper expects.
 const MUSINGS_QUERY = `*[_type == "musing"] | order(order asc){
-  "Title": title, "Notes": notes, stage, order, color, colorHex
+  "Title": title, "Notes": notes, "updatedAt": _updatedAt, stage, order, color, colorHex
 }`;
+
+/**
+ * Keep upcoming drafts in their editorial order, but always surface published
+ * writing first, newest publication/update first. Publishing a Sanity document
+ * changes `_updatedAt`, so no extra date field needs to be maintained.
+ */
+function sortMusings(rows: CmsMusing[]): CmsMusing[] {
+  return [...rows].sort((a, b) => {
+    const aPublished = a.stage?.trim() === "published";
+    const bPublished = b.stage?.trim() === "published";
+
+    if (aPublished !== bPublished) return aPublished ? -1 : 1;
+
+    if (aPublished && bPublished) {
+      const newestFirst = (b.updatedAt || "").localeCompare(a.updatedAt || "");
+      if (newestFirst !== 0) return newestFirst;
+    }
+
+    return (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER);
+  });
+}
 
 export async function getMusings(): Promise<Musing[]> {
   if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return FALLBACK;
@@ -105,7 +127,7 @@ export async function getMusings(): Promise<Musing[]> {
     const rows = await sanityFetch<CmsMusing[]>(MUSINGS_QUERY);
     if (!Array.isArray(rows) || rows.length === 0) return FALLBACK;
 
-    return rows.map((m, i) => {
+    return sortMusings(rows).map((m, i) => {
       const title = (m.Title || "").trim();
       const note = (m.Notes || "").trim();
       const stage = (m.stage || "queued").trim();
