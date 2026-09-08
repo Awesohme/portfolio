@@ -18,6 +18,16 @@ export const siteSettings = defineType({
     { name: "toggles", title: "Section toggles" },
   ],
   fields: [
+    defineField({ name: "heroExperience", title: "Hero experience", type: "string", group: "copy" }),
+    defineField({ name: "heroMarket", title: "Hero market", type: "string", group: "copy" }),
+    defineField({ name: "heroStatus", title: "Hero focus", type: "string", group: "copy" }),
+    defineField({ name: "contactCtaLabel", title: "Contact button label", type: "string", group: "copy" }),
+    defineField({ name: "resumeCtaLabel", title: "Resume button label", type: "string", group: "copy" }),
+    defineField({ name: "aboutCommunity", title: "Community and leadership", type: "text", rows: 6, group: "about" }),
+    defineField({ name: "outcomeMetrics", title: "Outcome metrics", type: "array", group: "copy", of: [{ type: "object", fields: [
+      defineField({ name: "label", title: "Label (include organisation)", type: "string", validation: r => r.required() }),
+      defineField({ name: "value", title: "Value", type: "string", validation: r => r.required() }),
+    ] }] }),
     // Home copy
     defineField({ name: "heroThesis", title: "Hero thesis", type: "text", rows: 4, group: "copy" }),
     defineField({ name: "problemLead", title: "Problem lead", type: "string", group: "copy" }),

@@ -29,7 +29,7 @@ export default async function SpecNav({
         </div>
 
         <nav className="spec-nav-links">
-          {s.show.shipped && <Link href="/#shipped">Shipped</Link>}
+          {s.show.shipped && <Link href="/#shipped">Work</Link>}
           <Link href="/about">About</Link>
           {s.show.musingsNav && <Link href="/musings">Musings</Link>}
           {s.show.contact && (

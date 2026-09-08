@@ -10,7 +10,7 @@ import { getSiteSettings } from "@/lib/siteSettings";
 export const metadata = {
   title: "Background · Spec · Olamide Irojah",
   description:
-    "Product Manager who starts with the user's problem, then builds the business around it. 4+ years scaling B2B SaaS in emerging markets.",
+    "Product Manager who starts with the user's problem, then builds the business around it. Discovery, operations, and delivery across B2B SaaS and enterprise platforms.",
 };
 
 // fetch the timeline fresh so Strapi edits appear on refresh
@@ -61,7 +61,7 @@ export default async function SpecAbout() {
                   />
                   <figcaption className="spec-id-info">
                     <b>Olamide Irojah</b>
-                    <span className="role">Product Manager</span>
+                    <span className="role">{s.jobTitle}</span>
                     <span className="stat">
                       <span className="d" />
                       STATUS · AVAILABLE
@@ -111,6 +111,16 @@ export default async function SpecAbout() {
       </section>
       )}
 
+      {s.aboutCommunity && (
+        <section className="spec-sec spec-reveal">
+          <div className="ln">03</div>
+          <div className="body">
+            <h2><span className="n">03 ·</span> Community &amp; leadership</h2>
+            <SpecProse content={s.aboutCommunity} />
+          </div>
+        </section>
+      )}
+
       <div className="spec-signoff spec-reveal">
         {s.show.signoff && (
         <div className="spec-lead">
@@ -124,7 +134,7 @@ export default async function SpecAbout() {
           {s.show.resume && (
             <a href={s.resumeUrl} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-out" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Résumé.pdf
+              {s.resumeCtaLabel}
             </a>
           )}
         </div>

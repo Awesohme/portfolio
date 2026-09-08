@@ -1,0 +1,439 @@
+{
+  "siteSettings": {
+    "heroThesis": "I turn customer problems into products and workflows that work. I'm a product manager with an operations foundation, leading discovery, product strategy, and delivery across B2B SaaS, commerce, and enterprise platforms. I also design and build prototypes to test ideas early and give teams a clearer direction.",
+    "heroExperience": "4+ years in product",
+    "heroMarket": "B2B SaaS & enterprise",
+    "heroStatus": "Discovery through delivery",
+    "problemLead": "Where are users getting stuck, and what is it costing the business?",
+    "problemBody": "I start with customer discovery and the operational reality behind the request: where people lose time, where users drop off, and where teams keep solving the same problem manually.",
+    "betLead": "Test the idea before committing the team.",
+    "betBody": "I use research, experiments, and prototypes to decide what deserves investment. At QShop, that meant testing the activation flow. At Sugar Guest Pro, it meant validating workflows through WhatsApp. At QTrack, it meant deciding when to stop.",
+    "outcomeLead": "Better activation. Less manual work. Clearer delivery.",
+    "aboutHero": "Start with the user's problem. Build the business around it.",
+    "aboutOrigin": "My route into product started in agriculture and operations. I studied Agricultural Administration, then became COO at MyFarmbase Africa, helping scale an EdTech and agribusiness platform to 9,000+ active users across West Africa and supporting the launch of 200+ profitable agribusinesses. Automating training workflows reduced administrative overhead by over 50%.\n\nThat experience still shapes how I work: understand the people, map the process, and find where the system breaks. Today, I apply that approach to commerce products at QShop and enterprise delivery at Yoke Solutions, from customer discovery and prioritisation through to execution.",
+    "aboutOperatingInstinct": "I enjoy sitting with users, understanding their problems, and turning what I learn into a direction the team can act on. I connect that discovery to business priorities, scoped plans, and prototypes that make decisions easier.\n\nDelivery is part of that responsibility. I work with founders, engineers, designers, and client stakeholders to set priorities, manage scope, and keep work moving. Sometimes the right decision is a better activation flow; sometimes it is self-service tooling that removes recurring work; sometimes it is stopping an idea whose dependencies do not add up.",
+    "aboutCommunity": "As Programme Lead for Morph by TNX Solve, I design programme and operational infrastructure for a teen product-development programme. I also facilitated an AI and no-code train-the-trainer workshop for Global Shapers Ota Hub, taking participants from problem definition to working prototypes. As a volunteer board member at Adlai Heroes Foundation, I advise on programme strategy, operations, and digital-product initiatives.",
+    "signoffText": "Looking for a product manager who can connect customer discovery, operational detail, and delivery? Let’s talk.",
+    "contactCtaLabel": "Discuss an opportunity",
+    "resumeCtaLabel": "Download résumé",
+    "jobTitle": "Product Manager",
+    "outcomeMetrics": [
+      {
+        "_key": "activation",
+        "label": "QShop · onboarding drop-off",
+        "value": "70% → 45%"
+      },
+      {
+        "_key": "scale",
+        "label": "QShop · registered stores",
+        "value": "59,700+"
+      },
+      {
+        "_key": "gmv",
+        "label": "QShop · annual GMV",
+        "value": "$5.2M"
+      },
+      {
+        "_key": "delivery",
+        "label": "Yoke · delivery timelines",
+        "value": "10% shorter"
+      },
+      {
+        "_key": "operations",
+        "label": "MyFarmbase · admin overhead",
+        "value": "50%+ lower"
+      }
+    ]
+  },
+  "experience": [
+    {
+      "role": "Product Manager · QShop Tech",
+      "when": "June 2022 to Present",
+      "note": "Own product strategy for a commerce portfolio representing $5.2M in annual GMV, 18,000+ monthly orders, and 59,700+ registered stores. Reduced onboarding drop-off from 70% to 45% and time-to-first-sale by 15%. Report to the founder, manage an associate PM, and set delivery priorities that improved engineering throughput by approximately 30%. QShop and Yoke Solutions are sister companies."
+    },
+    {
+      "role": "Lead Project Manager · Yoke Solutions",
+      "when": "April 2024 to Present",
+      "note": "Lead enterprise and public-sector delivery, including Lagos State Employment Trust Fund / Lagos Innovates web platforms and a government insights platform. Led a five-person team through a portal overhaul, improving agreed UX and accessibility acceptance scores by 50% in seven months. Manage consultancy delivery generating $50K+ in annual revenue and reduced delivery timelines by 10% across three concurrent enterprise projects."
+    },
+    {
+      "role": "Project and Product Manager · Orpheez",
+      "when": "February 2022 to Present · Part-time, project-based",
+      "note": "Translate client discovery into scoped plans, roadmaps, decision briefs, and prototypes. Lead development of a non-custodial US money-transfer product on licensed partner infrastructure, defining operational models for KYC, funds movement, and payouts."
+    },
+    {
+      "role": "Chief Operating Officer · MyFarmbase Africa",
+      "when": "June 2019 to November 2021",
+      "note": "Scaled an EdTech and agribusiness platform to 9,000+ active users across West Africa, supporting the launch of 200+ profitable agribusinesses. Automated manual training-cohort processes, reducing administrative overhead by over 50%."
+    }
+  ],
+  "projects": {
+    "qshop": {
+      "roleLabel": "Product Manager",
+      "summary": "70% → 45% drop-off",
+      "order": 1,
+      "tagline": "Improving merchant activation, internal operations, and delivery across a commerce portfolio.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "I own product strategy for a commerce portfolio representing 59,700+ registered stores, $5.2M in annual GMV, and 18,000+ monthly orders. My work spans customer activation, merchant workflows, internal tooling, and team delivery."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Activation",
+          "body": "I redesigned the activation flow through structured, hypothesis-led experimentation, reducing onboarding drop-off from 70% to 45%. I also decreased time-to-first-sale for new merchants by 15% and launched promotion and discovery features that boosted store-level order volume."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Operational leverage",
+          "body": "I extended the admin surface so internal teams could self-serve five recurring request types. Addressing these requests at the source reduced the workload passed to support and engineering."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "How I lead",
+          "body": "I report directly to the founder and manage an associate PM. I set sprint delivery priorities to focus engineering effort and improved overall throughput by approximately 30%."
+        },
+        {
+          "_key": "section-4",
+          "_type": "section",
+          "label": "Outcome",
+          "body": "The activation work reduced drop-off by 25 percentage points. The broader portfolio figures describe the scale of my product responsibility; they are not attributed to one experiment."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Activation",
+          "blurb": "70% → 45% drop-off",
+          "detail": "A 25-percentage-point reduction through activation-flow experimentation.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Time-to-first-sale",
+          "blurb": "15% lower",
+          "detail": "Reduced the time new merchants took to reach their first sale.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Self-service tooling",
+          "blurb": "Five recurring request types",
+          "detail": "Enabled internal teams to handle recurring actions without support and engineering queues.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-3",
+          "_type": "feature",
+          "name": "Delivery throughput",
+          "blurb": "Approximately +30%",
+          "detail": "Set sprint priorities and supervised an associate PM to improve engineering output.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "qtrack": {
+      "summary": "500+ users · discontinued",
+      "status": "discontinued",
+      "order": 3,
+      "tag": "Product validation",
+      "tagline": "Knowing when to stop: what 500+ users taught me about a WhatsApp expense tracker.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Problem",
+          "body": "I explored whether a WhatsApp expense tracker could make expense tracking easier to adopt."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What I tested",
+          "body": "I validated the product with 500+ users, examining the behavioural and technical dependencies needed for continued investment."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Decision",
+          "body": "The initiative depended on substantial behaviour change and unviable bank-API requirements. I made the strategic decision to discontinue it."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "What I learned",
+          "body": "Early adoption did not resolve the dependencies behind sustained use. The next product decision had to account for those constraints, rather than treat the user count as sufficient validation."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Early adoption",
+          "blurb": "500+ users",
+          "detail": "Tested a WhatsApp expense-tracking product with real users.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Investment decision",
+          "blurb": "Discontinued",
+          "detail": "Stopped the initiative after identifying behavioural and bank-API dependencies.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "imperium-utilities": {
+      "summary": "Energy-utility operations",
+      "order": 4,
+      "tag": "Energy utilities",
+      "roleLabel": "Product and Delivery Lead",
+      "tagline": "Connecting energy-utility operations to analytics and forecasting.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Problem",
+          "body": "Energy-utility operations need consolidated data to support analytics and forecasting, with access appropriate to each organisation and role."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "My role",
+          "body": "I lead product strategy and delivery for an energy-utility platform, connecting operational workflows to the product direction and coordinating delivery."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Product scope",
+          "body": "The platform combines multi-tenant architecture, a super-admin backoffice, and a role-aware customer interface. Product and delivery work is ongoing."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Operational data",
+          "blurb": "Analytics and forecasting",
+          "detail": "Consolidates operational data for energy-utility teams.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Access model",
+          "blurb": "Multi-tenant and role-based",
+          "detail": "Supports organisation boundaries and role-appropriate access.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Administration",
+          "blurb": "Super-admin backoffice",
+          "detail": "Provides administrative oversight alongside the customer-facing interface.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "sugar-guest-pro": {
+      "summary": "WhatsApp workflow validation",
+      "order": 5,
+      "tag": "Event-management SaaS",
+      "tagline": "Validating guest-list and check-in workflows before investing in the core build.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Problem",
+          "body": "Guest-list and check-in software needs to fit the way event planners work. I wanted evidence about those workflows before scaling development."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What I did",
+          "body": "I ran rapid WhatsApp experiments to validate key workflows and used the findings to shape product development."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Current work",
+          "body": "I oversee product strategy and development for the guest-list and check-in SaaS, using workflow validation to guide the core build."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Workflow validation",
+          "blurb": "WhatsApp experiments",
+          "detail": "Tested key workflows before scaling development.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Product scope",
+          "blurb": "Guest lists and check-ins",
+          "detail": "Oversee development of event-management SaaS for planners.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "tracta": {
+      "roleLabel": "Workflow Design Lead",
+      "summary": "Field operations workflows",
+      "tagline": "Designing the workflows behind field-team coordination and oversight.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "Field operations connect work on the ground with logistics and back-office supervision."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "My contribution",
+          "body": "I designed operational workflows covering field-team quality assurance, task management, logistics coordination, and back-office oversight."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Product focus",
+          "body": "My contribution centred on workflow design: clarifying how tasks, quality checks, and coordination fit together across operational roles."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Field workflows",
+          "blurb": "Quality assurance and tasks",
+          "detail": "Designed workflows for field-team quality assurance and task management.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Coordination",
+          "blurb": "Logistics and back-office oversight",
+          "detail": "Connected logistics coordination with supervisory workflows.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "yoke-delivery": {
+      "name": "Yoke · Enterprise & Public Sector",
+      "tag": "Enterprise delivery",
+      "roleLabel": "Lead Project Manager",
+      "period": "April 2024 to Present",
+      "category": "product",
+      "order": 2,
+      "summary": "50% higher acceptance scores",
+      "stack": [
+        "Scope control",
+        "Stakeholder management",
+        "Agile delivery"
+      ],
+      "tagline": "Coordinating enterprise and government delivery across teams, scope, and timelines.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "At Yoke Solutions, I manage consultancy delivery generating $50K+ in annual revenue across custom enterprise and public-sector builds. Yoke and QShop are sister companies."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Government portal overhaul",
+          "body": "I led a five-person cross-functional team through a government agency portal overhaul. The work improved agreed UX and accessibility acceptance scores by 50% within seven months."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Portfolio delivery",
+          "body": "Across three concurrent enterprise projects, I standardised delivery cadence, tightened scope control, and maintained Agile practices. Average delivery timelines reduced by 10%."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Public-sector work",
+          "body": "My delivery responsibilities include Lagos State Employment Trust Fund / Lagos Innovates web platforms and a specialised government insights platform."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Portal acceptance",
+          "blurb": "50% improvement",
+          "detail": "Improved agreed UX and accessibility acceptance scores over seven months.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Team leadership",
+          "blurb": "Five-person team",
+          "detail": "Led cross-functional delivery for the government portal overhaul.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Delivery timelines",
+          "blurb": "10% shorter",
+          "detail": "Reduced average timelines across three concurrent enterprise projects.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "ekio": {
+      "name": "Ekio",
+      "tag": "Compliance document governance",
+      "roleLabel": "Product Manager",
+      "period": "2026 to Present",
+      "category": "product",
+      "status": "discovery",
+      "order": 14,
+      "summary": "In discovery",
+      "stack": [
+        "Customer discovery",
+        "Value proposition",
+        "Product strategy"
+      ],
+      "tagline": "Defining a compliance document-governance product for regulated Nigerian fintechs.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "Ekio is in discovery for a compliance document-governance product serving regulated Nigerian fintechs."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "My contribution",
+          "body": "I contribute to customer discovery, product direction, and value-proposition definition."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Current stage",
+          "body": "The work is focused on understanding customer needs and defining the product direction. There are no launch or adoption outcomes to report yet."
+        }
+      ],
+      "features": []
+    }
+  }
+}

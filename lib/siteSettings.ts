@@ -5,10 +5,18 @@
  * if the CMS is unreachable.
  */
 
+import resumeUpdate from "@/content/resume-update.json";
 import { sanityFetch } from "@/lib/sanityFetch";
 import { urlForImage, fileUrl } from "@/sanity/client";
 
 export type SiteSettings = {
+  heroExperience: string;
+  heroMarket: string;
+  heroStatus: string;
+  aboutCommunity: string;
+  contactCtaLabel: string;
+  resumeCtaLabel: string;
+  outcomeMetrics: { _key: string; label: string; value: string }[];
   heroThesis: string;
   problemLead: string;
   problemBody: string;
@@ -46,30 +54,14 @@ export type SiteSettings = {
 
 // Defaults mirror the current hardcoded copy + /public files; all sections ON.
 const FALLBACK: SiteSettings = {
-  heroThesis:
-    "I'm a product manager who designs and builds. I think in outcomes, not features. It starts with discovery: I sit with users, learn the problem deeper than the brief, then prototype the bet and put it in front of them before the team spends a sprint on a guess. Strategy, design, code, I've shipped all three.",
-  problemLead: "Most products ship features. Few move the number that matters.",
-  problemBody:
-    "The job isn't to build. It's to find the problem worth solving and chase the outcome that proves it. I start with the user's problem, then build the business around it.",
-  betLead: "At QShop, onboarding leaked 70% of new businesses.",
-  betBody:
-    "The obvious fix was to strip out onboarding steps. I tested the activation flow and read the results quantitatively and qualitatively, and the data pointed somewhere subtler: people wanted to explore the product before committing their own data. So I let them, and cut time-to-value instead of just cutting steps.",
-  outcomeLead: "One change. Compounded across activation, retention, revenue.",
-  aboutHero: "Start with the user's problem. Build the business around it.",
-  aboutOrigin:
-    "I started in agriculture. Literally, a B.Sc. in Agricultural Administration. Then I became COO of an EdTech and scaled it to 9,000+ users across West Africa with no playbook to copy. That zero-to-one taught me the thing I still build on: start with the user's problem, then build the business around it.",
-  aboutOperatingInstinct:
-    "It was deciding what not to build. The real work is killing the twenty requests that didn't earn their place so the few that matter can actually land. I ship fast, validate before I spend a team's engineering, and I build the tools that build the products too.\n\nHonestly, the part I love is the people. I enjoy sitting with users, understanding their problems, and learning more than I expect to, then turning that into how we'll actually solve it without ever losing sight of the business we're trying to build. And I'm always watching the industry: spotting trends, noticing patterns, connecting dots other people walk past. That's the work I'd do for free.",
   fullName: "Olamide Irojah",
-  jobTitle: "Product Manager",
   email: "irojaholamide@gmail.com",
   whatsapp: "2348121364213",
   githubUrl: "https://github.com/awesohme",
   linkedinUrl: "https://www.linkedin.com/in/irojaholamide/",
   contactMessage:
     "Hi Olamide, I came across your portfolio and I'd love to talk about a product role / opportunity. When are you free for a quick chat?",
-  signoffText:
-    "I'm looking for the next hard problem. Somewhere that wants a PM who'll do the thinking and ship the prototype to prove it.",
+  ...resumeUpdate.siteSettings,
   resumeUrl: "/resume.pdf",
   profileImageUrl: "/olamide.jpg",
   show: {
@@ -99,6 +91,8 @@ function imageUrl(img: any, fallback: string): string {
 }
 
 const SITE_SETTINGS_QUERY = `*[_id == "siteSettings"][0]{
+  heroExperience, heroMarket, heroStatus, aboutCommunity, contactCtaLabel, resumeCtaLabel,
+  outcomeMetrics[]{_key, label, value},
   heroThesis, problemLead, problemBody, betLead, betBody, outcomeLead,
   aboutHero, aboutOrigin, aboutOperatingInstinct,
   fullName, jobTitle, email, whatsapp, githubUrl, linkedinUrl,
@@ -119,6 +113,13 @@ export async function getSiteSettings(): Promise<SiteSettings> {
     const pick = (v: any, fb: string) => (typeof v === "string" && v.trim() ? v : fb);
     const bool = (v: any, fb: boolean) => (typeof v === "boolean" ? v : fb);
     return {
+      heroExperience: pick(s.heroExperience, FALLBACK.heroExperience),
+      heroMarket: pick(s.heroMarket, FALLBACK.heroMarket),
+      heroStatus: pick(s.heroStatus, FALLBACK.heroStatus),
+      aboutCommunity: pick(s.aboutCommunity, FALLBACK.aboutCommunity),
+      contactCtaLabel: pick(s.contactCtaLabel, FALLBACK.contactCtaLabel),
+      resumeCtaLabel: pick(s.resumeCtaLabel, FALLBACK.resumeCtaLabel),
+      outcomeMetrics: Array.isArray(s.outcomeMetrics) && s.outcomeMetrics.length > 0 && s.outcomeMetrics.every((m: any) => m && typeof m.label === "string" && typeof m.value === "string") ? s.outcomeMetrics : FALLBACK.outcomeMetrics,
       heroThesis: pick(s.heroThesis, FALLBACK.heroThesis),
       problemLead: pick(s.problemLead, FALLBACK.problemLead),
       problemBody: pick(s.problemBody, FALLBACK.problemBody),

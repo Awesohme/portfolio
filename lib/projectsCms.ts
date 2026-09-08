@@ -1,3 +1,4 @@
+import resumeUpdate from "@/content/resume-update.json";
 /**
  * Case-study / project data for /v2.
  * Reads from Sanity (project documents with inline sections/features); falls back
@@ -13,6 +14,8 @@ import { sanityFetch } from "@/lib/sanityFetch";
 export type CmsSection = { label: string; body: string };
 export type CmsFeature = { name: string; blurb: string; detail: string; kind: "feature" | "outcome" };
 export type CmsProject = {
+  summary?: string;
+  status?: string;
   slug: string;
   name: string;
   tag: string;
@@ -31,7 +34,7 @@ const FALLBACK_LABELS = ["Context", "Approach", "So what"];
 
 /** Build the unified project list from local code (the fallback / source of truth). */
 function localFallback(): CmsProject[] {
-  return localProjects.map((p, i) => {
+  const base: CmsProject[] = localProjects.map((p, i) => {
     const sc = specCases[p.slug];
     const sections: CmsSection[] =
       sc?.sections ??
@@ -56,9 +59,19 @@ function localFallback(): CmsProject[] {
       })),
     };
   });
+  const updates = resumeUpdate.projects as Record<string, Partial<CmsProject>>;
+  const merged = base.map(p => ({ ...p, ...updates[p.slug] }));
+  for (const [slug, update] of Object.entries(updates)) {
+    if (!merged.some(p => p.slug === slug)) {
+      merged.push({ slug, name: slug, tag: "", roleLabel: "", period: "", tagline: "", category: "product", stack: [], link: null, order: 99, sections: [], features: [], ...update });
+    }
+  }
+  return merged.sort((a, b) => a.order - b.order);
 }
 
 type SanityProject = {
+  summary?: string;
+  status?: string;
   slug?: string;
   name?: string;
   tag?: string;
@@ -75,7 +88,7 @@ type SanityProject = {
 
 const PROJECTS_QUERY = `*[_type == "project"] | order(order asc){
   "slug": slug.current,
-  name, tag, roleLabel, period, tagline, category, stack, link, order,
+  summary, status, name, tag, roleLabel, period, tagline, category, stack, link, order,
   sections[]{ label, body },
   features[]{ name, blurb, detail, kind }
 }`;
@@ -86,6 +99,8 @@ export async function getProjects(): Promise<CmsProject[]> {
     const rows = await sanityFetch<SanityProject[]>(PROJECTS_QUERY);
     if (!Array.isArray(rows) || rows.length === 0) return localFallback();
     return rows.map((r, i) => ({
+      summary: r.summary,
+      status: r.status,
       slug: (r.slug || "").trim(),
       name: (r.name || "").trim(),
       tag: (r.tag || "").trim(),
@@ -116,5 +131,5 @@ export async function getProjectBySlug(slug: string): Promise<CmsProject | null>
 
 /** slugs for generateStaticParams — uses local list so build never depends on CMS */
 export function allProjectSlugs(): string[] {
-  return localProjects.map((p) => p.slug);
+  return localFallback().map((p) => p.slug);
 }

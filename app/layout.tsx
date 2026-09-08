@@ -23,7 +23,7 @@ const grotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Olamide Irojah · Product Manager | Spec",
   description:
-    "Product Manager scaling B2B SaaS in emerging markets. 59,700+ stores, $5.2M GMV, AI-native prototyping, laid out as a product spec.",
+    "Product Manager with an operations foundation. Customer discovery, product strategy, and delivery across B2B SaaS, commerce, and enterprise platforms.",
 };
 
 export default function RootLayout({

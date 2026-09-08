@@ -9,26 +9,11 @@ import { getSiteSettings } from "@/lib/siteSettings";
 
 export const dynamic = "force-dynamic";
 
-// one-line outcome shown in the §04 shipped index, per project
-const OUTCOME: Record<string, string> = {
-  qshop: "59,700+ stores",
-  "imperium-utilities": "multi-tenant ERP",
-  "morph-ops": "live role-aware PWA",
-  tracta: "offline-first field",
-  atia: "two-sided marketplace",
-  "sunset-haven": "resort + RBAC admin",
-  impactops: "programme ops, secured",
-  mikano: "self-refreshing guide",
-  qtrack: "500+ users / 2mo",
-  "sugar-guest-pro": "check-in −50%",
-  jarvis: "second-brain AI OS",
-  "claude-skills": "13 dev-skills",
-};
-
 export default async function SpecHome() {
   const [projects, s] = await Promise.all([getProjects(), getSiteSettings()]);
   // split for §04: product cases primary, tool/personal builds in "Also built"
-  const productCases = projects.filter((p) => p.category === "product");
+  const productCases = projects.filter((p) => p.category === "product" && p.status !== "discovery");
+  const discoveryCases = projects.filter((p) => p.status === "discovery");
   const toolCases = projects.filter((p) => p.category === "tool");
 
   return (
@@ -47,16 +32,16 @@ export default async function SpecHome() {
         </h1>
         <div className="spec-meta-row">
           <span>
-            ROLE · <b>Product Manager</b>
+            ROLE · <b>{s.jobTitle}</b>
           </span>
           <span>
-            EXP · <b>4+ yrs B2B SaaS</b>
+            EXP · <b>{s.heroExperience}</b>
           </span>
           <span>
-            MARKET · <b>Emerging</b>
+            MARKET · <b>{s.heroMarket}</b>
           </span>
           <span>
-            STATUS · <b>Still a builder</b>
+            STATUS · <b>{s.heroStatus}</b>
           </span>
         </div>
         <p
@@ -108,30 +93,12 @@ export default async function SpecHome() {
           </h2>
           <div className="spec-lead">{s.outcomeLead}</div>
           <div className="spec-otable">
-            <div className="spec-orow">
-              <div className="k">Onboarding drop-off</div>
-              <div className="v" data-w="55">
-                <span>70% → 45%</span>
+            {s.outcomeMetrics.map((metric, i) => (
+              <div className="spec-orow" key={metric._key || i}>
+                <div className="k">{metric.label}</div>
+                <div className="v"><span>{metric.value}</span></div>
               </div>
-            </div>
-            <div className="spec-orow">
-              <div className="k">Stores scaled to</div>
-              <div className="v" data-w="95">
-                <span>59,700+</span>
-              </div>
-            </div>
-            <div className="spec-orow">
-              <div className="k">Annual GMV</div>
-              <div className="v" data-w="80">
-                <span>$5.2M</span>
-              </div>
-            </div>
-            <div className="spec-orow">
-              <div className="k">Sprint velocity</div>
-              <div className="v" data-w="70">
-                <span>+30%</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -143,10 +110,10 @@ export default async function SpecHome() {
         <div className="ln">04</div>
         <div className="body" style={{ paddingBottom: 0 }}>
           <h2>
-            <span className="n">04 ·</span> Shipped
+            <span className="n">04 ·</span> Selected work
           </h2>
           <div className="spec-lead" style={{ marginBottom: 8 }}>
-            {productCases.length} products. One operating instinct.
+            Product decisions, delivery, and the work behind them.
           </div>
         </div>
       </section>
@@ -161,11 +128,23 @@ export default async function SpecHome() {
                 {p.roleLabel} · {p.period}
               </small>
             </div>
-            <span className="out">{OUTCOME[p.slug] ?? p.tag} →</span>
+            <span className="out">{p.summary ?? p.tag} →</span>
           </Link>
         ))}
       </div>
       </>
+      )}
+
+      {s.show.shipped && discoveryCases.length > 0 && (
+        <section className="spec-sec spec-reveal">
+          <div className="ln">↗</div>
+          <div className="body">
+            <h2>In discovery</h2>
+            {discoveryCases.map(p => (
+              <p key={p.slug}><Link href={`/work/${p.slug}`}><b>{p.name} →</b></Link><br />{p.tagline}</p>
+            ))}
+          </div>
+        </section>
       )}
 
       {s.show.alsoBuilt && toolCases.length > 0 && (
@@ -193,7 +172,7 @@ export default async function SpecHome() {
                 {p.roleLabel} · {p.period}
               </small>
             </div>
-            <span className="out">{OUTCOME[p.slug] ?? p.tag} →</span>
+            <span className="out">{p.summary ?? p.tag} →</span>
           </Link>
         ))}
       </div>
@@ -207,18 +186,19 @@ export default async function SpecHome() {
         </div>
         )}
         <div className="spec-cta">
+          {s.show.contact && <a href={`mailto:${s.email}?subject=${encodeURIComponent("Product opportunity")}`} className="spec-btn spec-btn-fill">{s.contactCtaLabel} →</a>}
           <Link href="/about" className="spec-btn spec-btn-fill">
             My Background →
           </Link>
           {s.show.resume && (
             <a href={s.resumeUrl} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-out" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Résumé.pdf
+              {s.resumeCtaLabel}
             </a>
           )}
         </div>
         <div className="spec-stamp">
-          SIGNED · {s.fullName.toUpperCase()} · {s.jobTitle.toUpperCase()} · {s.email} · REV 2026.06
+          SIGNED · {s.fullName.toUpperCase()} · {s.jobTitle.toUpperCase()} · {s.email} · REV 2026.09
         </div>
         {s.show.socials && (
           <SpecSocials className="spec-stamp-socials" github={s.githubUrl} linkedin={s.linkedinUrl} />

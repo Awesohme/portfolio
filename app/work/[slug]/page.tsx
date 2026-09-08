@@ -39,6 +39,8 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
       <div className="spec-hero">
         <div className="spec-doctype">
           {p.tag} · {p.roleLabel} · {p.period}
+          {p.status === "discovery" && " · In discovery"}
+          {p.status === "discontinued" && " · Discontinued"}
         </div>
         <h1 className="spec-name">{p.name}</h1>
         <div className="spec-meta-row" style={{ marginTop: 22 }}>
@@ -71,7 +73,7 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
       {p.slug === "mikano" && <MikanoReport />}
 
       {/* features & outcomes */}
-      <section className="spec-sec spec-reveal">
+      {features.length > 0 && <section className="spec-sec spec-reveal">
         <div className="ln">{String(sections.length + 1).padStart(2, "0")}</div>
         <div className="body">
           <h2>
@@ -98,11 +100,11 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
             ))}
           </div>
         </div>
-      </section>
+      </section>}
 
       <div className="spec-signoff spec-reveal">
         <div className="spec-cta">
-          {p.link && (
+          {p.link && p.status !== "discontinued" && p.status !== "discovery" && (
             <a href={p.link} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-fill">
               Visit the live product →
             </a>

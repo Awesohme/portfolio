@@ -6,6 +6,8 @@ export const project = defineType({
   title: "Project",
   type: "document",
   fields: [
+    defineField({ name: "summary", title: "Homepage outcome summary", type: "string" }),
+    defineField({ name: "status", title: "Project status", type: "string", options: { list: [{ title: "In discovery", value: "discovery" }, { title: "Active", value: "active" }, { title: "Discontinued", value: "discontinued" }] } }),
     defineField({ name: "name", title: "Name", type: "string", validation: (r) => r.required() }),
     defineField({
       name: "slug",
