@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import BrandImage from "@/components/brands/BrandImage";
 import SpecMotion from "@/components/SpecMotion";
+import Arrow from "@/components/Arrow";
 import SpecTagline from "@/components/SpecTagline";
 import SpecNav from "@/components/SpecNav";
 import SpecSocials from "@/components/SpecSocials";
@@ -39,11 +40,11 @@ export default async function SpecHome() {
         <span className="spec-doctype">{c.brandTeaserEyebrow}</span>
         <h2 id="brand-feature-title">{teaserA}{teaserRest.length > 0 && <><br /><em>{teaserRest.join(" ")}</em></>}</h2>
         <p>{c.brandTeaserBody}</p>
-        <Link href="/brands" className="editorial-text-link">{c.brandTeaserLink} <span aria-hidden="true">↗</span></Link>
+        <Link href="/brands" className="editorial-text-link">{c.brandTeaserLink} <span aria-hidden="true"><Arrow dir="up-right" /></span></Link>
       </div>
       <Link href="/brands" className="editorial-brand-visual" aria-label="Explore the brand identity collection">
         {teaserBrand && <BrandImage asset={`${teaserBrand.slug}/hero`} pic={teaserBrand.pics.hero} alt={teaserBrand.heroAlt} sizes="(max-width: 760px) 100vw, 55vw" />}
-        <span>{c.brandTeaserImageLabel} / 01—{String(brands.length).padStart(2, "0")} <span aria-hidden="true">↗</span></span>
+        <span>{c.brandTeaserImageLabel} / 01—{String(brands.length).padStart(2, "0")} <span aria-hidden="true"><Arrow dir="up-right" /></span></span>
       </Link>
     </section>
   );
@@ -79,7 +80,7 @@ export default async function SpecHome() {
           {s.heroThesis}
         </p>
         <SpecTagline prefix={c.taglinePrefix} words={c.taglineWords} />
-        {s.show.shipped && <a href="#shipped" className="editorial-explore">{c.exploreWorkLabel} <span aria-hidden="true">↘</span></a>}
+        {s.show.shipped && <a href="#shipped" className="editorial-explore">{c.exploreWorkLabel} <span aria-hidden="true"><Arrow dir="down-right" /></span></a>}
       </div>
 
       {s.show.problem && (
@@ -132,13 +133,13 @@ export default async function SpecHome() {
         const n = String(gi + 4).padStart(2, "0");
         return (
           <Fragment key={g.key}>
-            <section id={gi === 0 ? "shipped" : undefined} className="spec-sec spec-reveal" style={gi === 0 ? { scrollMarginTop: 72 } : undefined}>
+            <section id={gi === 0 ? "shipped" : undefined} className="spec-sec spec-reveal work-group-head" style={gi === 0 ? { scrollMarginTop: 72 } : undefined}>
               <div className="ln">{n}</div>
-              <div className="body" style={{ paddingBottom: 0 }}>
+              <div className="body">
                 <h2>
                   <span className="n">{n} ·</span> <GreyText text={g.title} />
                 </h2>
-                <div className="spec-lead" style={{ marginBottom: 8 }}>
+                <div className="spec-lead">
                   <GreyText text={g.lead} />
                 </div>
               </div>
@@ -154,7 +155,7 @@ export default async function SpecHome() {
                       {p.roleLabel} · {p.period}
                     </small>
                   </div>
-                  <span className="out">{p.summary ?? p.tag} →</span>
+                  <span className="out">{p.summary ?? p.tag}&nbsp;<Arrow /></span>
                 </Link>
               ))}
             </div>
@@ -173,9 +174,9 @@ export default async function SpecHome() {
         </div>
         )}
         <div className="spec-cta">
-          {s.show.contact && <a href={`mailto:${s.email}?subject=${encodeURIComponent("Product opportunity")}`} className="spec-btn spec-btn-fill">{s.contactCtaLabel} →</a>}
+          {s.show.contact && <a href={`mailto:${s.email}?subject=${encodeURIComponent("Product opportunity")}`} className="spec-btn spec-btn-fill">{s.contactCtaLabel}&nbsp;<Arrow /></a>}
           <Link href="/about" className="spec-btn spec-btn-grey">
-            {c.backgroundCtaLabel} →
+            {c.backgroundCtaLabel}&nbsp;<Arrow />
           </Link>
           {s.show.resume && (
             <a href={s.resumeUrl} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-out" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>

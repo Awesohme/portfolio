@@ -5,6 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html, Stars, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import type { Project, Continent } from "@/lib/projects";
+import Arrow from "@/components/Arrow";
 
 const R = 2; // planet radius
 
@@ -362,7 +363,7 @@ export default function Planet({
           >
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-glow" />
             Visit live site
-            <span aria-hidden>↗</span>
+            <span aria-hidden><Arrow dir="up-right" /></span>
           </a>
         )}
       </div>

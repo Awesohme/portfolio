@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { I } from "./SpecContact";
 
 const EMAIL = "irojaholamide@gmail.com";
 const WHATSAPP = "2348121364213";
@@ -97,7 +98,7 @@ export default function ContactModal({
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 rounded-2xl border border-emerald/30 bg-emerald/10 px-5 py-4 transition hover:border-emerald hover:bg-emerald/20 active:scale-[.98]"
                 >
-                  <span className="text-xl">💬</span>
+                  <span className="text-emerald-soft">{I.whatsapp}</span>
                   <span className="flex-1">
                     <span className="block font-semibold text-white">WhatsApp</span>
                     <span className="block text-xs text-muted">Fastest — chat me directly</span>
@@ -111,7 +112,7 @@ export default function ContactModal({
                     onClick={() => setEmailOpen(true)}
                     className="flex w-full items-center gap-3 rounded-2xl border border-white/10 bg-white/[.03] px-5 py-4 transition hover:border-white/30 active:scale-[.98]"
                   >
-                    <span className="text-xl">✉️</span>
+                    <span className="text-white">{I.email}</span>
                     <span className="flex-1 text-left">
                       <span className="block font-semibold text-white">Email</span>
                       <span className="block text-xs text-muted">{EMAIL}</span>
@@ -127,9 +128,9 @@ export default function ContactModal({
                     <p className="mb-2 px-2 text-xs text-muted">Open in…</p>
                     <div className="grid grid-cols-3 gap-2">
                       {[
-                        { k: "gmail", label: "Gmail", emoji: "📧" },
-                        { k: "outlook", label: "Outlook", emoji: "📨" },
-                        { k: "default", label: "Mail app", emoji: "💻" },
+                        { k: "gmail", label: "Gmail", icon: I.gmail },
+                        { k: "outlook", label: "Outlook", icon: I.outlook },
+                        { k: "default", label: "Mail app", icon: I.mail },
                       ].map((o) => (
                         <a
                           key={o.k}
@@ -138,7 +139,7 @@ export default function ContactModal({
                           rel="noopener noreferrer"
                           className="flex flex-col items-center gap-1 rounded-xl border border-white/10 bg-white/[.03] py-3 text-center transition hover:border-emerald hover:bg-emerald/10 active:scale-95"
                         >
-                          <span className="text-lg">{o.emoji}</span>
+                          <span className="text-white">{o.icon}</span>
                           <span className="text-xs font-medium text-white">{o.label}</span>
                         </a>
                       ))}

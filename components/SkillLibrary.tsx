@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ComingSoonModal from "@/components/ComingSoonModal";
+import Arrow from "@/components/Arrow";
 import { useTurnstile } from "@/components/NotifyButton";
 import type { CmsSkill } from "@/lib/skillsCms";
 
@@ -69,7 +70,7 @@ export default function SkillLibrary({ skills, allSlug, labels }: { skills: CmsS
     <>
       <div className="skill-actions">
         <button type="button" className="spec-btn spec-btn-fill" onClick={() => (siteKey ? setOpen(true) : downloadAll())} disabled={state === "sending"}>
-          {labels.downloadAll}
+          <Arrow dir="down" />&nbsp;{labels.downloadAll}
         </button>
         <p className="skill-thanks" role="status" aria-live="polite">
           {thanked ? labels.thanks : ""}
@@ -87,7 +88,7 @@ export default function SkillLibrary({ skills, allSlug, labels }: { skills: CmsS
             <p>{s.line}</p>
             {s.includes.length > 0 && <div className="skill-includes">{s.includes.join(" · ")}</div>}
             <a href={s.zipUrl} download className="skill-download" onClick={() => logDownload(s.slug)} aria-label={`${labels.download} ${s.name}`}>
-              <span aria-hidden="true">↓</span> {labels.download}
+              <span aria-hidden="true"><Arrow dir="down" /></span> {labels.download}
             </a>
           </article>
         ))}

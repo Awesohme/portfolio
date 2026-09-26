@@ -6,6 +6,7 @@ import Link from "next/link";
 import { projects } from "@/lib/projects";
 import WarpTransition from "./WarpTransition";
 import ContactModal from "./ContactModal";
+import Arrow from "./Arrow";
 
 type Node = {
   slug: string;
@@ -476,7 +477,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[.02] px-7 py-[15px] font-semibold transition hover:-translate-y-0.5 hover:border-emerald"
           >
-            ⬇ Résumé
+            <Arrow dir="down" />&nbsp;Résumé
           </a>
         </div>
 

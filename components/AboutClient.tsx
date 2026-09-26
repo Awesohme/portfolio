@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ContactModal from "./ContactModal";
+import Arrow from "./Arrow";
 
 const timeline = [
   {
@@ -163,7 +164,7 @@ export default function AboutClient() {
               rel="noopener noreferrer"
               className="rounded-2xl border border-white/10 bg-white/[.02] px-6 py-3 font-semibold transition hover:-translate-y-0.5 hover:border-emerald"
             >
-              ⬇ Résumé
+              <Arrow dir="down" />&nbsp;Résumé
             </a>
           </div>
         </div>

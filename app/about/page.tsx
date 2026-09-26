@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SpecMotion from "@/components/SpecMotion";
 import SpecNav from "@/components/SpecNav";
+import Arrow from "@/components/Arrow";
 import SpecProse from "@/components/SpecProse";
 import SpecSocials from "@/components/SpecSocials";
 import { getExperience } from "@/lib/experience";
@@ -23,7 +24,7 @@ export default async function SpecAbout() {
   return (
     <main className="spec-doc editorial-about">
       <SpecMotion />
-      <SpecNav back={{ href: "/", label: "← Back to home" }} />
+      <SpecNav back={{ href: "/", label: "Back to home" }} />
 
       <div className="spec-hero">
         <div className="spec-doctype">{s.copy.aboutEyebrow}</div>
@@ -130,7 +131,7 @@ export default async function SpecAbout() {
         )}
         <div className="spec-cta">
           <Link href="/" className="spec-btn spec-btn-fill">
-            ← Back to home
+            <Arrow dir="left" />&nbsp;Back to home
           </Link>
           {s.show.resume && (
             <a href={s.resumeUrl} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-out" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>

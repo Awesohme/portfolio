@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SpecNav from "@/components/SpecNav";
+import Arrow from "@/components/Arrow";
 import NotifyButton from "@/components/NotifyButton";
 import { getMusings } from "@/lib/musings";
 import { Fragment } from "react";
@@ -21,7 +22,7 @@ export default async function SpecMusings() {
 
   return (
     <main className="spec-doc editorial-musings">
-      <SpecNav back={{ href: "/", label: "← Back to home" }} />
+      <SpecNav back={{ href: "/", label: "Back to home" }} />
 
       <div className="spec-hero">
         <div className="spec-doctype">{c.musingsEyebrow}</div>
@@ -59,7 +60,7 @@ export default async function SpecMusings() {
                     <div className="mus-body">
                       <div className="mus-title">{d.title}</div>
                       <p className="mus-note">{d.preview}</p>
-                      <span className="mus-read">Read →</span>
+                      <span className="mus-read">Read<Arrow /></span>
                     </div>
                     {pill}
                   </Link>
@@ -89,7 +90,7 @@ export default async function SpecMusings() {
             style={{ textAlign: "center", border: "none", cursor: "pointer" }}
           />
           <Link href="/" className="spec-btn spec-btn-out" style={{ textAlign: "center" }}>
-            ← Back to home
+            <Arrow dir="left" />&nbsp;Back to home
           </Link>
         </div>
         <div className="spec-stamp">

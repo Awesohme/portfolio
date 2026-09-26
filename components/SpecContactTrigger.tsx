@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SpecContact from "./SpecContact";
+import Arrow from "./Arrow";
 
 /** The "Let's talk" CTA used in SpecNav; opens the light contact popup.
  *  Contact details are passed in from the CMS (with built-in defaults). */
@@ -22,7 +23,7 @@ export default function SpecContactTrigger({
   return (
     <>
       <button className="spec-nav-cta" onClick={() => setOpen(true)}>
-        Let&apos;s talk →
+        Let&apos;s talk&nbsp;<Arrow />
       </button>
       <SpecContact
         open={open}

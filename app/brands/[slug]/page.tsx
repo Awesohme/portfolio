@@ -3,6 +3,7 @@ import { Fragment, type CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SpecNav from "@/components/SpecNav";
+import Arrow from "@/components/Arrow";
 import BrandImage from "@/components/brands/BrandImage";
 import BrandLightbox from "@/components/brands/BrandLightbox";
 import { allBrandSlugs, getBrands } from "@/lib/brandsCms";
@@ -35,7 +36,7 @@ export default async function BrandCasePage({ params }: { params: Promise<{ slug
   const brand = brands[index];
   const next = brands[(index + 1) % brands.length];
   return <div className={`brand-case brand-case-${slug}`} style={{ "--brand-accent": brand.accent, "--brand-paper": brand.paper, "--brand-ink": brand.ink } as CSSProperties}>
-    <SpecNav back={{ href: "/brands", label: "← All identities" }} />
+    <SpecNav back={{ href: "/brands", label: "All identities" }} />
     <main>
       <header className="brand-case-header brand-wrap">
         <div className="brand-eyebrow-row"><span className="brand-label">Identity study / {pad(index + 1)}</span><span className="brand-label">{brand.sector}{brand.year && ` · ${brand.year}`}</span></div>
@@ -61,8 +62,8 @@ export default async function BrandCasePage({ params }: { params: Promise<{ slug
         <h2><Lines text={c.brandWorldTitle} italicRest /></h2>
         <div className="brand-application-grid">{brand.images.map((img, i) => <BrandLightbox key={img.key || i} asset={`${slug}/${img.key}`} pic={img.pic} alt={img.alt} caption={img.caption} />)}</div>
       </section>
-      <section className="brand-delivery brand-wrap"><div><span className="brand-label">05 / {c.brandDeliveryLabel}</span><h2><Lines text={c.brandDeliveryTitle} /></h2></div><ul>{brand.scope.map(item => <li key={item}>{item}<span aria-hidden="true">↗</span></li>)}</ul></section>
-      <footer className="brand-next"><Link href={`/brands/${next.slug}`} className="brand-wrap"><div><span className="brand-label">Next identity / {pad((index + 1) % brands.length + 1)}</span><h2>{next.name}<span aria-hidden="true">↗</span></h2><p>{next.line}</p></div><BrandImage asset={`${next.slug}/hero`} pic={next.pics.hero} alt={`${next.name} identity preview`} sizes="(max-width: 760px) 90vw, 30vw" /></Link><div className="brand-wrap brand-footer-bottom"><Link href="/brands">← Back to the collection</Link><span>{c.brandsSignature}</span></div></footer>
+      <section className="brand-delivery brand-wrap"><div><span className="brand-label">05 / {c.brandDeliveryLabel}</span><h2><Lines text={c.brandDeliveryTitle} /></h2></div><ul>{brand.scope.map(item => <li key={item}>{item}<span aria-hidden="true"><Arrow dir="up-right" /></span></li>)}</ul></section>
+      <footer className="brand-next"><Link href={`/brands/${next.slug}`} className="brand-wrap"><div><span className="brand-label">Next identity / {pad((index + 1) % brands.length + 1)}</span><h2>{next.name}<span aria-hidden="true"><Arrow dir="up-right" /></span></h2><p>{next.line}</p></div><BrandImage asset={`${next.slug}/hero`} pic={next.pics.hero} alt={`${next.name} identity preview`} sizes="(max-width: 760px) 90vw, 30vw" /></Link><div className="brand-wrap brand-footer-bottom"><Link href="/brands"><Arrow dir="left" />&nbsp;Back to the collection</Link><span>{c.brandsSignature}</span></div></footer>
     </main>
   </div>;
 }

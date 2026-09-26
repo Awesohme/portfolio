@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SpecNav from "@/components/SpecNav";
+import Arrow from "@/components/Arrow";
 import NotifyButton from "@/components/NotifyButton";
 import SkillLibrary from "@/components/SkillLibrary";
 import { getSkills } from "@/lib/skillsCms";
@@ -25,7 +26,7 @@ export default async function SkillsPage() {
 
   return (
     <main className="spec-doc editorial-skills">
-      <SpecNav back={{ href: "/", label: "← Back to home" }} />
+      <SpecNav back={{ href: "/", label: "Back to home" }} />
 
       <div className="spec-hero">
         <div className="spec-doctype">{c.skillsEyebrow}</div>
@@ -61,7 +62,7 @@ export default async function SkillsPage() {
           <p className="skill-cookie">
             <span>{c.skillsCookieText}</span>
             <a href={tipUrl} target="_blank" rel="noopener noreferrer" className="editorial-text-link">
-              {c.skillsTipLabel}
+              {c.skillsTipLabel} <span aria-hidden="true"><Arrow /></span>
             </a>
           </p>
         )}
@@ -75,7 +76,7 @@ export default async function SkillsPage() {
             style={{ textAlign: "center", border: "none", cursor: "pointer" }}
           />
           <Link href="/" className="spec-btn spec-btn-out" style={{ textAlign: "center" }}>
-            ← Back to home
+            <Arrow dir="left" />&nbsp;Back to home
           </Link>
         </div>
         <div className="spec-stamp">

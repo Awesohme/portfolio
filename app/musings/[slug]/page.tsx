@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SpecNav from "@/components/SpecNav";
+import Arrow from "@/components/Arrow";
 import MusingBody from "@/components/MusingBody";
 import ReadProgress from "@/components/ReadProgress";
 import NotifyButton from "@/components/NotifyButton";
@@ -28,7 +29,7 @@ export default async function MusingPost({ params }: { params: Promise<{ slug: s
   return (
     <main className="spec-doc editorial-post">
       <ReadProgress />
-      <SpecNav back={{ href: "/musings", label: "← All musings" }} />
+      <SpecNav back={{ href: "/musings", label: "All musings" }} />
 
       <div className="spec-hero">
         <div className="spec-doctype">Musings · Olamide Irojah</div>
@@ -47,7 +48,7 @@ export default async function MusingPost({ params }: { params: Promise<{ slug: s
       <div className="spec-signoff">
         <div className="spec-cta editorial-paired-actions">
           <Link href="/musings" className="spec-btn spec-btn-fill" style={{ textAlign: "center" }}>
-            ← All musings
+            <Arrow dir="left" />&nbsp;All musings
           </Link>
           <NotifyButton
             {...notifyProps(s)}

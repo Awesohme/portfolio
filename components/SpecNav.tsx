@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SpecContactTrigger from "./SpecContactTrigger";
+import Arrow from "./Arrow";
 import { getSiteSettings } from "@/lib/siteSettings";
 
 /**
@@ -12,7 +13,8 @@ export default async function SpecNav({
   back,
 }: {
   docId?: string;
-  back?: { href: string; label: string };
+  /** arrow is drawn: "left" sits before the label (default), "up-right" after it */
+  back?: { href: string; label: string; arrow?: "left" | "up-right" };
 }) {
   const s = await getSiteSettings();
   return (
@@ -21,7 +23,7 @@ export default async function SpecNav({
         <div className="spec-nav-left">
           {back ? (
             <Link href={back.href} className="spec-back">
-              {back.label}
+              {back.arrow === "up-right" ? <>{back.label}&nbsp;<Arrow dir="up-right" /></> : <><Arrow dir="left" />&nbsp;{back.label}</>}
             </Link>
           ) : (
             <span className="spec-nav-id">{docId}</span>

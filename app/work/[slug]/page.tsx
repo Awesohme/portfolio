@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import SpecMotion from "@/components/SpecMotion";
 import SpecNav from "@/components/SpecNav";
+import Arrow from "@/components/Arrow";
 import MikanoReport from "@/components/MikanoReport";
 import MiracleTribute from "@/components/MiracleTribute";
 import ProjectImage, { hasProjectImage } from "@/components/ProjectImage";
@@ -40,7 +41,7 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
   return (
     <main className={`spec-doc editorial-work${p.slug === "miracle-tracker" ? " miracle-page" : ""}`}>
       <SpecMotion />
-      <SpecNav back={{ href: homeRow, label: "← Back to home" }} />
+      <SpecNav back={{ href: homeRow, label: "Back to home" }} />
 
       <div className="spec-hero">
         <div className="spec-doctype">
@@ -81,9 +82,9 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
             </h2>
             <p style={{ marginTop: 10 }}>{sec.body}</p>
             {sec.linkHref && sec.linkLabel && (sec.linkHref.startsWith("/") ? (
-              <Link href={sec.linkHref} className="editorial-text-link section-link">{sec.linkLabel} <span aria-hidden="true">→</span></Link>
+              <Link href={sec.linkHref} className="editorial-text-link section-link">{sec.linkLabel} <span aria-hidden="true"><Arrow /></span></Link>
             ) : (
-              <a href={sec.linkHref} target="_blank" rel="noopener noreferrer" className="editorial-text-link section-link">{sec.linkLabel} <span aria-hidden="true">↗</span></a>
+              <a href={sec.linkHref} target="_blank" rel="noopener noreferrer" className="editorial-text-link section-link">{sec.linkLabel} <span aria-hidden="true"><Arrow dir="up-right" /></span></a>
             ))}
           </div>
         </section>
@@ -126,14 +127,14 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
         <div className="spec-cta">
           {p.link && p.status !== "discontinued" && p.status !== "discovery" && (
             <a href={p.link} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-fill">
-              Visit the live product →
+              Visit the live product&nbsp;<Arrow />
             </a>
           )}
           <Link href={`/work/${next.slug}`} className="spec-btn spec-btn-out">
-            Next spec · {stripGrey(next.name)} →
+            Next spec · {stripGrey(next.name)}&nbsp;<Arrow />
           </Link>
           <Link href={homeRow} className="spec-btn spec-btn-out">
-            ← Back to index
+            <Arrow dir="left" />&nbsp;Back to index
           </Link>
         </div>
         <div className="spec-stamp">

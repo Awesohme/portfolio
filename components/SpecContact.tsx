@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import Arrow from "./Arrow";
 
-/* monochrome inline icons (currentColor) */
-const I = {
+/* monochrome inline icons (currentColor); the galaxy ContactModal reuses them */
+export const I = {
   whatsapp: (
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
       <path d="M.06 24l1.69-6.16a11.86 11.86 0 0 1-1.59-5.95C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24zM6.6 20.2c1.68 1 3.28 1.6 5.4 1.6 5.46 0 9.9-4.43 9.9-9.88a9.83 9.83 0 0 0-2.9-7 9.82 9.82 0 0 0-7-2.9c-5.46 0-9.9 4.43-9.9 9.88 0 2.23.65 3.9 1.75 5.65l-1 3.65 3.75-1zM17.5 14.4c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07a8.1 8.1 0 0 1-2.39-1.47 9 9 0 0 1-1.65-2.06c-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42z" />
@@ -131,7 +132,7 @@ export default function SpecContact({
                 <b>WhatsApp</b>
                 <small>Fastest, chat me directly</small>
               </span>
-              <span className="arr">→</span>
+              <span className="arr"><Arrow /></span>
             </a>
 
             {!emailOpen ? (
@@ -141,7 +142,7 @@ export default function SpecContact({
                   <b>Email</b>
                   <small>{EMAIL}</small>
                 </span>
-                <span className="arr">→</span>
+                <span className="arr"><Arrow /></span>
               </button>
             ) : (
               <motion.div
