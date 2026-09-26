@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import "./editorial.css";
 
 export const viewport: Viewport = {
   width: "device-width",

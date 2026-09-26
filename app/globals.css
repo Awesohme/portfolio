@@ -561,3 +561,9 @@ body {
   .spec-cta { flex-direction: column; }
   .spec-cta .spec-btn { width: 100%; text-align: center; }
 }
+
+/* Keep shared navigation usable with the brand-design section. */
+@media (max-width: 600px) {
+  .spec-nav-links { flex-wrap: wrap; gap: 6px 12px; }
+  .spec-nav-links a { min-height: 44px; display: inline-flex; align-items: center; }
+}

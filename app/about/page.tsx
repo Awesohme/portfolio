@@ -20,13 +20,13 @@ export default async function SpecAbout() {
   const [timeline, s] = await Promise.all([getExperience(), getSiteSettings()]);
 
   return (
-    <main className="spec-doc">
+    <main className="spec-doc editorial-about">
       <SpecMotion />
       <SpecNav back={{ href: "/", label: "← Back to home" }} />
 
       <div className="spec-hero">
         <div className="spec-doctype">Background · the path here</div>
-        <h1 className="spec-name" style={{ fontSize: "clamp(1.7rem,4.4vw,3.2rem)", lineHeight: 1.04 }}>
+        <h1 className="spec-name">
           {s.aboutHero}
         </h1>
       </div>

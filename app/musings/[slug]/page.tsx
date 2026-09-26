@@ -26,13 +26,13 @@ export default async function MusingPost({ params }: { params: Promise<{ slug: s
   if (!m || !m.published) notFound();
 
   return (
-    <main className="spec-doc">
+    <main className="spec-doc editorial-post">
       <ReadProgress />
       <SpecNav back={{ href: "/musings", label: "← All musings" }} />
 
       <div className="spec-hero">
         <div className="spec-doctype">Musings · Olamide Irojah</div>
-        <h1 className="spec-name" style={{ fontSize: "clamp(1.9rem,5vw,3.4rem)", lineHeight: 1.05 }}>
+        <h1 className="spec-name">
           {m.title}
         </h1>
       </div>
@@ -45,14 +45,14 @@ export default async function MusingPost({ params }: { params: Promise<{ slug: s
       </section>
 
       <div className="spec-signoff">
-        <div className="spec-cta" style={{ flexDirection: "column" }}>
-          <Link href="/musings" className="spec-btn spec-btn-fill" style={{ textAlign: "center", width: "100%" }}>
+        <div className="spec-cta editorial-paired-actions">
+          <Link href="/musings" className="spec-btn spec-btn-fill" style={{ textAlign: "center" }}>
             ← All musings
           </Link>
           <NotifyButton
             label="✉ Get notified of the next one"
             className="spec-btn spec-btn-out"
-            style={{ textAlign: "center", width: "100%", cursor: "pointer", background: "transparent" }}
+            style={{ textAlign: "center", cursor: "pointer", background: "transparent" }}
           />
         </div>
         <div className="spec-stamp">

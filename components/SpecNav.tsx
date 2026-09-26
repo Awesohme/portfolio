@@ -8,7 +8,7 @@ import { getSiteSettings } from "@/lib/siteSettings";
  * Musings link and the Let's-talk CTA respect the site toggles.
  */
 export default async function SpecNav({
-  docId = "PRD · OLAMIDE_IROJAH · v2.0",
+  docId = "Olamide Irojah / Portfolio",
   back,
 }: {
   docId?: string;
@@ -30,6 +30,7 @@ export default async function SpecNav({
 
         <nav className="spec-nav-links">
           {s.show.shipped && <Link href="/#shipped">Work</Link>}
+          <Link href="/brands">Brand Design</Link>
           <Link href="/about">About</Link>
           {s.show.musingsNav && <Link href="/musings">Musings</Link>}
           {s.show.contact && (

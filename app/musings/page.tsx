@@ -6,7 +6,7 @@ import { getSiteSettings } from "@/lib/siteSettings";
 
 export const metadata = {
   title: "Musings · Spec · Olamide Irojah",
-  description: "Notes on product, building, and the hard part: deciding what not to build. Coming soon.",
+  description: "Notes on product, building, and the hard part: deciding what not to build. ",
 };
 
 // always render fresh so edits published in Strapi show up on refresh
@@ -16,15 +16,14 @@ export default async function SpecMusings() {
   const [drafts, s] = await Promise.all([getMusings(), getSiteSettings()]);
 
   return (
-    <main className="spec-doc">
+    <main className="spec-doc editorial-musings">
       <SpecNav back={{ href: "/", label: "← Back to home" }} />
 
       <div className="spec-hero">
-        <div className="spec-doctype">Writing · drafts in the pipeline</div>
-        <h1 className="spec-name" style={{ fontSize: "clamp(1.9rem,5vw,3.4rem)", lineHeight: 1.04 }}>
-          Musings.
-          <br />
-          Shipping soon.
+        <div className="spec-doctype">Writing · notes from practice</div>
+        <h1 className="spec-name">
+          <span>Musings.</span>
+          <span className="editorial-muted">Thinking out loud.</span>
         </h1>
         <p style={{ marginTop: 22, maxWidth: "52ch", color: "#3b372e", lineHeight: 1.6 }}>
           Short notes on product, building, and the hard part: deciding what <i>not</i> to build. Treated
@@ -36,7 +35,7 @@ export default async function SpecMusings() {
         <div className="ln">01</div>
         <div className="body">
           <h2>
-            <span className="n">01 ·</span> Drafts
+            <span className="n">01 ·</span> The notebook
           </h2>
           <div className="mus-list">
             {drafts.map((d, i) => {
@@ -79,13 +78,13 @@ export default async function SpecMusings() {
       </section>
 
       <div className="spec-signoff">
-        <div className="spec-cta" style={{ flexDirection: "column" }}>
+        <div className="spec-cta editorial-paired-actions">
           <NotifyButton
             label="✉ Get Notified"
             className="spec-btn spec-btn-fill"
-            style={{ textAlign: "center", width: "100%", border: "none", cursor: "pointer" }}
+            style={{ textAlign: "center", border: "none", cursor: "pointer" }}
           />
-          <Link href="/" className="spec-btn spec-btn-out" style={{ textAlign: "center", width: "100%" }}>
+          <Link href="/" className="spec-btn spec-btn-out" style={{ textAlign: "center" }}>
             ← Back to home
           </Link>
         </div>

@@ -32,7 +32,7 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
   const { sections, features } = p;
 
   return (
-    <main className="spec-doc">
+    <main className="spec-doc editorial-work">
       <SpecMotion />
       <SpecNav back={{ href: "/", label: "← Back to home" }} />
 

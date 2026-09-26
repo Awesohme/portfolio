@@ -1,0 +1,138 @@
+{
+  "our-market/hero": {
+    "width": 1672,
+    "height": 941
+  },
+  "our-market/tote": {
+    "width": 1800,
+    "height": 1800
+  },
+  "our-market/tote-back": {
+    "width": 1800,
+    "height": 1800
+  },
+  "our-market/social": {
+    "width": 1800,
+    "height": 1200
+  },
+  "our-market/stall": {
+    "width": 1672,
+    "height": 941
+  },
+  "our-market/mark": {
+    "width": 799,
+    "height": 452
+  },
+  "our-market/type": {
+    "width": 1980,
+    "height": 657
+  },
+  "beams-by-edo/hero": {
+    "width": 1800,
+    "height": 1200
+  },
+  "beams-by-edo/bag": {
+    "width": 1800,
+    "height": 1350
+  },
+  "beams-by-edo/sock": {
+    "width": 1800,
+    "height": 1440
+  },
+  "beams-by-edo/pack": {
+    "width": 1800,
+    "height": 1200
+  },
+  "beams-by-edo/mark": {
+    "width": 770,
+    "height": 706
+  },
+  "beams-by-edo/type": {
+    "width": 2145,
+    "height": 694
+  },
+  "damsel-b-design/hero": {
+    "width": 1800,
+    "height": 1013
+  },
+  "damsel-b-design/stationery": {
+    "width": 1800,
+    "height": 1012
+  },
+  "damsel-b-design/campaign": {
+    "width": 1800,
+    "height": 1015
+  },
+  "damsel-b-design/campaign-two": {
+    "width": 1800,
+    "height": 1014
+  },
+  "damsel-b-design/cards": {
+    "width": 1800,
+    "height": 1013
+  },
+  "damsel-b-design/mark": {
+    "width": 1694,
+    "height": 656
+  },
+  "damsel-b-design/type": {
+    "width": 2101,
+    "height": 681
+  },
+  "beam-tech/hero": {
+    "width": 1800,
+    "height": 900
+  },
+  "beam-tech/watches": {
+    "width": 1800,
+    "height": 1274
+  },
+  "beam-tech/stationery": {
+    "width": 1800,
+    "height": 1273
+  },
+  "beam-tech/sign": {
+    "width": 1800,
+    "height": 1273
+  },
+  "beam-tech/shirt": {
+    "width": 1800,
+    "height": 1272
+  },
+  "beam-tech/mark": {
+    "width": 704,
+    "height": 778
+  },
+  "beam-tech/type": {
+    "width": 2002,
+    "height": 919
+  },
+  "glaciers/hero": {
+    "width": 1800,
+    "height": 1014
+  },
+  "glaciers/sign": {
+    "width": 1800,
+    "height": 1015
+  },
+  "glaciers/campaign": {
+    "width": 1200,
+    "height": 676
+  },
+  "glaciers/street": {
+    "width": 1200,
+    "height": 682
+  },
+  "glaciers/cards": {
+    "width": 1800,
+    "height": 1013
+  },
+  "glaciers/mark": {
+    "width": 1760,
+    "height": 681
+  },
+  "glaciers/type": {
+    "width": 957,
+    "height": 618
+  }
+}

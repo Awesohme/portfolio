@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import SpecMotion from "@/components/SpecMotion";
 import SpecTagline from "@/components/SpecTagline";
 import SpecNav from "@/components/SpecNav";
@@ -19,16 +20,15 @@ export default async function SpecHome() {
   return (
     <>
       <SpecToolField />
-      <main className="spec-doc">
+      <main className="spec-doc editorial-home">
         <SpecMotion />
         <SpecNav />
 
       <div className="spec-hero">
-        <div className="spec-doctype">Product Requirements Document · Self</div>
+        <div className="spec-doctype">Product strategy / Design / Delivery</div>
         <h1 className="spec-name">
-          Olamide
-          <br />
-          Irojah
+          <span>Olamide</span>
+          <span className="editorial-muted">Irojah</span>
         </h1>
         <div className="spec-meta-row">
           <span>
@@ -44,22 +44,15 @@ export default async function SpecHome() {
             STATUS · <b>{s.heroStatus}</b>
           </span>
         </div>
-        <p
-          style={{
-            marginTop: 18,
-            maxWidth: "62ch",
-            color: "#3b372e",
-            lineHeight: 1.6,
-            fontSize: "1.02rem",
-          }}
-        >
+        <p className="editorial-intro">
           {s.heroThesis}
         </p>
         <SpecTagline />
+        {s.show.shipped && <a href="#shipped" className="editorial-explore">Explore my work <span aria-hidden="true">↘</span></a>}
       </div>
 
       {s.show.problem && (
-      <section className="spec-sec spec-reveal">
+      <section className="spec-sec spec-reveal editorial-context">
         <div className="ln">01</div>
         <div className="body">
           <h2>
@@ -85,7 +78,7 @@ export default async function SpecHome() {
       )}
 
       {s.show.outcome && (
-      <section className="spec-sec spec-reveal">
+      <section className="spec-sec spec-reveal editorial-outcomes">
         <div className="ln">03</div>
         <div className="body">
           <h2>
@@ -179,6 +172,19 @@ export default async function SpecHome() {
       </>
       )}
 
+      <section className="editorial-brand-feature" aria-labelledby="brand-feature-title">
+        <div className="editorial-brand-copy">
+          <span className="spec-doctype">Another side of my practice</span>
+          <h2 id="brand-feature-title">Ideas, made<br /><em>recognisable.</em></h2>
+          <p>Five identities. Five different worlds. A collection of brand work across community, fashion, sport, and technology.</p>
+          <Link href="/brands" className="editorial-text-link">Explore brand design <span aria-hidden="true">↗</span></Link>
+        </div>
+        <Link href="/brands" className="editorial-brand-visual" aria-label="Explore the brand identity collection">
+          <Image src="/brands/our-market/hero.webp" alt="Our Market brand identity applied to market signage" width={1672} height={941} sizes="(max-width: 760px) 100vw, 55vw" />
+          <span>Selected identities / 01—05 <span aria-hidden="true">↗</span></span>
+        </Link>
+      </section>
+
       <div className="spec-signoff spec-reveal">
         {s.show.signoff && (
         <div className="spec-lead">
@@ -187,7 +193,7 @@ export default async function SpecHome() {
         )}
         <div className="spec-cta">
           {s.show.contact && <a href={`mailto:${s.email}?subject=${encodeURIComponent("Product opportunity")}`} className="spec-btn spec-btn-fill">{s.contactCtaLabel} →</a>}
-          <Link href="/about" className="spec-btn spec-btn-fill">
+          <Link href="/about" className="spec-btn spec-btn-grey">
             My Background →
           </Link>
           {s.show.resume && (
