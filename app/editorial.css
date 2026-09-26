@@ -106,6 +106,8 @@
 .spec .spec-doc .mus-title { font-size:24px;font-weight:500;line-height:1.25;letter-spacing:-.035em; }
 .spec .spec-doc .mus-note { font-size:15px;margin-top:12px;line-height:1.7; }
 .spec .spec-doc .mus-status { font-size:9px;border:1px solid #c8cbbf;background:#e7e9df;color:#44483f;padding:6px 10px; }
+/* the "outline" stage name collides with Tailwind's .outline utility (thick ring) */
+.spec .spec-doc .mus-status.outline { outline:none; }
 .spec .editorial-musings .spec-signoff .spec-cta,.spec .editorial-post .spec-signoff .spec-cta { max-width:450px; }
 .spec .editorial-post .spec-sec .body { display:block;max-width:760px;margin:auto;width:100%; }
 .spec .editorial-post .mus-article { max-width:none; }

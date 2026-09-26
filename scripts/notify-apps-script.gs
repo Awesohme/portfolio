@@ -3,7 +3,8 @@
  *
  * Setup (once): open the Google Sheet → Extensions → Apps Script → paste this
  * file → Project Settings → Script properties → add SECRET (same value as
- * NOTIFY_SCRIPT_SECRET in the site env) → Deploy → New deployment → Web app,
+ * NOTIFY_SCRIPT_SECRET in the site env) and OWNER_EMAIL (where "new subscriber"
+ * alerts go) → Deploy → New deployment → Web app,
  * "Execute as: Me", "Who has access: Anyone" → copy the /exec URL into
  * NOTIFY_SCRIPT_URL.
  *
@@ -87,9 +88,20 @@ function subscribe_(body) {
   return { ok: true };
 }
 
-/** Email the sheet owner (you) whenever someone new joins the list. */
+/**
+ * Email the owner (OWNER_EMAIL script property) whenever someone joins the list.
+ * Never throws: a failed alert must not fail the visitor's sign-up.
+ */
 function tellOwner_(sh, name, email) {
-  const owner = Session.getEffectiveUser().getEmail();
+  try {
+    notifyOwner_(sh, name, email);
+  } catch (err) {
+    console.error("owner alert failed: " + err);
+  }
+}
+
+function notifyOwner_(sh, name, email) {
+  const owner = PropertiesService.getScriptProperties().getProperty("OWNER_EMAIL");
   if (!owner) return;
   const active = sh.getDataRange().getValues().slice(1).filter((r) => r[2] === "active").length;
   const who = name ? name + " (" + email + ")" : email;
