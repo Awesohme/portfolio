@@ -3,6 +3,10 @@ import { notFound } from "next/navigation";
 import SpecMotion from "@/components/SpecMotion";
 import SpecNav from "@/components/SpecNav";
 import MikanoReport from "@/components/MikanoReport";
+import MiracleTribute from "@/components/MiracleTribute";
+import ProjectImage, { hasProjectImage } from "@/components/ProjectImage";
+import GreyText from "@/components/GreyText";
+import { stripGrey } from "@/lib/specText";
 import { getProjects, getProjectBySlug, allProjectSlugs } from "@/lib/projectsCms";
 import { getSiteSettings } from "@/lib/siteSettings";
 
@@ -16,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = await getProjectBySlug(slug);
   return {
-    title: p ? `${p.name} · Spec · Olamide Irojah` : "Project · Olamide Irojah",
+    title: p ? `${stripGrey(p.name)} · Spec · Olamide Irojah` : "Project · Olamide Irojah",
     description: p?.tagline,
   };
 }
@@ -30,11 +34,13 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
   const idx = all.findIndex((x) => x.slug === slug);
   const next = all[(idx + 1) % all.length];
   const { sections, features } = p;
+  // back links land on this project's row on the homepage, not the top of the page
+  const homeRow = `/#w-${p.slug}`;
 
   return (
-    <main className="spec-doc editorial-work">
+    <main className={`spec-doc editorial-work${p.slug === "miracle-tracker" ? " miracle-page" : ""}`}>
       <SpecMotion />
-      <SpecNav back={{ href: "/", label: "← Back to home" }} />
+      <SpecNav back={{ href: homeRow, label: "← Back to home" }} />
 
       <div className="spec-hero">
         <div className="spec-doctype">
@@ -42,7 +48,7 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
           {p.status === "discovery" && " · In discovery"}
           {p.status === "discontinued" && " · Discontinued"}
         </div>
-        <h1 className="spec-name">{p.name}</h1>
+        <h1 className="spec-name"><GreyText text={p.name} /></h1>
         <div className="spec-meta-row" style={{ marginTop: 22 }}>
           {p.stack.map((s) => (
             <span key={s}>
@@ -52,6 +58,15 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
         </div>
         <p style={{ marginTop: 22, maxWidth: "60ch", color: "#3b372e", lineHeight: 1.6 }}>{p.tagline}</p>
       </div>
+
+      {/* Miracle-only: sakura sky and keepsake card */}
+      {p.slug === "miracle-tracker" && <MiracleTribute kana={s.copy.miracleKana} name={s.copy.miracleName} line={s.copy.miracleLine} foot={s.copy.miracleFoot} />}
+
+      {hasProjectImage(p.slug, p.cover) && (
+        <figure className="work-cover">
+          <ProjectImage slug={p.slug} pic={p.cover} alt={p.coverAlt || `${stripGrey(p.name)} screenshot`} priority />
+        </figure>
+      )}
 
       {/* narrative: Problem / What I did / Outcome */}
       {sections.map((sec, i) => (
@@ -110,14 +125,14 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
             </a>
           )}
           <Link href={`/work/${next.slug}`} className="spec-btn spec-btn-out">
-            Next spec · {next.name} →
+            Next spec · {stripGrey(next.name)} →
           </Link>
-          <Link href="/" className="spec-btn spec-btn-out">
+          <Link href={homeRow} className="spec-btn spec-btn-out">
             ← Back to index
           </Link>
         </div>
         <div className="spec-stamp">
-          SPEC {String(idx + 1).padStart(2, "0")} · {p.name.toUpperCase()} · {s.fullName.toUpperCase()} · REV 2026.06
+          SPEC {String(idx + 1).padStart(2, "0")} · {stripGrey(p.name).toUpperCase()} · {s.fullName.toUpperCase()} · REV 2026.06
         </div>
       </div>
     </main>

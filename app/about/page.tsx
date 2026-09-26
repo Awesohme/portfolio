@@ -6,6 +6,7 @@ import SpecProse from "@/components/SpecProse";
 import SpecSocials from "@/components/SpecSocials";
 import { getExperience } from "@/lib/experience";
 import { getSiteSettings } from "@/lib/siteSettings";
+import GreyText from "@/components/GreyText";
 
 export const metadata = {
   title: "Background · Spec · Olamide Irojah",
@@ -27,7 +28,7 @@ export default async function SpecAbout() {
       <div className="spec-hero">
         <div className="spec-doctype">{s.copy.aboutEyebrow}</div>
         <h1 className="spec-name">
-          {s.aboutHero}
+          <GreyText text={s.aboutHero} />
         </h1>
       </div>
 
@@ -80,7 +81,7 @@ export default async function SpecAbout() {
           <h2>
             <span className="n">01 ·</span> {s.copy.aboutInstinctTitle}
           </h2>
-          <div className="spec-lead">{s.copy.aboutInstinctLead}</div>
+          <div className="spec-lead"><GreyText text={s.copy.aboutInstinctLead} /></div>
           <SpecProse content={s.aboutOperatingInstinct} />
         </div>
       </section>

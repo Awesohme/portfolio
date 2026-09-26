@@ -1,0 +1,86 @@
+{
+  "qshop": {
+    "width": 1440,
+    "height": 900
+  },
+  "ncc": {
+    "width": 1440,
+    "height": 790
+  },
+  "ekiti-lmis": {
+    "width": 1440,
+    "height": 900
+  },
+  "tracta": {
+    "width": 1440,
+    "height": 900
+  },
+  "sunset-haven": {
+    "width": 1440,
+    "height": 900
+  },
+  "abys-greenhouse": {
+    "width": 1440,
+    "height": 900
+  },
+  "lagos-innovates": {
+    "width": 2992,
+    "height": 664
+  },
+  "soleaa": {
+    "width": 2267,
+    "height": 996
+  },
+  "kalife-travels": {
+    "width": 1600,
+    "height": 640
+  },
+  "atia": {
+    "width": 1600,
+    "height": 640
+  },
+  "imperium-utilities": {
+    "width": 1600,
+    "height": 640
+  },
+  "qnotify": {
+    "width": 1440,
+    "height": 760
+  },
+  "sugar-guest-pro": {
+    "width": 1440,
+    "height": 900
+  },
+  "morph-ops": {
+    "width": 1140,
+    "height": 630
+  },
+  "nepa-trackr": {
+    "width": 840,
+    "height": 560
+  },
+  "impactops": {
+    "width": 1440,
+    "height": 900
+  },
+  "adlai-website": {
+    "width": 1440,
+    "height": 900
+  },
+  "budget-tracker": {
+    "width": 760,
+    "height": 660
+  },
+  "fof-ops": {
+    "width": 1440,
+    "height": 680
+  },
+  "jobsearch": {
+    "width": 760,
+    "height": 660
+  },
+  "yoke-delivery": {
+    "width": 1440,
+    "height": 900
+  }
+}

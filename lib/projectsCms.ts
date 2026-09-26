@@ -11,11 +11,19 @@ import { specCases } from "@/lib/specCases";
 import { cleanDashes } from "@/lib/specText";
 import { sanityFetch } from "@/lib/sanityFetch";
 
+export const WORK_GROUPS = ["qshop", "yoke", "orpheez", "freelance", "community", "side"] as const;
+export type WorkGroup = (typeof WORK_GROUPS)[number];
+export type ProjectPic = { src: string; width: number; height: number } | null;
+
 export type CmsSection = { label: string; body: string };
 export type CmsFeature = { name: string; blurb: string; detail: string; kind: "feature" | "outcome" };
 export type CmsProject = {
   summary?: string;
   status?: string;
+  group: WorkGroup;
+  hidden: boolean;
+  cover: ProjectPic;
+  coverAlt: string;
   slug: string;
   name: string;
   tag: string;
@@ -32,6 +40,14 @@ export type CmsProject = {
 
 const FALLBACK_LABELS = ["Context", "Approach", "So what"];
 
+type LocalUpdate = Partial<Omit<CmsProject, "group">> & { group?: string };
+const updates = resumeUpdate.projects as Record<string, LocalUpdate>;
+
+const toGroup = (v: unknown): WorkGroup | null => (WORK_GROUPS as readonly string[]).includes(v as string) ? (v as WorkGroup) : null;
+/** Group from the CMS, else from content/resume-update.json, so the homepage stays grouped before the CMS is updated. */
+const groupFor = (slug: string, v?: unknown): WorkGroup => toGroup(v) ?? toGroup(updates[slug]?.group) ?? "community";
+const hiddenFor = (slug: string, v?: unknown): boolean => (typeof v === "boolean" ? v : updates[slug]?.hidden === true);
+
 /** Build the unified project list from local code (the fallback / source of truth). */
 function localFallback(): CmsProject[] {
   const base: CmsProject[] = localProjects.map((p, i) => {
@@ -40,6 +56,10 @@ function localFallback(): CmsProject[] {
       sc?.sections ??
       p.crawl.map((c, j) => ({ label: FALLBACK_LABELS[j] ?? "Note", body: cleanDashes(c) }));
     return {
+      group: groupFor(p.slug),
+      hidden: hiddenFor(p.slug),
+      cover: null,
+      coverAlt: "",
       slug: p.slug,
       name: p.name,
       tag: p.tag,
@@ -59,19 +79,24 @@ function localFallback(): CmsProject[] {
       })),
     };
   });
-  const updates = resumeUpdate.projects as Record<string, Partial<CmsProject>>;
-  const merged = base.map(p => ({ ...p, ...updates[p.slug] }));
+  const merged = base.map(p => ({ ...p, ...updates[p.slug], group: groupFor(p.slug) }));
   for (const [slug, update] of Object.entries(updates)) {
     if (!merged.some(p => p.slug === slug)) {
-      merged.push({ slug, name: slug, tag: "", roleLabel: "", period: "", tagline: "", category: "product", stack: [], link: null, order: 99, sections: [], features: [], ...update });
+      merged.push({ slug, name: slug, tag: "", roleLabel: "", period: "", tagline: "", category: "product", stack: [], link: null, order: 99, sections: [], features: [], hidden: false, cover: null, coverAlt: "", ...update, group: groupFor(slug) });
     }
   }
   return merged.sort((a, b) => a.order - b.order);
 }
 
+type SanityPic = { url?: string; width?: number; height?: number } | null;
+
 type SanityProject = {
   summary?: string;
   status?: string;
+  group?: string;
+  hidden?: boolean;
+  cover?: SanityPic;
+  coverAlt?: string;
   slug?: string;
   name?: string;
   tag?: string;
@@ -88,12 +113,14 @@ type SanityProject = {
 
 const PROJECTS_QUERY = `*[_type == "project"] | order(order asc){
   "slug": slug.current,
-  summary, status, name, tag, roleLabel, period, tagline, category, stack, link, order,
+  summary, status, group, hidden, coverAlt, name, tag, roleLabel, period, tagline, category, stack, link, order,
+  "cover": cover{ "url": asset->url, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height },
   sections[]{ label, body },
   features[]{ name, blurb, detail, kind }
 }`;
 
-export async function getProjects(): Promise<CmsProject[]> {
+/** Every project, hidden ones included (the CMS keeps them so they can be switched back on). */
+async function getAllProjects(): Promise<CmsProject[]> {
   if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) return localFallback();
   try {
     const rows = await sanityFetch<SanityProject[]>(PROJECTS_QUERY);
@@ -101,6 +128,10 @@ export async function getProjects(): Promise<CmsProject[]> {
     return rows.map((r, i) => ({
       summary: r.summary,
       status: r.status,
+      group: groupFor((r.slug || "").trim(), r.group),
+      hidden: hiddenFor((r.slug || "").trim(), r.hidden),
+      cover: r.cover?.url && r.cover.width && r.cover.height ? { src: r.cover.url, width: r.cover.width, height: r.cover.height } : null,
+      coverAlt: (r.coverAlt || "").trim(),
       slug: (r.slug || "").trim(),
       name: (r.name || "").trim(),
       tag: (r.tag || "").trim(),
@@ -124,6 +155,11 @@ export async function getProjects(): Promise<CmsProject[]> {
   }
 }
 
+/** Projects shown on the site: anything switched to "Hide from site" is left out. */
+export async function getProjects(): Promise<CmsProject[]> {
+  return (await getAllProjects()).filter((p) => !p.hidden);
+}
+
 export async function getProjectBySlug(slug: string): Promise<CmsProject | null> {
   const all = await getProjects();
   return all.find((p) => p.slug === slug) ?? null;
@@ -131,5 +167,5 @@ export async function getProjectBySlug(slug: string): Promise<CmsProject | null>
 
 /** slugs for generateStaticParams — uses local list so build never depends on CMS */
 export function allProjectSlugs(): string[] {
-  return localFallback().map((p) => p.slug);
+  return localFallback().filter((p) => !p.hidden).map((p) => p.slug);
 }

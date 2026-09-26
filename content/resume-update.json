@@ -1,65 +1,109 @@
 {
   "siteSettings": {
-    "heroThesis": "I turn customer problems into products and workflows that work. I'm a product manager with an operations foundation, leading discovery, product strategy, and delivery across B2B SaaS, commerce, and enterprise platforms. I also design and build prototypes to test ideas early and give teams a clearer direction.",
-    "heroExperience": "4+ years in product",
-    "heroMarket": "B2B SaaS & enterprise",
-    "heroStatus": "Discovery through delivery",
-    "problemLead": "Where are users getting stuck, and what is it costing the business?",
-    "problemBody": "I start with customer discovery and the operational reality behind the request: where people lose time, where users drop off, and where teams keep solving the same problem manually.",
-    "betLead": "Test the idea before committing the team.",
-    "betBody": "I use research, experiments, and prototypes to decide what deserves investment. At QShop, that meant testing the activation flow. At Sugar Guest Pro, it meant validating workflows through WhatsApp. At QTrack, it meant deciding when to stop.",
-    "outcomeLead": "Better activation. Less manual work. Clearer delivery.",
-    "aboutHero": "Start with the user's problem. Build the business around it.",
-    "aboutOrigin": "My route into product started in agriculture and operations. I studied Agricultural Administration, then became COO at MyFarmbase Africa, helping scale an EdTech and agribusiness platform to 9,000+ active users across West Africa and supporting the launch of 200+ profitable agribusinesses. Automating training workflows reduced administrative overhead by over 50%.\n\nThat experience still shapes how I work: understand the people, map the process, and find where the system breaks. Today, I apply that approach to commerce products at QShop and enterprise delivery at Yoke Solutions, from customer discovery and prioritisation through to execution.",
+    "heroThesis": "I'm a product person. I keep asking why until the real problem shows up, then I build what fixes it and stay to make sure it works. At QShop I lead product, helping 59,700+ businesses sell online and on WhatsApp. At Yoke Solutions (YSL) I lead platforms for government and business, like the NCC website and Ekiti State's jobs platform.",
+    "heroExperience": "7 years in product & operations",
+    "heroMarket": "Commerce, government & business",
+    "heroStatus": "Ask why, build, run",
+    "problemLead": "Ask why until the real problem shows up.",
+    "problemBody": "I talk to users and the people who serve them. Where do they get stuck? What are they still doing by hand? What is it costing them? Often the real problem is not the one in the request. At QNotify, real order data showed the problem was much smaller than everyone assumed, so we changed direction.",
+    "betLead": "Test the answer early, then build it properly.",
+    "betBody": "I sketch, prototype, and test with real people before a team spends months on something. Then I write the plan and lead the build. That is how QShop cut onboarding drop-off from 70% to 45%, and how the NCC got a new website it formally accepted.",
+    "outcomeLead": "Launch is the start. I stay to see what happens next.",
+    "aboutHero": "Start with the user's problem. [Build the business around it.]",
+    "aboutOrigin": "My route into product started in agriculture and operations. I studied Agricultural Administration, then became COO at MyFarmbase Africa, helping scale an EdTech and agribusiness platform to 9,000+ active users across West Africa and supporting the launch of 200+ profitable agribusinesses. Automating training workflows reduced administrative overhead by over 50%.\n\nThat experience still shapes how I work: understand the people, map the process, find where the system breaks, and build what fixes it. Today I do that as Product Lead at QShop, as Lead Project Manager for government and enterprise platforms at Yoke Solutions, and in the programmes and tools I build on my own time.",
     "aboutOperatingInstinct": "I enjoy sitting with users, understanding their problems, and turning what I learn into a direction the team can act on. I connect that discovery to business priorities, scoped plans, and prototypes that make decisions easier.\n\nDelivery is part of that responsibility. I work with founders, engineers, designers, and client stakeholders to set priorities, manage scope, and keep work moving. Sometimes the right decision is a better activation flow; sometimes it is self-service tooling that removes recurring work; sometimes it is stopping an idea whose dependencies do not add up.",
-    "aboutCommunity": "As Programme Lead for Morph by TNX Solve, I design programme and operational infrastructure for a teen product-development programme. I also facilitated an AI and no-code train-the-trainer workshop for Global Shapers Ota Hub, taking participants from problem definition to working prototypes. As a volunteer board member at Adlai Heroes Foundation, I advise on programme strategy, operations, and digital-product initiatives.",
-    "signoffText": "Looking for a product manager who can connect customer discovery, operational detail, and delivery? Let’s talk.",
+    "aboutCommunity": "As Programme Lead for Morph by TNX Solve, I run a six-week product-building programme for teenagers: sessions, community managers, participant communications, Demo Day, and safeguarding as the Designated Safeguarding Lead. I also facilitated an AI and no-code train-the-trainer workshop for Global Shapers Ota Hub in April 2026, taking participants from problem definition to working prototypes. Since January 2026 I have served on the board of Adlai Heroes Foundation, advising on programme strategy, operations, and digital products.",
+    "signoffText": "Looking for a product person who asks the right questions, builds what matters, and stays to make it work? Let’s talk.",
     "contactCtaLabel": "Discuss an opportunity",
     "resumeCtaLabel": "Download résumé",
-    "jobTitle": "Product Manager",
+    "jobTitle": "Product Lead",
     "outcomeMetrics": [
       {
         "_key": "activation",
-        "label": "QShop · onboarding drop-off",
+        "label": "QShop · new stores quitting setup",
         "value": "70% → 45%"
       },
       {
-        "_key": "scale",
-        "label": "QShop · registered stores",
-        "value": "59,700+"
+        "_key": "first-sale",
+        "label": "QShop · time to a first sale",
+        "value": "15% faster"
       },
       {
-        "_key": "gmv",
-        "label": "QShop · annual GMV",
-        "value": "$5.2M"
+        "_key": "throughput",
+        "label": "QShop · team delivery speed",
+        "value": "+30%"
+      },
+      {
+        "_key": "ncc",
+        "label": "NCC · contract items delivered",
+        "value": "16 of 16"
       },
       {
         "_key": "delivery",
-        "label": "Yoke · delivery timelines",
+        "label": "YSL · project timelines",
         "value": "10% shorter"
       },
       {
         "_key": "operations",
-        "label": "MyFarmbase · admin overhead",
-        "value": "50%+ lower"
+        "label": "MyFarmbase · admin work",
+        "value": "50%+ less"
+      },
+      {
+        "_key": "scale",
+        "label": "Scale · QShop stores",
+        "value": "59,700+"
+      },
+      {
+        "_key": "gmv",
+        "label": "Scale · QShop yearly sales",
+        "value": "$5.2M"
       }
-    ]
+    ],
+    "homeEyebrow": "Builder · Vision · Operator",
+    "taglinePrefix": "From why? →",
+    "taglineWords": [
+      "the real problem.",
+      "a live product.",
+      "happier customers.",
+      "more revenue.",
+      "a better way to work."
+    ],
+    "problemTitle": "Vision",
+    "betTitle": "Build",
+    "outcomeTitle": "Operate",
+    "brandTeaserEyebrow": "Freelance · brand design",
+    "workQshopTitle": "QShop · Product",
+    "workQshopLead": "Helping 59,700+ businesses sell online and on WhatsApp. What I asked, what we built, and what changed.",
+    "workYokeTitle": "Yoke Solutions · Government & business",
+    "workYokeLead": "Platforms for public agencies and companies, from the first question to launch day.",
+    "workOrpheezTitle": "Orpheez · Studio",
+    "workOrpheezLead": "Design and product work for studio clients.",
+    "workFreelanceTitle": "Freelance",
+    "workFreelanceLead": "Products, websites, and brands for my own clients.",
+    "workCommunityTitle": "Community",
+    "workCommunityLead": "Programmes and causes I help run, and where I started.",
+    "workSideTitle": "Side projects",
+    "workSideLead": "Small products I built for real problems in my own life.",
+    "miracleKana": "ミラクル",
+    "miracleName": "Miracle",
+    "miracleLine": "Five days. Forever loved.",
+    "miracleFoot": "いつまでも · always"
   },
   "experience": [
     {
-      "role": "Product Manager · QShop Tech",
-      "when": "June 2022 to Present",
-      "note": "Own product strategy for a commerce portfolio representing $5.2M in annual GMV, 18,000+ monthly orders, and 59,700+ registered stores. Reduced onboarding drop-off from 70% to 45% and time-to-first-sale by 15%. Report to the founder, manage an associate PM, and set delivery priorities that improved engineering throughput by approximately 30%. QShop and Yoke Solutions are sister companies."
+      "role": "Product Manager to Product Lead · QShop Tech",
+      "when": "June 2022 to Present · Product Lead since April 2024",
+      "note": "Lead product for a commerce platform with 59,700+ registered stores, 18,000+ monthly orders, and $5.2M in annual GMV. Reduced onboarding drop-off from 70% to 45% and time-to-first-sale by 15%, shipped merchant tools for restocking, profit reporting, and WhatsApp selling, and used real order data to redirect QNotify. Report to the founder, manage an associate PM, and lifted engineering throughput by about 30%. QShop and Yoke Solutions are sister companies."
     },
     {
       "role": "Lead Project Manager · Yoke Solutions",
       "when": "April 2024 to Present",
-      "note": "Lead enterprise and public-sector delivery, including Lagos State Employment Trust Fund / Lagos Innovates web platforms and a government insights platform. Led a five-person team through a portal overhaul, improving agreed UX and accessibility acceptance scores by 50% in seven months. Manage consultancy delivery generating $50K+ in annual revenue and reduced delivery timelines by 10% across three concurrent enterprise projects."
+      "note": "Lead government and enterprise delivery, including the Nigerian Communications Commission website overhaul (five-person team, all 16 scope items accepted, acceptance scores up 50%), Lagos Innovates programme sites for LSETF, and the Ekiti State Labour Market Information System. Manage consultancy delivery worth $50K+ a year and cut timelines by 10% across three concurrent projects."
     },
     {
-      "role": "Project and Product Manager · Orpheez",
-      "when": "February 2022 to Present · Part-time, project-based",
-      "note": "Translate client discovery into scoped plans, roadmaps, decision briefs, and prototypes. Lead development of a non-custodial US money-transfer product on licensed partner infrastructure, defining operational models for KYC, funds movement, and payouts."
+      "role": "Design Manager, then Project & Product Manager · Orpheez",
+      "when": "2021 to 2023, and 2025 to Present",
+      "note": "Led design across 20+ studio projects as Design Manager. Returned as Project & Product Manager to run client engagements, including a cross-border money-transfer app for a US client, delivered under NDA."
     },
     {
       "role": "Chief Operating Officer · MyFarmbase Africa",
@@ -69,334 +113,1074 @@
   ],
   "projects": {
     "qshop": {
-      "roleLabel": "Product Manager",
-      "summary": "70% → 45% drop-off",
+      "name": "QShop Tech",
+      "group": "qshop",
       "order": 1,
-      "tagline": "Improving merchant activation, internal operations, and delivery across a commerce portfolio.",
+      "category": "product",
+      "hidden": false,
+      "tag": "Commerce platform",
+      "roleLabel": "Product Manager to Product Lead",
+      "period": "June 2022 to Present",
+      "summary": "59,700+ stores · roadmap & team",
+      "status": "active",
+      "link": "https://qshop.tech",
+      "stack": [
+        "Product strategy",
+        "Roadmap",
+        "Team leadership"
+      ],
+      "coverAlt": "The QShop homepage: an online store and WhatsApp checkout in one setup",
+      "tagline": "Helping 59,700+ businesses sell online and on WhatsApp.",
       "sections": [
         {
           "_key": "section-0",
           "_type": "section",
           "label": "Context",
-          "body": "I own product strategy for a commerce portfolio representing 59,700+ registered stores, $5.2M in annual GMV, and 18,000+ monthly orders. My work spans customer activation, merchant workflows, internal tooling, and team delivery."
+          "body": "QShop helps businesses sell in two places at once: their own online store, and WhatsApp. I joined as Product Manager in June 2022 and became Product Lead in April 2024. The platform serves 59,700+ registered stores, 18,000+ monthly orders, and $5.2M in annual GMV. Those figures describe the scale I work at; the results I drove directly are on the pages that follow."
         },
         {
           "_key": "section-1",
           "_type": "section",
-          "label": "Activation",
-          "body": "I redesigned the activation flow through structured, hypothesis-led experimentation, reducing onboarding drop-off from 70% to 45%. I also decreased time-to-first-sale for new merchants by 15% and launched promotion and discovery features that boosted store-level order volume."
+          "label": "Questions I keep asking",
+          "body": "Where do new merchants give up? What are they still doing by hand that the product could do for them? If we could only say yes to one request this month, which one would help the most stores? Most of the work on these pages started with one of those questions."
         },
         {
           "_key": "section-2",
           "_type": "section",
-          "label": "Operational leverage",
-          "body": "I extended the admin surface so internal teams could self-serve five recurring request types. Addressing these requests at the source reduced the workload passed to support and engineering."
+          "label": "Roadmap",
+          "body": "I sequence the roadmap across several streams at once. One July plan lined up eight pieces of work in a single fortnight: storefront themes, a one-page checkout, simpler shipping setup, QNotify, an inactivity prompt, and smaller fixes. Multi-branch inventory was designed and prototyped, then explicitly deprioritised in that plan so checkout and shipping could go first."
         },
         {
           "_key": "section-3",
           "_type": "section",
-          "label": "How I lead",
-          "body": "I report directly to the founder and manage an associate PM. I set sprint delivery priorities to focus engineering effort and improved overall throughput by approximately 30%."
+          "label": "Operations",
+          "body": "I extended the admin so internal teams could handle five recurring request types themselves, taking that work off the support and engineering queues."
         },
         {
           "_key": "section-4",
           "_type": "section",
-          "label": "Outcome",
-          "body": "The activation work reduced drop-off by 25 percentage points. The broader portfolio figures describe the scale of my product responsibility; they are not attributed to one experiment."
+          "label": "Team",
+          "body": "I report to the founder and manage an associate PM. Setting sprint priorities with engineering lifted delivery throughput by about 30%."
         }
       ],
       "features": [
         {
           "_key": "feature-0",
           "_type": "feature",
-          "name": "Activation",
-          "blurb": "70% → 45% drop-off",
-          "detail": "A 25-percentage-point reduction through activation-flow experimentation.",
+          "name": "Scale",
+          "blurb": "59,700+ stores",
+          "detail": "Registered stores on the platform, with 18,000+ orders a month.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Roadmap",
+          "blurb": "8 streams in one plan",
+          "detail": "Sequenced checkout, shipping, themes, and QNotify, and pushed multi-branch back.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Self-service",
+          "blurb": "5 request types",
+          "detail": "Internal teams now handle recurring requests without support or engineering.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-3",
+          "_type": "feature",
+          "name": "Throughput",
+          "blurb": "About +30%",
+          "detail": "Sprint priorities set with engineering, with an associate PM under my lead.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "qshop-activation": {
+      "name": "QShop · Onboarding & activation",
+      "group": "qshop",
+      "order": 2,
+      "category": "product",
+      "hidden": false,
+      "tag": "Activation",
+      "roleLabel": "Product Manager",
+      "period": "June 2022 to Present",
+      "summary": "70% → 45% drop-off",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Activation",
+        "Experimentation",
+        "Onboarding"
+      ],
+      "tagline": "Getting more new merchants from sign-up to a working store and a first sale.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "Why were 70% of new merchants signing up and never finishing their store?"
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Getting to the root",
+          "body": "I looked at exactly where people stopped and asked what each step demanded of them. For every drop-off point I wrote down a guess about the cause, then tested changes one at a time to see which guesses held."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Result",
+          "body": "Onboarding drop-off fell from 70% to 45%, and new merchants reached their first sale 15% faster. I also launched promotion and discovery features that increased order volume at store level."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Still looking for gaps",
+          "body": "The work continues. A recent audit found merchants could launch a store with no shipping set up, leaving customers stuck at checkout. I wrote a ranked fix list for engineering and put simpler shipping setup and a one-page checkout on the roadmap."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Drop-off",
+          "blurb": "70% → 45%",
+          "detail": "A 25-point reduction through activation experiments.",
           "kind": "outcome"
         },
         {
           "_key": "feature-1",
           "_type": "feature",
-          "name": "Time-to-first-sale",
-          "blurb": "15% lower",
-          "detail": "Reduced the time new merchants took to reach their first sale.",
+          "name": "Time to first sale",
+          "blurb": "15% faster",
+          "detail": "New merchants reach their first sale sooner.",
           "kind": "outcome"
         },
         {
           "_key": "feature-2",
           "_type": "feature",
-          "name": "Self-service tooling",
-          "blurb": "Five recurring request types",
-          "detail": "Enabled internal teams to handle recurring actions without support and engineering queues.",
+          "name": "Launch gaps",
+          "blurb": "Ranked fix list",
+          "detail": "Found and specified the shipping gap at store launch.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "qshop-merchant-tools": {
+      "name": "QShop · Merchant money tools",
+      "group": "qshop",
+      "order": 3,
+      "category": "product",
+      "hidden": false,
+      "tag": "Merchant tools",
+      "roleLabel": "Product Lead",
+      "period": "2026",
+      "summary": "Stock, cost & profit",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Inventory",
+        "Reporting",
+        "Payments"
+      ],
+      "tagline": "Helping merchants see what they earn, not just what they sell.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "Merchants could see what they sold. Could they see what they actually earned? Not really: there was no clean way to record new stock at a different cost, and the profit report was still a Coming Soon placeholder."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What shipped",
+          "body": "Restock lets merchants record incoming stock in bulk or per product, with cost price recalculated by weighted average. The profit report shows profit, margin, revenue, and cost with period comparisons, a profit-over-time chart, and a per-product breakdown. A dashboard period filter drives orders, revenue, and store and WhatsApp visitor counts from one date range."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Wallet",
+          "body": "The wallet was redesigned, and it now funds subscription renewals, so a top-up during a grace period can retry a failed renewal straight away."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "My role",
+          "body": "I scoped and specified each feature, set priorities with engineering, and checked releases against the plan."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Restock",
+          "blurb": "Weighted-average cost",
+          "detail": "Record stock in bulk or per product.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Profit report",
+          "blurb": "Profit, margin, trend",
+          "detail": "Replaced a Coming Soon placeholder with a working report.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Period filter",
+          "blurb": "One date range",
+          "detail": "Orders, revenue, and visitors on the same period.",
           "kind": "feature"
         },
         {
           "_key": "feature-3",
           "_type": "feature",
-          "name": "Delivery throughput",
-          "blurb": "Approximately +30%",
-          "detail": "Set sprint priorities and supervised an associate PM to improve engineering output.",
-          "kind": "outcome"
+          "name": "Wallet",
+          "blurb": "Funds renewals",
+          "detail": "Top-ups retry failed renewals during the grace period.",
+          "kind": "feature"
         }
       ]
     },
-    "qtrack": {
-      "summary": "500+ users · discontinued",
-      "status": "discontinued",
-      "order": 3,
-      "tag": "Product validation",
-      "tagline": "Knowing when to stop: what 500+ users taught me about a WhatsApp expense tracker.",
-      "sections": [
-        {
-          "_key": "section-0",
-          "_type": "section",
-          "label": "Problem",
-          "body": "I explored whether a WhatsApp expense tracker could make expense tracking easier to adopt."
-        },
-        {
-          "_key": "section-1",
-          "_type": "section",
-          "label": "What I tested",
-          "body": "I validated the product with 500+ users, examining the behavioural and technical dependencies needed for continued investment."
-        },
-        {
-          "_key": "section-2",
-          "_type": "section",
-          "label": "Decision",
-          "body": "The initiative depended on substantial behaviour change and unviable bank-API requirements. I made the strategic decision to discontinue it."
-        },
-        {
-          "_key": "section-3",
-          "_type": "section",
-          "label": "What I learned",
-          "body": "Early adoption did not resolve the dependencies behind sustained use. The next product decision had to account for those constraints, rather than treat the user count as sufficient validation."
-        }
-      ],
-      "features": [
-        {
-          "_key": "feature-0",
-          "_type": "feature",
-          "name": "Early adoption",
-          "blurb": "500+ users",
-          "detail": "Tested a WhatsApp expense-tracking product with real users.",
-          "kind": "outcome"
-        },
-        {
-          "_key": "feature-1",
-          "_type": "feature",
-          "name": "Investment decision",
-          "blurb": "Discontinued",
-          "detail": "Stopped the initiative after identifying behavioural and bank-API dependencies.",
-          "kind": "outcome"
-        }
-      ]
-    },
-    "imperium-utilities": {
-      "summary": "Energy-utility operations",
+    "qshop-whatsapp": {
+      "name": "QShop · Selling online & on WhatsApp",
+      "group": "qshop",
       "order": 4,
-      "tag": "Energy utilities",
-      "roleLabel": "Product and Delivery Lead",
-      "tagline": "Connecting energy-utility operations to analytics and forecasting.",
-      "sections": [
-        {
-          "_key": "section-0",
-          "_type": "section",
-          "label": "Problem",
-          "body": "Energy-utility operations need consolidated data to support analytics and forecasting, with access appropriate to each organisation and role."
-        },
-        {
-          "_key": "section-1",
-          "_type": "section",
-          "label": "My role",
-          "body": "I lead product strategy and delivery for an energy-utility platform, connecting operational workflows to the product direction and coordinating delivery."
-        },
-        {
-          "_key": "section-2",
-          "_type": "section",
-          "label": "Product scope",
-          "body": "The platform combines multi-tenant architecture, a super-admin backoffice, and a role-aware customer interface. Product and delivery work is ongoing."
-        }
+      "category": "product",
+      "hidden": false,
+      "tag": "WhatsApp commerce",
+      "roleLabel": "Product Lead",
+      "period": "2026",
+      "summary": "Online store + WhatsApp, one dashboard",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Online store",
+        "WhatsApp",
+        "Billing"
       ],
-      "features": [
-        {
-          "_key": "feature-0",
-          "_type": "feature",
-          "name": "Operational data",
-          "blurb": "Analytics and forecasting",
-          "detail": "Consolidates operational data for energy-utility teams.",
-          "kind": "feature"
-        },
-        {
-          "_key": "feature-1",
-          "_type": "feature",
-          "name": "Access model",
-          "blurb": "Multi-tenant and role-based",
-          "detail": "Supports organisation boundaries and role-appropriate access.",
-          "kind": "feature"
-        },
-        {
-          "_key": "feature-2",
-          "_type": "feature",
-          "name": "Administration",
-          "blurb": "Super-admin backoffice",
-          "detail": "Provides administrative oversight alongside the customer-facing interface.",
-          "kind": "feature"
-        }
-      ]
-    },
-    "sugar-guest-pro": {
-      "summary": "WhatsApp workflow validation",
-      "order": 5,
-      "tag": "Event-management SaaS",
-      "tagline": "Validating guest-list and check-in workflows before investing in the core build.",
-      "sections": [
-        {
-          "_key": "section-0",
-          "_type": "section",
-          "label": "Problem",
-          "body": "Guest-list and check-in software needs to fit the way event planners work. I wanted evidence about those workflows before scaling development."
-        },
-        {
-          "_key": "section-1",
-          "_type": "section",
-          "label": "What I did",
-          "body": "I ran rapid WhatsApp experiments to validate key workflows and used the findings to shape product development."
-        },
-        {
-          "_key": "section-2",
-          "_type": "section",
-          "label": "Current work",
-          "body": "I oversee product strategy and development for the guest-list and check-in SaaS, using workflow validation to guide the core build."
-        }
-      ],
-      "features": [
-        {
-          "_key": "feature-0",
-          "_type": "feature",
-          "name": "Workflow validation",
-          "blurb": "WhatsApp experiments",
-          "detail": "Tested key workflows before scaling development.",
-          "kind": "feature"
-        },
-        {
-          "_key": "feature-1",
-          "_type": "feature",
-          "name": "Product scope",
-          "blurb": "Guest lists and check-ins",
-          "detail": "Oversee development of event-management SaaS for planners.",
-          "kind": "feature"
-        }
-      ]
-    },
-    "tracta": {
-      "roleLabel": "Workflow Design Lead",
-      "summary": "Field operations workflows",
-      "tagline": "Designing the workflows behind field-team coordination and oversight.",
+      "tagline": "Letting merchants sell on their own store and on WhatsApp, and charging for it fairly.",
       "sections": [
         {
           "_key": "section-0",
           "_type": "section",
           "label": "Context",
-          "body": "Field operations connect work on the ground with logistics and back-office supervision."
+          "body": "QShop merchants sell in two places: their own online store, and WhatsApp, where many of their customers already are. Checkout by QShop lets customers buy without leaving WhatsApp, and the dashboard shows store and WhatsApp visitors side by side."
         },
         {
           "_key": "section-1",
           "_type": "section",
-          "label": "My contribution",
-          "body": "I designed operational workflows covering field-team quality assurance, task management, logistics coordination, and back-office oversight."
+          "label": "The question",
+          "body": "How do we make selling on WhatsApp as easy as selling on the store, without losing track of either, and how do we charge for it in a way merchants find fair?"
         },
         {
           "_key": "section-2",
           "_type": "section",
-          "label": "Product focus",
-          "body": "My contribution centred on workflow design: clarifying how tasks, quality checks, and coordination fit together across operational roles."
+          "label": "WhatsApp store",
+          "body": "I shaped the WhatsApp store page: an on and off switch, a shareable store link, and a four-step guide to how it works."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Usage billing",
+          "body": "A billing card shows each merchant's plan quota, monthly orders, overage cost, and wallet balance, with a warning when the wallet runs low and a direct link to top up."
+        },
+        {
+          "_key": "section-4",
+          "_type": "section",
+          "label": "Renewals",
+          "body": "I designed the subscription renewal logic: wallet checks and reminders from seven days before renewal, auto-debit on the day, daily retries through a seven-day grace period, then a move to the free plan instead of suspending the store."
         }
       ],
       "features": [
         {
           "_key": "feature-0",
           "_type": "feature",
-          "name": "Field workflows",
-          "blurb": "Quality assurance and tasks",
-          "detail": "Designed workflows for field-team quality assurance and task management.",
+          "name": "Two channels",
+          "blurb": "Store and WhatsApp",
+          "detail": "Both sales channels tracked in one dashboard.",
           "kind": "feature"
         },
         {
           "_key": "feature-1",
           "_type": "feature",
-          "name": "Coordination",
-          "blurb": "Logistics and back-office oversight",
-          "detail": "Connected logistics coordination with supervisory workflows.",
+          "name": "WhatsApp store",
+          "blurb": "Switch, link, guide",
+          "detail": "Merchants turn WhatsApp selling on and share one link.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Billing card",
+          "blurb": "Quota and overage",
+          "detail": "Usage and wallet balance in one place.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-3",
+          "_type": "feature",
+          "name": "Renewals",
+          "blurb": "7-day grace period",
+          "detail": "Retries and reminders before a merchant is downgraded.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "qnotify": {
+      "name": "QNotify",
+      "group": "qshop",
+      "order": 5,
+      "category": "product",
+      "hidden": false,
+      "tag": "WhatsApp campaigns",
+      "roleLabel": "Product Owner",
+      "period": "2025 to Present",
+      "summary": "Real data changed the direction",
+      "status": "active",
+      "link": "https://qnotifyform.qshop.tech",
+      "coverAlt": "The QNotify page: WhatsApp follow-ups that bring customers back",
+      "stack": [
+        "Data analysis",
+        "WhatsApp",
+        "Pricing"
+      ],
+      "tagline": "Testing an assumption against real order data before building on it.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The bet",
+          "body": "QNotify began as a WhatsApp tool to recover abandoned orders for QShop merchants, built on the common assumption that most online carts are abandoned."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "The question",
+          "body": "Before building further, I asked a simple question: how many orders are really abandoned? I analysed 2,506 real orders from a pilot store. Recent abandonment was 1.6%, and 3.2 to 6.2% historically. Recovery alone would have added about one extra order a week."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "The decision",
+          "body": "That shifted the focus to campaigns merchants can send themselves, such as restock alerts, repeat-purchase nudges, and promotions, with abandoned-order recovery kept as one flow of four message templates. The pilot runs across 25 QShop stores."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Guardrails",
+          "body": "Success is measured on merchants activated, recovery lift, and revenue per merchant, with a 95% WhatsApp delivery floor so the sending number is never put at risk. Open questions: whether 1.6% holds across the other 24 stores, and whether to price per message or per recovered sale."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Orders analysed",
+          "blurb": "2,506",
+          "detail": "One pilot store, real order history.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Real abandonment",
+          "blurb": "1.6%",
+          "detail": "Far below the assumed rate, which changed the plan.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Pilot",
+          "blurb": "25 stores",
+          "detail": "Fashion, household, and skincare merchants.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-3",
+          "_type": "feature",
+          "name": "Delivery floor",
+          "blurb": "95%",
+          "detail": "Protects the sending number from being blocked.",
           "kind": "feature"
         }
       ]
     },
     "yoke-delivery": {
-      "name": "Yoke · Enterprise & Public Sector",
-      "tag": "Enterprise delivery",
+      "name": "Yoke Solutions · How I run delivery",
+      "group": "yoke",
+      "order": 10,
+      "category": "product",
+      "hidden": false,
+      "tag": "Delivery leadership",
       "roleLabel": "Lead Project Manager",
       "period": "April 2024 to Present",
-      "category": "product",
-      "order": 2,
-      "summary": "50% higher acceptance scores",
+      "summary": "$50K+ a year · 10% faster",
+      "status": "active",
+      "link": "https://yokesolutions.com",
+      "coverAlt": "The Yoke Solutions homepage",
       "stack": [
         "Scope control",
         "Stakeholder management",
         "Agile delivery"
       ],
-      "tagline": "Coordinating enterprise and government delivery across teams, scope, and timelines.",
+      "tagline": "Running government and enterprise delivery from proposal to launch and support.",
       "sections": [
         {
           "_key": "section-0",
           "_type": "section",
           "label": "Context",
-          "body": "At Yoke Solutions, I manage consultancy delivery generating $50K+ in annual revenue across custom enterprise and public-sector builds. Yoke and QShop are sister companies."
+          "body": "Yoke Solutions (YSL) builds platforms for government agencies and companies; QShop is its sister company. As Lead Project Manager I run delivery from proposal and scoping through build, testing, training, and support."
         },
         {
           "_key": "section-1",
           "_type": "section",
-          "label": "Government portal overhaul",
-          "body": "I led a five-person cross-functional team through a government agency portal overhaul. The work improved agreed UX and accessibility acceptance scores by 50% within seven months."
+          "label": "How I run it",
+          "body": "Across three concurrent enterprise projects I standardised the delivery cadence and tightened scope control, which cut average timelines by 10%. The consultancy work I manage brings in $50K+ a year."
         },
         {
           "_key": "section-2",
           "_type": "section",
-          "label": "Portfolio delivery",
-          "body": "Across three concurrent enterprise projects, I standardised delivery cadence, tightened scope control, and maintained Agile practices. Average delivery timelines reduced by 10%."
+          "label": "Clients and products",
+          "body": "Recent client work includes the Nigerian Communications Commission, Lagos State Employment Trust Fund, Ekiti State Government, Imperium Utilities, Kalife Travels, Acutech, ATIA, and Mikano Motors. YSL also builds its own products, such as QTrack."
         },
         {
           "_key": "section-3",
           "_type": "section",
-          "label": "Public-sector work",
-          "body": "My delivery responsibilities include Lagos State Employment Trust Fund / Lagos Innovates web platforms and a specialised government insights platform."
+          "label": "Next",
+          "body": "I am also shaping a verification product that brings clarity to a heavily regulated industry where reliable information has been hard to see."
         }
       ],
       "features": [
         {
           "_key": "feature-0",
           "_type": "feature",
-          "name": "Portal acceptance",
-          "blurb": "50% improvement",
-          "detail": "Improved agreed UX and accessibility acceptance scores over seven months.",
+          "name": "Timelines",
+          "blurb": "10% shorter",
+          "detail": "Across three concurrent enterprise projects.",
           "kind": "outcome"
         },
         {
           "_key": "feature-1",
           "_type": "feature",
-          "name": "Team leadership",
-          "blurb": "Five-person team",
-          "detail": "Led cross-functional delivery for the government portal overhaul.",
+          "name": "Revenue",
+          "blurb": "$50K+ a year",
+          "detail": "Consultancy delivery I manage.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Scope",
+          "blurb": "Proposal to support",
+          "detail": "Proposals, scoping, delivery, training, and handover.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "ncc": {
+      "name": "NCC website overhaul",
+      "group": "yoke",
+      "order": 11,
+      "category": "product",
+      "hidden": false,
+      "tag": "Federal government",
+      "roleLabel": "Lead Project Manager",
+      "period": "August 2024 to April 2025",
+      "summary": "16 of 16 scope items, accepted",
+      "status": "active",
+      "link": "https://www.ncc.gov.ng",
+      "stack": [
+        "Public sector",
+        "Content strategy",
+        "Accessibility"
+      ],
+      "coverAlt": "The redesigned Nigerian Communications Commission homepage",
+      "tagline": "Rebuilding the Nigerian Communications Commission's website around what the public comes for.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "The Nigerian Communications Commission's website was outdated, hard to use on mobile, and had outgrown its structure. The Commission also needed incident reporting and an events calendar."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "The question",
+          "body": "What do people actually come to the NCC website for, and why was it so hard to find? We answered that before designing anything."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Discovery",
+          "body": "We ran three stakeholder workshops and audited 400+ legacy pages using analytics data, then restructured the information around what visitors look for. Seven design concepts went to review and three were shortlisted."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Delivery",
+          "body": "I led a five-person cross-functional team through design, build, security hardening, and testing. 58 defects were logged in testing, and none rated critical or high were outstanding at sign-off."
+        },
+        {
+          "_key": "section-4",
+          "_type": "section",
+          "label": "Handover",
+          "body": "We trained NCC staff to run the site themselves and handed over manuals and publishing workflows. The Commission formally accepted the work in April 2025: all 16 contractual scope items delivered on schedule, with agreed UX and accessibility acceptance scores up 50%."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Scope",
+          "blurb": "16 of 16 delivered",
+          "detail": "Every contractual scope item, on schedule.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Acceptance scores",
+          "blurb": "+50%",
+          "detail": "Agreed UX and accessibility scores.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Content audit",
+          "blurb": "400+ pages",
+          "detail": "Restructured using real analytics data.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-3",
+          "_type": "feature",
+          "name": "Team",
+          "blurb": "Five people",
+          "detail": "Cross-functional team under my lead.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "lagos-innovates": {
+      "name": "Lagos Innovates programme sites",
+      "group": "yoke",
+      "order": 12,
+      "category": "product",
+      "hidden": false,
+      "tag": "State government",
+      "roleLabel": "Lead Project Manager",
+      "period": "2026",
+      "summary": "3 live programme sites",
+      "status": "active",
+      "link": "https://ekoai-academy.lagosinnovates.ng/talent-development-programme-2026",
+      "stack": [
+        "Public sector",
+        "Registration",
+        "Content management"
+      ],
+      "coverAlt": "The Talent Development Programme, EkoAI Academy, and Female Founders & Funders sites",
+      "tagline": "Programme sites for the Lagos State Employment Trust Fund that explain, register, and stay current.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "The Lagos State Employment Trust Fund (LSETF) runs Lagos Innovates. Each new programme needed its own site to explain eligibility, take registrations, and be updated by the LSETF team without developers."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Talent Development Programme 2026",
+          "body": "Seven courses across training hubs in Lagos, with a map of locations, eligibility details, and a lead-capture form the team can switch on when applications open."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "EkoAI Academy",
+          "body": "A programme to give 10,000 young Lagosians free AI skills, with a trainee journey and an invitation-only journey for certified trainers."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Female Founders & Funders III",
+          "body": "A single programme page covering structure, impact, eligibility, FAQs, and application routing."
+        },
+        {
+          "_key": "section-4",
+          "_type": "section",
+          "label": "My role",
+          "body": "I wrote the proposals, scoped the work, managed feedback from LSETF and its partners, and ran delivery through launch, including a security review of the live sites. Every page is editable by the client."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Live sites",
+          "blurb": "3 programmes",
+          "detail": "Talent Development, EkoAI Academy, and Female Founders & Funders.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Registration",
+          "blurb": "Trainees and trainers",
+          "detail": "Separate journeys, with invitation-only trainer access.",
           "kind": "feature"
         },
         {
           "_key": "feature-2",
           "_type": "feature",
-          "name": "Delivery timelines",
-          "blurb": "10% shorter",
-          "detail": "Reduced average timelines across three concurrent enterprise projects.",
+          "name": "Self-service",
+          "blurb": "Client-editable",
+          "detail": "LSETF updates content without developers.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "ekiti-lmis": {
+      "name": "Ekiti State LMIS",
+      "group": "yoke",
+      "order": 13,
+      "category": "product",
+      "hidden": false,
+      "tag": "State government",
+      "roleLabel": "Transformation Lead",
+      "period": "January 2025 to Present",
+      "summary": "1,400+ job seekers registered",
+      "status": "active",
+      "link": "https://eklmis.ek.gov.ng",
+      "stack": [
+        "Public sector",
+        "Labour market",
+        "Rollout"
+      ],
+      "coverAlt": "The Ekiti State Labour Market Information System homepage",
+      "tagline": "Giving Ekiti State a live picture of its labour market, then putting it to work.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "Who is looking for work in Ekiti, which skills do employers need, and where should training go? Nobody had a reliable answer."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Platform",
+          "body": "The Labour Market Information System connects job seekers, employers, training centres, counsellors, and government through five portals, from a CV builder and job board to vacancy posting, applicant tracking, and an admin console with identity verification."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Delivery",
+          "body": "Built between January and August 2025 and formally accepted, with all seven contractual deliverables signed off, including user manuals for every type of user."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Rollout",
+          "body": "As Transformation Lead I wrote the mobilisation blueprint for putting the system to work: an eight-week phase targeting 30+ employer engagements, 100+ verified candidates, 50+ matches, and 5+ placements. At handover, 1,423 job seekers had registered and 13 organisations were onboarded."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Job seekers",
+          "blurb": "1,423 registered",
+          "detail": "At handover.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Deliverables",
+          "blurb": "7 of 7 accepted",
+          "detail": "Platform, manuals, admin guides, and support.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Portals",
+          "blurb": "Five user types",
+          "detail": "Job seekers, employers, training centres, counsellors, admin.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-3",
+          "_type": "feature",
+          "name": "Rollout plan",
+          "blurb": "8 weeks",
+          "detail": "Targets for engagements, matches, and placements.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "imperium-utilities": {
+      "name": "Imperium Utilities",
+      "group": "yoke",
+      "order": 14,
+      "category": "product",
+      "hidden": false,
+      "tag": "Energy",
+      "roleLabel": "Product and Delivery Lead",
+      "period": "April 2024 to Present",
+      "summary": "8 features live, 8 in testing",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Energy",
+        "Operations",
+        "ERP"
+      ],
+      "coverAlt": "The Imperium Utilities logo",
+      "tagline": "Bringing a power producer's operations out of manual processes and into one system.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Problem",
+          "body": "An independent power producer ran generation, distribution, and maintenance on manual processes, with data captured in pieces that did not add up."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Product",
+          "body": "Imperium brings six operational areas into one system: generation, distribution, maintenance, customers, suppliers, and personnel."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Progress",
+          "body": "By mid-2026, eight features were live, including asset management, an anonymous health and safety reporting channel, distribution dashboards, and bulk asset import. Eight more, including generation dashboards and maintenance analytics, were in user testing, putting 80% of the high-priority roadmap delivered or in testing."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "My role",
+          "body": "I own the 30-item roadmap, run scoping and user testing with the client, and coordinate the engineering team."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Live",
+          "blurb": "8 features",
+          "detail": "Asset management, safety reporting, distribution dashboards, and more.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "In testing",
+          "blurb": "8 features",
+          "detail": "Generation dashboards and maintenance analytics among them.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Roadmap",
+          "blurb": "80% of high priority",
+          "detail": "Delivered or in user testing.",
           "kind": "outcome"
         }
       ]
+    },
+    "kalife-travels": {
+      "name": "Kalife Travels",
+      "group": "yoke",
+      "order": 15,
+      "category": "product",
+      "hidden": false,
+      "tag": "Travel",
+      "roleLabel": "Lead Project Manager",
+      "period": "2026",
+      "summary": "Launching October 2026",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Travel",
+        "Bookings",
+        "Pricing"
+      ],
+      "coverAlt": "The Kalife Travel logo",
+      "tagline": "Rebuilding a 50-year-old travel agency's flight booking after two failed attempts.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "Two earlier rebuilds had failed. Why? The obvious answer was the software. The real answer was underneath it."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "The root cause",
+          "body": "Kalife sold flights through an entry-level airline booking connection that only showed public fares and was being shut down in July 2026. No rebuild on top of it could work. I diagnosed the limit, wrote the proposal to move to an enterprise tier, and planned a phased rebuild: a new booking platform plus a back office where Kalife sets its own markups and airline commissions."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "What is built",
+          "body": "Multi-carrier flight search, fare and baggage details, multi-city booking, payments, ticketing, booking management, and a tour catalogue. 25 airline commission rules are set up and back-office testing has passed."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Next",
+          "body": "User acceptance testing and staff training, ahead of an October 2026 launch."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Diagnosis",
+          "blurb": "Booking-tier limit",
+          "detail": "Found why earlier rebuilds could not work.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Back office",
+          "blurb": "25 commission rules",
+          "detail": "Kalife controls its own pricing.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Launch",
+          "blurb": "October 2026",
+          "detail": "After acceptance testing and training.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "tracta": {
+      "name": "TractaIQ",
+      "group": "yoke",
+      "order": 16,
+      "category": "product",
+      "hidden": false,
+      "tag": "Field operations",
+      "roleLabel": "Product Owner",
+      "period": "2025 to Present",
+      "summary": "Diagnosed first, then built",
+      "status": "active",
+      "link": "https://tractaiq.com",
+      "stack": [
+        "Field operations",
+        "Workflow design",
+        "Offline-first"
+      ],
+      "coverAlt": "The TractaIQ product site",
+      "tagline": "From site evidence to approved reports, without the paperwork chase.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "Why did it take so long for field work to get approved and paid? Before building anything, I ran an operations diagnostic at Acutech, a telecom site contractor with about 25 field engineers across three service lines. I mapped an 18-stage project pipeline and found approvals taking over a week against an intended one to two days, with 17 of 25 engineers needing active supervision."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Product",
+          "body": "TractaIQ turns that pipeline into a workflow: engineers capture site evidence on their phones, even offline, reviewers approve it in one queue, and client-ready acceptance reports come out without chasing paperwork."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "My role",
+          "body": "I own the product: the diagnostic, the workflow design, and the build priorities."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Pipeline",
+          "blurb": "18 stages mapped",
+          "detail": "From the Acutech operations diagnostic.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Approvals",
+          "blurb": "1+ week found",
+          "detail": "Against an intended one to two days.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Field capture",
+          "blurb": "Works offline",
+          "detail": "Evidence captured on site, reviewed in one queue.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "atia": {
+      "name": "ATIA",
+      "group": "yoke",
+      "order": 17,
+      "category": "product",
+      "hidden": false,
+      "tag": "Investment platform",
+      "roleLabel": "Product Manager",
+      "period": "October to December 2025",
+      "summary": "MVP in six weeks, accepted",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Marketplace",
+        "Investors",
+        "MVP"
+      ],
+      "coverAlt": "The ATIA logo",
+      "tagline": "Connecting African businesses with global investors, from first sign-up to first conversation.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "ATIA, the Africa Trade & Investment Accelerator, connects African businesses with global investors."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What we shipped",
+          "body": "An MVP in about six weeks: business and investor registration, an admin approval flow, search and expressions of interest, direct messaging that unlocks after interest, document sharing, and email notifications."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Result",
+          "body": "Delivered between 22 October and 3 December 2025 and formally accepted at handover. Payments and advanced search are scoped as the next phase."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Build time",
+          "blurb": "About 6 weeks",
+          "detail": "From kickoff to accepted MVP.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Two sides",
+          "blurb": "Businesses and investors",
+          "detail": "With an admin approval flow in between.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Messaging",
+          "blurb": "Unlocks on interest",
+          "detail": "Conversations start once an investor opts in.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "sugar-guest-pro": {
+      "name": "Sugar Guest Pro",
+      "group": "yoke",
+      "order": 18,
+      "category": "product",
+      "hidden": false,
+      "tag": "Event software",
+      "roleLabel": "Product Manager",
+      "period": "June 2025 to Present",
+      "summary": "Running lean · platform risk lesson",
+      "status": "active",
+      "link": "https://sugar.ng",
+      "coverAlt": "The Sugar Guest Pro homepage",
+      "stack": [
+        "Events",
+        "WhatsApp",
+        "Validation"
+      ],
+      "tagline": "Guest lists and check-ins for event planners, and what WhatsApp taught me about platform risk.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "Event planners manage guest lists and check-ins across spreadsheets and chats. Would a WhatsApp-based flow fit how they actually work, or just add another tool?"
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What I did",
+          "body": "I interviewed planners and ran quick WhatsApp experiments to validate the key workflows before committing to a bigger build."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Now",
+          "body": "The product is in keep-the-lights-on mode: I keep it running while focus sits elsewhere, with more attention planned later."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Lesson",
+          "body": "Message delivery on WhatsApp is less reliable than it looks. Meta's rules and mobile carriers both affect whether a message arrives, and a product built on them absorbs that risk. It now shapes how the next phase will be planned."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Validation",
+          "blurb": "Planner interviews",
+          "detail": "Plus WhatsApp workflow experiments.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Status",
+          "blurb": "Keep the lights on",
+          "detail": "Running, with more investment later.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Lesson",
+          "blurb": "Platform risk",
+          "detail": "Meta and carriers decide delivery.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "mikano": {
+      "group": "yoke",
+      "order": 91,
+      "hidden": true
     },
     "ekio": {
       "name": "Ekio",
@@ -405,7 +1189,7 @@
       "period": "2026 to Present",
       "category": "product",
       "status": "discovery",
-      "order": 14,
+      "order": 92,
       "summary": "In discovery",
       "stack": [
         "Customer discovery",
@@ -433,7 +1217,1076 @@
           "body": "The work is focused on understanding customer needs and defining the product direction. There are no launch or adoption outcomes to report yet."
         }
       ],
+      "features": [],
+      "group": "yoke",
+      "hidden": true
+    },
+    "us-money-transfer": {
+      "name": "US money-transfer app",
+      "group": "orpheez",
+      "order": 20,
+      "category": "product",
+      "hidden": false,
+      "tag": "Fintech · under NDA",
+      "roleLabel": "Project & Product Manager",
+      "period": "September 2025 to Present",
+      "summary": "Client under NDA",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Fintech",
+        "Delivery management",
+        "Stakeholders"
+      ],
+      "tagline": "Running delivery of a cross-border money-transfer app. The client is under NDA.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "A cross-border money-transfer app for a US client, delivered through Orpheez. The client and product are under NDA, so this page covers how the work is run, not what it contains."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "My role",
+          "body": "I lead day-to-day execution: timeline, resourcing, risks, and a weekly steering committee with the client, a design lead, and an engineering lead."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Phases",
+          "body": "The project charter set an eight-month window in three phases: design approval, a working core product, then approved native apps and a stable production release. Phase 0 design was signed off in January 2026 and the core build is under way."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Artefacts",
+          "body": "A product specification, working prototypes of the core flows, and a handoff knowledge base for the team."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Window",
+          "blurb": "8 months",
+          "detail": "Set in the signed project charter.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Phases",
+          "blurb": "3",
+          "detail": "Design, core product, native apps.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Design sign-off",
+          "blurb": "January 2026",
+          "detail": "Phase 0 approved by the client.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "orpheez-studio": {
+      "name": "Orpheez studio work",
+      "group": "orpheez",
+      "order": 21,
+      "category": "product",
+      "hidden": false,
+      "tag": "Design & product studio",
+      "roleLabel": "Design Manager, then Project & Product Manager",
+      "period": "2021 to Present",
+      "summary": "Studio clients",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Brand",
+        "Web",
+        "Studio"
+      ],
+      "tagline": "Design and product work for the studio's clients.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "Orpheez is a design and product studio, now a Yoke Solutions brand. I was Design Manager from 2021 to 2023, working across 20+ design projects, and returned in 2025 as Project & Product Manager."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Recent clients",
+          "body": "Recent studio engagements include Roamworks Africa (brand identity and website), Sciart Finance (website design and build), Corletta Energy (website research, strategy, and direction), and CIW (visual direction for a fashion brand)."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Design projects",
+          "blurb": "20+",
+          "detail": "As Design Manager, 2021 to 2023.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Clients",
+          "blurb": "Roamworks, Sciart, Corletta, CIW",
+          "detail": "Recent studio engagements.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "soleaa": {
+      "name": "Soleaa",
+      "group": "freelance",
+      "order": 30,
+      "category": "product",
+      "hidden": false,
+      "tag": "Creator app",
+      "roleLabel": "Project Manager",
+      "period": "2026",
+      "summary": "Live on the App Store",
+      "status": "active",
+      "link": "https://apps.apple.com/app/soleaa/id6777121625",
+      "stack": [
+        "Creator economy",
+        "Mobile app",
+        "Product requirements"
+      ],
+      "coverAlt": "Soleaa's App Store screenshots: dashboard, weekly plan, idea bank, media kit, and calendar",
+      "tagline": "One weekly routine for content creators, instead of five different apps.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Problem",
+          "body": "Content creators run their business across five or more apps: notes for ideas, calendars for posting, spreadsheets for brand deals, and a separate media kit."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Product",
+          "body": "Soleaa replaces that with one weekly routine of 25 to 50 minutes: an idea bank with quick capture, a content calendar with posting streaks, a brand-deal pipeline, and a shareable media kit."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "My work",
+          "body": "As project manager I took it from requirements to launch: five modules and the core user flows, from Monday planning and capturing ideas to logging posts and managing deals."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Status",
+          "body": "Live on the App Store since June 2026."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Modules",
+          "blurb": "5",
+          "detail": "Dashboard, idea bank, deal pipeline, media kit, calendar.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Routine",
+          "blurb": "25 to 50 minutes a week",
+          "detail": "The whole creator business in one place.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Launch",
+          "blurb": "App Store, June 2026",
+          "detail": "Live and updating.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "abys-greenhouse": {
+      "name": "Abys Greenhouse",
+      "group": "freelance",
+      "order": 31,
+      "category": "product",
+      "hidden": false,
+      "tag": "Brand & website",
+      "roleLabel": "Project Manager & co-builder",
+      "period": "2026",
+      "summary": "Identity, website & client guide",
+      "status": "active",
+      "link": "https://abysgreenhouse.com",
+      "stack": [
+        "Brand identity",
+        "Website",
+        "Client handover"
+      ],
+      "coverAlt": "The Abys Greenhouse homepage",
+      "tagline": "A brand and website for an ornamental plant grower serving export markets.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "Abys Greenhouse grows ornamental plants at scale for international markets from Nigeria, and needed a brand and website to match."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Identity",
+          "body": "A full visual identity: logo, colour and type system, brand guidelines, stationery, and packaging for eight product lines."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Website",
+          "body": "A website redesign, followed by mobile fixes, a richer About page, and a product image lightbox."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Handover",
+          "body": "A 19-slide guide so the client's team can log in, edit, and publish on their own."
+        },
+        {
+          "_key": "section-4",
+          "_type": "section",
+          "label": "My role",
+          "body": "I managed the project from brief to handover and co-built the website."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Identity",
+          "blurb": "Full system",
+          "detail": "Logo, colour, type, guidelines, and packaging.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Website",
+          "blurb": "Redesigned",
+          "detail": "Plus mobile and content improvements.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Client guide",
+          "blurb": "19 slides",
+          "detail": "The team runs the site themselves.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "sunset-haven": {
+      "name": "Sunset Haven",
+      "group": "freelance",
+      "order": 32,
+      "category": "product",
+      "hidden": false,
+      "tag": "Resort",
+      "roleLabel": "Designer & builder",
+      "period": "2025",
+      "summary": "Resort site & back office",
+      "status": "active",
+      "link": "https://www.sunsethaven.com.ng",
+      "stack": [
+        "Hospitality",
+        "Bookings",
+        "Content management"
+      ],
+      "coverAlt": "The Sunset Haven homepage",
+      "tagline": "A resort website with the back office to run it.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Problem",
+          "body": "A resort on Tarkwa Bay needed a presence as polished as its experience, and a way for the team to run it without a developer."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What I did",
+          "body": "I built the public site and a full back office: tiered event pricing with online payment, team roles from viewer to super admin, and a content studio for the gallery, events, enquiries, and testimonials."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Outcome",
+          "body": "Guests can browse and book events, and the team manages content and pricing themselves, with visitor behaviour tracked on both the site and the back office."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Events & payments",
+          "blurb": "Tiered pricing",
+          "detail": "Online payment for event bookings.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Team roles",
+          "blurb": "Viewer to super admin",
+          "detail": "The right access for each person.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Content studio",
+          "blurb": "Gallery, events, testimonials",
+          "detail": "Managed by the resort team.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "morph-ops": {
+      "name": "Morph Ops Control Room",
+      "group": "community",
+      "order": 40,
+      "category": "tool",
+      "hidden": false,
+      "tag": "Programme operations",
+      "roleLabel": "Programme Lead & builder",
+      "period": "2025 to Present",
+      "summary": "Live ops app for a teen programme",
+      "status": "active",
+      "link": "https://tnx-morph-fob.vercel.app",
+      "coverAlt": "The Morph Ops Control Room sign-in page",
+      "stack": [
+        "Programme operations",
+        "Mobile-first",
+        "Safeguarding"
+      ],
+      "tagline": "Running a teen product programme, and building the app that runs it.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "Morph by TNX Solve is a six-week build sprint for teenagers: product thinking, design, an AI and no-code MVP, and a live pitch at Demo Day. As Programme Lead I run the programme: sessions, community managers, participant communications, escalations, Demo Day, and safeguarding as the Designated Safeguarding Lead."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Problem",
+          "body": "The programme ran on a fragile Excel control sheet. The team flew blind, and at-risk students were caught too late."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "What I built",
+          "body": "A mobile-first app that replaced the sheet. It flags at-risk participants early, gives admins, facilitators, and community managers their own tasks and reviews, sends daily reminders, and keeps a record of every change. Participants submit work and sign in to sessions through public links, with no accounts needed. It now covers eight areas, from recruitment and sessions to partnerships and alumni."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Outcome",
+          "body": "One current source of truth for three roles, so the team steps in before it is too late. The next goal is a programme that runs without depending on me."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "At-risk flags",
+          "blurb": "Caught early",
+          "detail": "The team intervenes before it is too late.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Roles",
+          "blurb": "Admin, facilitator, CM",
+          "detail": "Each with their own tasks, reviews, and reminders.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "No accounts",
+          "blurb": "Public links",
+          "detail": "Participants submit and sign in without friction.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-3",
+          "_type": "feature",
+          "name": "Coverage",
+          "blurb": "8 areas",
+          "detail": "Recruitment to alumni.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "impactops": {
+      "name": "Adlai ImpactOps",
+      "group": "community",
+      "order": 42,
+      "category": "tool",
+      "hidden": false,
+      "tag": "Nonprofit operations",
+      "roleLabel": "Board member & builder",
+      "period": "2025 to 2026",
+      "summary": "100+ beneficiaries, one place",
+      "status": "active",
+      "link": "https://adlai-heroes-impact-os.vercel.app",
+      "coverAlt": "The Adlai ImpactOps homepage",
+      "stack": [
+        "Nonprofit",
+        "Records",
+        "Access control"
+      ],
+      "tagline": "Programme operations for a foundation: structured, secure, and accountable.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "I worked with Adlai Heroes Foundation on programme coordination and evaluation before joining its board in January 2026."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Problem",
+          "body": "The foundation's impact was real, but its operations lived in scattered records that nobody could query or trust."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "What I built",
+          "body": "A web app with structured records, sign-in and permissions so the right people see the right records, and a history of who changed what, plus a user guide for the team."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Outcome",
+          "body": "The field team now tracks 100+ beneficiaries across 5+ programmes in one place, with no spreadsheets, and it can grow with new programmes."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Records",
+          "blurb": "Structured",
+          "detail": "Replacing scattered programme data.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Access",
+          "blurb": "Right people, right records",
+          "detail": "Sign-in and permissions by default.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Accountability",
+          "blurb": "Change history",
+          "detail": "Who changed what, and when.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "myfarmbase": {
+      "name": "MyFarmbase Africa",
+      "group": "community",
+      "order": 44,
+      "category": "product",
+      "hidden": false,
+      "tag": "EdTech & agribusiness",
+      "roleLabel": "Chief Operating Officer",
+      "period": "June 2019 to November 2021",
+      "summary": "9,000+ active users",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Operations",
+        "EdTech",
+        "Agribusiness"
+      ],
+      "tagline": "Where the operator side of my work started.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "MyFarmbase Africa trained people to start and run agribusinesses across West Africa. As COO I ran operations from the start."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "Scale",
+          "body": "We grew to 9,000+ active users and supported the launch of 200+ profitable agribusinesses."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Operations",
+          "body": "Training cohorts ran on manual processes. I automated them, which cut administrative overhead by more than 50%."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "What it taught me",
+          "body": "Understand the people, map the process, and find where the system breaks. I still work that way."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Active users",
+          "blurb": "9,000+",
+          "detail": "Across West Africa.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Agribusinesses",
+          "blurb": "200+ launched",
+          "detail": "Profitable businesses supported.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Admin overhead",
+          "blurb": "50%+ lower",
+          "detail": "Through automated cohort operations.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "qtrack": {
+      "summary": "500+ users · discontinued",
+      "status": "discontinued",
+      "order": 19,
+      "tag": "YSL product · validation",
+      "tagline": "Knowing when to stop: what 500+ users taught me about a WhatsApp expense tracker.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "Could tracking expenses on WhatsApp make the habit easier to keep? QTrack was a Yoke Solutions (YSL) product built to find out."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What I tested",
+          "body": "I validated the product with 500+ users, looking at what it would take for people to keep using it, not just try it."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Getting to the root",
+          "body": "Sustained use depended on a big change in behaviour and on bank connections that were not viable. The early sign-ups did not answer either question."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "Decision",
+          "body": "I recommended stopping, and we discontinued it. The lesson: a user count is not validation until you know what keeps people coming back."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Early adoption",
+          "blurb": "500+ users",
+          "detail": "Tested a WhatsApp expense-tracking product with real users.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Investment decision",
+          "blurb": "Discontinued",
+          "detail": "Stopped the initiative after identifying behavioural and bank-API dependencies.",
+          "kind": "outcome"
+        }
+      ],
+      "group": "yoke",
+      "hidden": false,
+      "stack": [
+        "WhatsApp",
+        "Validation",
+        "0 to 1"
+      ],
+      "roleLabel": "Product Owner",
+      "period": "March to September 2025"
+    },
+    "claude-skills": {
+      "name": "Prototyping with AI",
+      "group": "side",
+      "order": 54,
+      "category": "product",
+      "hidden": false,
+      "tag": "Product practice",
+      "roleLabel": "Product Lead",
+      "period": "2025 to Present",
+      "summary": "Answer product questions faster",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Prototyping",
+        "User testing",
+        "AI"
+      ],
+      "tagline": "How I test product ideas in working software before a team commits.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "What is the fastest way to find out if an idea is right? Often it is to build a rough version and put it in front of real people."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "How I do it",
+          "body": "I use AI coding agents to turn an idea into something people can click in days, not weeks. I have set them up to keep context between sessions, hand work over cleanly to engineers, and check quality and security as they go."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Where it shows",
+          "body": "It is how I prototyped QShop's multi-branch inventory and checkout ideas, built the Morph Ops app, and shaped the Lagos Innovates programme sites and this portfolio, working with engineers on the parts that need them."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "What it means for teams",
+          "body": "Fewer debates about what we think users want, and more evidence from what they actually do, before engineering time is committed."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Speed",
+          "blurb": "Days, not weeks",
+          "detail": "From idea to something people can use.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Evidence",
+          "blurb": "Tested with people",
+          "detail": "Decisions made on what users do.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Handover",
+          "blurb": "Clean for engineers",
+          "detail": "Prototypes become clear specs.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "jarvis": {
+      "group": "side",
+      "order": 90,
+      "hidden": true
+    },
+    "fof-ops": {
+      "name": "FOF Ops",
+      "group": "community",
+      "order": 41,
+      "category": "product",
+      "hidden": false,
+      "tag": "Church programme",
+      "roleLabel": "Digital transformation lead",
+      "period": "2026",
+      "summary": "Leading a church's move to digital",
+      "status": "active",
+      "link": "https://for-schedule-maker.vercel.app/login",
+      "stack": [
+        "Programme design",
+        "Community",
+        "Digital transformation"
+      ],
+      "coverAlt": "The FOF Ops sign-in page",
+      "tagline": "Making sure no one who joins the church's foundation programme falls through the cracks.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Context",
+          "body": "Foundation of Faith (FOF) is my church's programme for people joining the church. I am leading the move from paper and spreadsheets to one system."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "The question",
+          "body": "How do you make sure nobody who starts the programme quietly drops out, and that everyone who finishes finds a place to serve?"
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Rules first",
+          "body": "Before building, I agreed the programme rules with church leadership: what counts as completing, when someone needs attention, what each support person records every week, and how new members join a church department."
+        },
+        {
+          "_key": "section-3",
+          "_type": "section",
+          "label": "What it does",
+          "body": "Participants see their week, duties, and updates. Support people track attendance, group meetings, and follow-ups for their group. Leaders see who needs attention, who has completed, and who has joined a department."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Rules",
+          "blurb": "Agreed with leadership",
+          "detail": "Completion, attention, and weekly records.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Three sides",
+          "blurb": "Participants, supports, leaders",
+          "detail": "Each sees what they need.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Follow-through",
+          "blurb": "Into departments",
+          "detail": "Tracked from choice to joined.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "adlai-website": {
+      "name": "Adlai Heroes Foundation website",
+      "group": "community",
+      "order": 43,
+      "category": "product",
+      "hidden": false,
+      "tag": "Nonprofit",
+      "roleLabel": "Board member & builder",
+      "period": "2026",
+      "summary": "80% lower website running costs",
+      "status": "active",
+      "link": "https://www.adlaiheroesfoundation.com.ng",
+      "stack": [
+        "Nonprofit",
+        "Website",
+        "Cost"
+      ],
+      "coverAlt": "The Adlai Heroes Foundation homepage",
+      "tagline": "A website the foundation can run itself, for a fraction of the cost.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "Why was a small foundation spending so much to keep its website running?"
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What I did",
+          "body": "I rebuilt the site so the team can update programmes, blog posts, volunteering, and donations themselves, and wrote a management guide for them."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Outcome",
+          "body": "Website management costs dropped by about 80%."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Running costs",
+          "blurb": "About 80% lower",
+          "detail": "For website management.",
+          "kind": "outcome"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Self-service",
+          "blurb": "Team-managed",
+          "detail": "Programmes, blog, volunteering, donations.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Guide",
+          "blurb": "Management guide",
+          "detail": "So the team does not depend on me.",
+          "kind": "feature"
+        }
+      ]
+    },
+    "nepa-trackr": {
+      "name": "NEPA Trackr",
+      "group": "side",
+      "order": 50,
+      "category": "product",
+      "hidden": false,
+      "tag": "Power supply",
+      "roleLabel": "Builder",
+      "period": "June 2026",
+      "summary": "Evidence for a power complaint",
+      "status": "active",
+      "link": "https://nepa-trackr.vercel.app",
+      "stack": [
+        "Utilities",
+        "Data",
+        "Mobile app"
+      ],
+      "coverAlt": "NEPA Trackr's one-tap power log",
+      "tagline": "Turning a daily frustration with power supply into evidence.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "How often does my street in Ikorodu actually have power? Everyone had a feeling. Nobody had the numbers to take to the electricity company."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What I built",
+          "body": "A one-tap app to log when power goes off and comes back, a 24-hour timeline of supply, and an analysis that finds patterns and drafts points for a formal complaint. It installs on a phone like an app."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Why it matters",
+          "body": "A complaint backed by a log of every outage is much harder to ignore than one based on memory."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Logging",
+          "blurb": "One tap",
+          "detail": "Power off, power back.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Timeline",
+          "blurb": "24-hour view",
+          "detail": "See supply patterns at a glance.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Analysis",
+          "blurb": "Complaint-ready",
+          "detail": "Patterns and talking points for a formal letter.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "budget-tracker": {
+      "name": "Budget Track",
+      "group": "side",
+      "order": 51,
+      "category": "product",
+      "hidden": false,
+      "tag": "Personal finance",
+      "roleLabel": "Builder",
+      "period": "September 2026",
+      "summary": "Bank alerts to budget, automatically",
+      "status": "active",
+      "link": "https://budget-track-sooty.vercel.app",
+      "stack": [
+        "Personal finance",
+        "Automation",
+        "Mobile-first"
+      ],
+      "coverAlt": "The Budget Track sign-in page",
+      "tagline": "A budget that keeps itself up to date.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "Why do budgets fall apart? Because typing in every transaction is tedious, so people stop."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What I built",
+          "body": "It reads my bank alert emails, records each transaction, and sorts it into budget pockets automatically, so I know when I am close to or over budget without typing anything in."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "Details",
+          "body": "Private to me, built for my phone, and careful never to count the same transaction twice."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Input",
+          "blurb": "Bank alert emails",
+          "detail": "No manual entry.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Sorting",
+          "blurb": "Automatic pockets",
+          "detail": "Each transaction lands in a budget.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Alerts",
+          "blurb": "Close to or over",
+          "detail": "I know before the month runs out.",
+          "kind": "outcome"
+        }
+      ]
+    },
+    "miracle-tracker": {
+      "name": "Miracle's tracker",
+      "group": "side",
+      "order": 52,
+      "category": "product",
+      "hidden": false,
+      "tag": "Family",
+      "roleLabel": "Builder",
+      "period": "July 2026",
+      "summary": "In memory of Miracle",
+      "status": "active",
+      "link": null,
+      "stack": [
+        "Family",
+        "Care",
+        "Mobile app"
+      ],
+      "tagline": "Built for my niece, Miracle.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "Why I built it",
+          "body": "My niece Miracle was born prematurely. While she was in care, our family needed a simple way to record her readings and see how she was doing over time, instead of scattered numbers."
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What it did",
+          "body": "A phone-first app anyone in the family could open: quick entry for her urine output, temperature, and nappies, with output worked out per kilogram per hour and charts that showed the trend."
+        },
+        {
+          "_key": "section-2",
+          "_type": "section",
+          "label": "In memory",
+          "body": "Miracle lived for five days. I will always remember and cherish her. May she rest in peace."
+        }
+      ],
       "features": []
+    },
+    "jobsearch": {
+      "name": "Job Search Control Center",
+      "group": "side",
+      "order": 53,
+      "category": "product",
+      "hidden": true,
+      "tag": "Personal productivity",
+      "roleLabel": "Builder",
+      "period": "July 2026",
+      "summary": "My job search, run like a product",
+      "status": "active",
+      "link": "https://jobsearch-117.vercel.app",
+      "stack": [
+        "Productivity",
+        "Interview practice",
+        "Mobile-first"
+      ],
+      "coverAlt": "The Job Search Control Center sign-in page",
+      "tagline": "What if I ran my own job search like a product?",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "section",
+          "label": "The question",
+          "body": "What would a job search look like if I ran it like a product: a clear pipeline, regular practice, and nothing forgotten?"
+        },
+        {
+          "_key": "section-1",
+          "_type": "section",
+          "label": "What I built",
+          "body": "A private workspace for applications and documents, a bank of interview stories to practise with, training plans, and reminders, installable on my phone."
+        }
+      ],
+      "features": [
+        {
+          "_key": "feature-0",
+          "_type": "feature",
+          "name": "Pipeline",
+          "blurb": "Applications and documents",
+          "detail": "All in one private place.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-1",
+          "_type": "feature",
+          "name": "Practice",
+          "blurb": "Story bank",
+          "detail": "Interview stories ready to use.",
+          "kind": "feature"
+        },
+        {
+          "_key": "feature-2",
+          "_type": "feature",
+          "name": "Habits",
+          "blurb": "Plans and reminders",
+          "detail": "Keeps the search moving.",
+          "kind": "feature"
+        }
+      ]
     }
   }
 }
