@@ -1,17 +1,6 @@
 import { NextResponse } from "next/server";
 import { callNotifyScript } from "@/lib/notifyScript";
-
-/** Cloudflare Turnstile check; skipped when no secret is configured. */
-async function passesCaptcha(token: unknown, ip: string | null): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true;
-  if (typeof token !== "string" || !token) return false;
-  const form = new URLSearchParams({ secret, response: token });
-  if (ip) form.set("remoteip", ip);
-  const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body: form });
-  const data = await res.json().catch(() => ({}));
-  return data.success === true;
-}
+import { clientIp, passesCaptcha } from "@/lib/captcha";
 
 /** "Get Notified" form → adds the name + email to the subscribers Google Sheet. */
 export async function POST(req: Request) {
@@ -26,7 +15,7 @@ export async function POST(req: Request) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
     return NextResponse.json({ ok: false, error: "Please enter a valid email address." }, { status: 400 });
   }
-  const ip = req.headers.get("cf-connecting-ip") || req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null;
+  const ip = clientIp(req);
   if (!(await passesCaptcha(body.captcha, ip))) {
     return NextResponse.json({ ok: false, error: "Please complete the check and try again." }, { status: 400 });
   }

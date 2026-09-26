@@ -1843,7 +1843,7 @@
       "period": "March to September 2025"
     },
     "claude-skills": {
-      "name": "Prototyping with AI",
+      "name": "My AI Workflow",
       "group": "side",
       "order": 54,
       "category": "product",
@@ -1851,7 +1851,7 @@
       "tag": "Product practice",
       "roleLabel": "Product Lead",
       "period": "2025 to Present",
-      "summary": "Answer product questions faster",
+      "summary": "Download my skills",
       "status": "active",
       "link": null,
       "stack": [
@@ -1871,7 +1871,9 @@
           "_key": "section-1",
           "_type": "section",
           "label": "How I do it",
-          "body": "I use AI coding agents to turn an idea into something people can click in days, not weeks. I have set them up to keep context between sessions, hand work over cleanly to engineers, and check quality and security as they go."
+          "body": "I do a lot of upfront research before I build anything, so I know exactly which question the prototype has to answer. Then I use AI coding agents to turn the idea into something people can click in days, not weeks. I have set them up to keep context between sessions, hand work over cleanly to engineers, and check quality and security as they go.",
+          "linkLabel": "Download my skills",
+          "linkHref": "/skills"
         },
         {
           "_key": "section-2",
@@ -2199,7 +2201,7 @@
       "period": "July 2026",
       "summary": "In memory of Miracle",
       "status": "active",
-      "link": null,
+      "link": "https://miracle-tracker.vercel.app/",
       "stack": [
         "Family",
         "Care",

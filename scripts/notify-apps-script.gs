@@ -11,13 +11,16 @@
  * Tabs (created automatically on first use):
  *   Subscribers: email | joined | status (active/unsubscribed) | token | name
  *   Sent:        musing id | title | sent at | recipients
+ *   Downloads:   when | skill | slug | visitor (salted IP hash, not the IP) | alerted
  *
- * The site calls this from its server only (/api/subscribe, /api/musing-published),
+ * The site calls this from its server only (/api/subscribe, /api/musing-published,
+ * /api/skill-download),
  * so SECRET never reaches the browser. Unsubscribe links hit doGet directly.
  */
 
 const SUBSCRIBERS = "Subscribers";
 const SENT = "Sent";
+const DOWNLOADS = "Downloads";
 
 function sheet_(name, headers) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -41,6 +44,10 @@ function sent_() {
   return sheet_(SENT, ["musing id", "title", "sent at", "recipients"]);
 }
 
+function downloads_() {
+  return sheet_(DOWNLOADS, ["when", "skill", "slug", "visitor", "alerted"]);
+}
+
 function json_(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }
@@ -60,6 +67,7 @@ function doPost(e) {
   try {
     if (body.action === "subscribe") return json_(subscribe_(body));
     if (body.action === "notify") return json_(notify_(body));
+    if (body.action === "download") return json_(download_(body));
     return json_({ ok: false, error: "unknown-action" });
   } finally {
     lock.releaseLock();
@@ -111,6 +119,40 @@ function notifyOwner_(sh, name, email) {
     body: who + " just joined your musings list.\n\nActive subscribers: " + active + "\n\nSheet: " + SpreadsheetApp.getActiveSpreadsheet().getUrl(),
     name: "Portfolio",
   });
+}
+
+/**
+ * Log a skill download and email the owner, at most once per visitor, per skill,
+ * per day (so a bot or an eager visitor can't flood the inbox).
+ */
+function download_(body) {
+  const slug = String(body.slug || "").slice(0, 96);
+  const skill = String(body.skill || slug).slice(0, 120);
+  const visitor = String(body.visitor || "").slice(0, 32);
+  if (!slug) return { ok: false, error: "missing-fields" };
+  const sh = downloads_();
+  const today = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM-dd");
+  const seen = sh.getDataRange().getValues().slice(1).some((r) =>
+    r[2] === slug && r[3] === visitor && r[0] instanceof Date &&
+    Utilities.formatDate(r[0], Session.getScriptTimeZone(), "yyyy-MM-dd") === today
+  );
+  sh.appendRow([new Date(), skill, slug, visitor, seen ? "no" : "yes"]);
+  if (!seen) {
+    try {
+      const owner = PropertiesService.getScriptProperties().getProperty("OWNER_EMAIL");
+      if (owner) {
+        MailApp.sendEmail({
+          to: owner,
+          subject: "Someone downloaded " + skill,
+          body: "Someone just downloaded " + skill + " from your skills page.\n\nSheet: " + SpreadsheetApp.getActiveSpreadsheet().getUrl(),
+          name: "Portfolio",
+        });
+      }
+    } catch (err) {
+      console.error("download alert failed: " + err);
+    }
+  }
+  return { ok: true, alerted: !seen };
 }
 
 function notify_(body) {

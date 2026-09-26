@@ -41,7 +41,7 @@ declare global {
 const TURNSTILE_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 
 /** Load Cloudflare Turnstile once and render the check into `el`. */
-function useTurnstile(siteKey: string | undefined, active: boolean, onToken: (t: string) => void) {
+export function useTurnstile(siteKey: string | undefined, active: boolean, onToken: (t: string) => void) {
   const ref = useRef<HTMLDivElement>(null);
   const widget = useRef<string | null>(null);
   useEffect(() => {
@@ -93,8 +93,10 @@ export default function NotifyButton({
   style,
   signup,
   comingSoon,
+  eyebrow = "New musings",
 }: {
   label: string;
+  eyebrow?: string;
   className?: string;
   style?: React.CSSProperties;
   signup: { title: string; body: string; success: string } | null;
@@ -153,7 +155,7 @@ export default function NotifyButton({
         <ComingSoonModal
           open={open}
           onClose={close}
-          eyebrow="New musings"
+          eyebrow={eyebrow}
           title={state === "done" ? "You're on the list" : signup.title}
           body={state === "done" ? signup.success : signup.body}
         >

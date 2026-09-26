@@ -80,5 +80,22 @@
   "brandWorldNote": "Application mockups",
   "brandWorldTitle": "An idea you\ncan put your hands on.",
   "brandDeliveryLabel": "The identity, delivered",
-  "brandDeliveryTitle": "From the core idea\nto the smallest detail."
+  "brandDeliveryTitle": "From the core idea\nto the smallest detail.",
+
+  "skillsEyebrow": "Free to download · AI coding skills",
+  "skillsTitle": "Skills I use.\nFree to take.",
+  "skillsIntro": "The instructions I give my AI coding tools so they work the way I do: keep context between sessions, check security, write the docs. Take them, change them, make them yours.",
+  "skillsLibraryTitle": "The library",
+  "skillsDownloadLabel": "Download",
+  "skillsDownloadAllLabel": "↓ Download all",
+  "skillsAllTitle": "Download every skill",
+  "skillsAllBody": "One quick check to keep bots away, then your download starts.",
+  "skillsThanks": "Thanks for downloading. Each zip has a README with install steps.",
+  "skillsCookieText": "If a skill saved you time, leave a cookie 🍪",
+  "skillsTipLabel": "Leave a cookie →",
+  "skillsTipUrl": "",
+  "skillsNotifyLabel": "✉ Get notified",
+  "skillsNotifyTitle": "Stay in the loop",
+  "skillsNotifyBody": "One short email when I publish something new. Nothing else, and you can unsubscribe any time.",
+  "skillsFooterLinkLabel": "Download my skills"
 }

@@ -15,7 +15,7 @@ export const WORK_GROUPS = ["qshop", "yoke", "orpheez", "freelance", "community"
 export type WorkGroup = (typeof WORK_GROUPS)[number];
 export type ProjectPic = { src: string; width: number; height: number } | null;
 
-export type CmsSection = { label: string; body: string };
+export type CmsSection = { label: string; body: string; linkLabel?: string; linkHref?: string };
 export type CmsFeature = { name: string; blurb: string; detail: string; kind: "feature" | "outcome" };
 export type CmsProject = {
   summary?: string;
@@ -107,7 +107,7 @@ type SanityProject = {
   stack?: string[] | null;
   link?: string | null;
   order?: number;
-  sections?: { label?: string; body?: string }[];
+  sections?: { label?: string; body?: string; linkLabel?: string; linkHref?: string }[];
   features?: { name?: string; blurb?: string; detail?: string; kind?: string }[];
 };
 
@@ -115,7 +115,7 @@ const PROJECTS_QUERY = `*[_type == "project"] | order(order asc){
   "slug": slug.current,
   summary, status, group, hidden, coverAlt, name, tag, roleLabel, period, tagline, category, stack, link, order,
   "cover": cover{ "url": asset->url, "width": asset->metadata.dimensions.width, "height": asset->metadata.dimensions.height },
-  sections[]{ label, body },
+  sections[]{ label, body, linkLabel, linkHref },
   features[]{ name, blurb, detail, kind }
 }`;
 
@@ -142,7 +142,11 @@ async function getAllProjects(): Promise<CmsProject[]> {
       stack: Array.isArray(r.stack) ? r.stack : [],
       link: r.link || null,
       order: typeof r.order === "number" ? r.order : i + 1,
-      sections: (r.sections || []).map((s) => ({ label: (s.label || "").trim(), body: (s.body || "").trim() })),
+      sections: (r.sections || []).map((s) => ({
+        label: (s.label || "").trim(),
+        body: (s.body || "").trim(),
+        ...(s.linkHref?.trim() && s.linkLabel?.trim() ? { linkHref: s.linkHref.trim(), linkLabel: s.linkLabel.trim() } : {}),
+      })),
       features: (r.features || []).map((f) => ({
         name: (f.name || "").trim(),
         blurb: (f.blurb || "").trim(),

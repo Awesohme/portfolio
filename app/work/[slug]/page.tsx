@@ -80,6 +80,11 @@ export default async function SpecWorkPage({ params }: { params: Promise<{ slug:
               {sec.label}
             </h2>
             <p style={{ marginTop: 10 }}>{sec.body}</p>
+            {sec.linkHref && sec.linkLabel && (sec.linkHref.startsWith("/") ? (
+              <Link href={sec.linkHref} className="editorial-text-link section-link">{sec.linkLabel} <span aria-hidden="true">→</span></Link>
+            ) : (
+              <a href={sec.linkHref} target="_blank" rel="noopener noreferrer" className="editorial-text-link section-link">{sec.linkLabel} <span aria-hidden="true">↗</span></a>
+            ))}
           </div>
         </section>
       ))}

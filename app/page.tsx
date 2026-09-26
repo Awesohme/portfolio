@@ -188,7 +188,12 @@ export default async function SpecHome() {
           SIGNED · {s.fullName.toUpperCase()} · {s.jobTitle.toUpperCase()} · {s.email} · REV 2026.09
         </div>
         {s.show.socials && (
-          <SpecSocials className="spec-stamp-socials" github={s.githubUrl} linkedin={s.linkedinUrl} />
+          <SpecSocials
+            className="spec-stamp-socials"
+            github={s.githubUrl}
+            linkedin={s.linkedinUrl}
+            skills={{ href: "/skills", label: s.copy.skillsFooterLinkLabel }}
+          />
         )}
       </div>
       </main>

@@ -16,6 +16,7 @@ export const siteSettings = defineType({
     { name: "about", title: "About" },
     { name: "musings", title: "Musings page" },
     { name: "brands", title: "Brands pages" },
+    { name: "skills", title: "Skills page" },
     { name: "work", title: "Case study pages" },
     { name: "contact", title: "Contact & socials" },
     { name: "media", title: "Media" },
@@ -138,6 +139,24 @@ export const siteSettings = defineType({
     defineField({ name: "brandWorldTitle", title: "Case page: chapter 04 heading", type: "text", rows: 2, group: "brands", description: "Use a new line for the second line (shown in italics / lighter)." }),
     defineField({ name: "brandDeliveryLabel", title: "Case page: chapter 05 label", type: "string", group: "brands" }),
     defineField({ name: "brandDeliveryTitle", title: "Case page: chapter 05 heading", type: "text", rows: 2, group: "brands", description: "Each new line starts a new line on the page." }),
+
+    // Skills page (/skills)
+    defineField({ name: "skillsEyebrow", title: "Eyebrow", type: "string", group: "skills" }),
+    defineField({ name: "skillsTitle", title: "Heading", type: "text", rows: 2, description: "Use a new line for the second line (shown lighter).", group: "skills" }),
+    defineField({ name: "skillsIntro", title: "Intro", type: "text", rows: 3, group: "skills" }),
+    defineField({ name: "skillsLibraryTitle", title: "Section 01 title", type: "string", group: "skills" }),
+    defineField({ name: "skillsDownloadLabel", title: "Download button label", type: "string", group: "skills" }),
+    defineField({ name: "skillsDownloadAllLabel", title: "Download all button label", type: "string", group: "skills" }),
+    defineField({ name: "skillsAllTitle", title: "Download all popup title", type: "string", group: "skills" }),
+    defineField({ name: "skillsAllBody", title: "Download all popup text", type: "text", rows: 2, group: "skills" }),
+    defineField({ name: "skillsThanks", title: "Thank-you line after a download", type: "text", rows: 2, group: "skills" }),
+    defineField({ name: "skillsCookieText", title: "Cookie jar line", type: "string", group: "skills" }),
+    defineField({ name: "skillsTipLabel", title: "Cookie jar button label", type: "string", group: "skills" }),
+    defineField({ name: "skillsTipUrl", title: "Cookie jar link (tip page)", type: "string", description: "Paste your Paystack, Buy Me a Coffee or Ko-fi link. The cookie jar stays hidden while this is empty.", group: "skills" }),
+    defineField({ name: "skillsNotifyLabel", title: "Get notified button label", type: "string", group: "skills" }),
+    defineField({ name: "skillsNotifyTitle", title: "Sign-up popup title", type: "string", group: "skills" }),
+    defineField({ name: "skillsNotifyBody", title: "Sign-up popup text", type: "text", rows: 3, group: "skills" }),
+    defineField({ name: "skillsFooterLinkLabel", title: "Footer link (homepage and About)", type: "string", group: "skills" }),
 
     // Contact & socials
     defineField({ name: "fullName", title: "Full name", type: "string", group: "contact" }),

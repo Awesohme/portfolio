@@ -6,7 +6,7 @@ export default function GreyText({ text }: { text: string }) {
   return (
     <>
       {greyParts(text).map((p, i) =>
-        p.grey ? <span key={i} className="editorial-muted">{p.text}</span> : <Fragment key={i}>{p.text}</Fragment>
+        p.grey ? <span key={i} className="editorial-muted grey-inline">{p.text}</span> : <Fragment key={i}>{p.text}</Fragment>
       )}
     </>
   );

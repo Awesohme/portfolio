@@ -362,3 +362,34 @@
   .miracle-float-heart { opacity:.4;bottom:auto;top:calc(20% + var(--s) * 40%); }
   .miracle-petal { top:calc(var(--s) * 60%); }
 }
+
+/* Skills page (/skills): a grid of downloadable skills */
+.spec .editorial-skills h1.spec-name { max-width:20ch; }
+.spec-doc .skill-intro { margin-top:22px;max-width:52ch;color:#3b372e;line-height:1.6; }
+.spec-doc .skill-actions { display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-bottom:34px; }
+.spec-doc .skill-actions .spec-btn { border:0;cursor:pointer; }
+.spec-doc .skill-actions .spec-btn:disabled { opacity:.6;cursor:default; }
+.spec-doc .spec-sec p.skill-thanks { margin:0;font-size:13px;line-height:1.5;color:#55574f;min-height:1em; }
+.spec-doc .skill-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));border-top:1px solid var(--line); }
+.spec-doc .skill-card { display:flex;flex-direction:column;gap:12px;padding:28px 28px 30px 0;border-bottom:1px solid var(--line);scroll-margin-top:140px; }
+.spec-doc .skill-top { display:flex;justify-content:space-between;gap:12px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#62655c; }
+.spec-doc .skill-card h3 { font-size:24px;font-weight:500;line-height:1.2;letter-spacing:-.035em; }
+.spec-doc .spec-sec .skill-card p { margin:0;font-size:15px;line-height:1.65; }
+.spec-doc .skill-includes { font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#74766d; }
+.spec-doc .skill-download { margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:13px;border-bottom:1px solid var(--ink);transition:gap .2s; }
+.spec-doc .skill-download:hover { gap:14px; }
+.skill-check { margin-top:20px;display:flex;flex-direction:column;gap:12px; }
+.skill-check-go { width:100%;background:#16140f;color:#f4f2ec;border:1px solid #16140f;border-radius:3px;padding:12px 20px;font-size:13px;cursor:pointer; }
+.skill-check-go:disabled { opacity:.6;cursor:default; }
+.skill-check-error { font-size:13px;color:#b42318; }
+.spec-doc .skill-cookie { display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-bottom:28px;font-family:var(--font-grotesk);font-size:clamp(20px,2.2vw,28px);letter-spacing:-.02em; }
+@media (min-width:1001px) { .spec-doc .skill-card:nth-child(odd) { padding-right:40px; } }
+@media (max-width:760px) {
+ .spec-doc .skill-card { padding:22px 0 24px; }
+ .spec-doc .skill-card h3 { font-size:21px; }
+}
+/* grey [bracket] words carry on after the sentence, not on a new line */
+.spec .spec-doc h1.spec-name > span.grey-inline { display:inline; }
+/* optional link under a case-study section; footer socials wrap on small screens */
+.spec-doc .spec-sec .section-link { margin-top:22px;gap:14px; }
+.spec-doc .spec-socials { flex-wrap:wrap; }

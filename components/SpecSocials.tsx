@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 /**
  * Monochrome GitHub + LinkedIn icon links for the Spec (/v2) theme.
  * Black icons, inherit color from .spec; used in the footer and About.
+ * Optional `skills` adds a matching "Download my skills" link to /skills.
  */
 const GITHUB = "https://github.com/awesohme";
 const LINKEDIN = "https://www.linkedin.com/in/irojaholamide/";
@@ -9,10 +12,12 @@ export default function SpecSocials({
   className = "",
   github = GITHUB,
   linkedin = LINKEDIN,
+  skills,
 }: {
   className?: string;
   github?: string;
   linkedin?: string;
+  skills?: { href: string; label: string };
 }) {
   return (
     <div className={`spec-socials ${className}`}>
@@ -28,6 +33,16 @@ export default function SpecSocials({
         </svg>
         <span>GitHub</span>
       </a>
+      {skills && (
+        <Link href={skills.href}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span>{skills.label}</span>
+        </Link>
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { project } from "./project";
 import { brand } from "./brand";
+import { skill } from "./skill";
 import { musing } from "./musing";
 import { experience } from "./experience";
 import { siteSettings } from "./siteSettings";
@@ -10,6 +11,7 @@ export const schemaTypes = [
   // documents
   project,
   brand,
+  skill,
   musing,
   experience,
   siteSettings,
