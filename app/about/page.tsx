@@ -25,7 +25,7 @@ export default async function SpecAbout() {
       <SpecNav back={{ href: "/", label: "← Back to home" }} />
 
       <div className="spec-hero">
-        <div className="spec-doctype">Background · the path here</div>
+        <div className="spec-doctype">{s.copy.aboutEyebrow}</div>
         <h1 className="spec-name">
           {s.aboutHero}
         </h1>
@@ -35,7 +35,7 @@ export default async function SpecAbout() {
         <div className="ln">00</div>
         <div className="body">
           <h2>
-            <span className="n">00 ·</span> Origin
+            <span className="n">00 ·</span> {s.copy.aboutOriginTitle}
           </h2>
           <div className={`spec-origin${s.show.profileImage ? "" : " spec-origin--noimage"}`}>
             <div className="spec-origin-text">
@@ -64,7 +64,7 @@ export default async function SpecAbout() {
                     <span className="role">{s.jobTitle}</span>
                     <span className="stat">
                       <span className="d" />
-                      STATUS · AVAILABLE
+                      STATUS · {s.copy.aboutIdStatus}
                     </span>
                   </figcaption>
                 </div>
@@ -78,9 +78,9 @@ export default async function SpecAbout() {
         <div className="ln">01</div>
         <div className="body">
           <h2>
-            <span className="n">01 ·</span> Operating instinct
+            <span className="n">01 ·</span> {s.copy.aboutInstinctTitle}
           </h2>
-          <div className="spec-lead">The hard part was never the building.</div>
+          <div className="spec-lead">{s.copy.aboutInstinctLead}</div>
           <SpecProse content={s.aboutOperatingInstinct} />
         </div>
       </section>
@@ -90,7 +90,7 @@ export default async function SpecAbout() {
         <div className="ln">02</div>
         <div className="body">
           <h2>
-            <span className="n">02 ·</span> Changelog
+            <span className="n">02 ·</span> {s.copy.aboutChangelogTitle}
           </h2>
           <div className="spec-otable" style={{ maxWidth: "100%", marginTop: 18 }}>
             {timeline.map((t) => (
@@ -115,7 +115,7 @@ export default async function SpecAbout() {
         <section className="spec-sec spec-reveal">
           <div className="ln">03</div>
           <div className="body">
-            <h2><span className="n">03 ·</span> Community &amp; leadership</h2>
+            <h2><span className="n">03 ·</span> {s.copy.aboutCommunityTitle}</h2>
             <SpecProse content={s.aboutCommunity} />
           </div>
         </section>

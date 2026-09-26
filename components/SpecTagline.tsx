@@ -2,16 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-const WORDS = [
-  "business outcome.",
-  "activation lift.",
-  "retention.",
-  "a validated bet.",
-  "revenue.",
-];
-
-/** Typed/erasing tagline used in the Spec hero bubble. */
-export default function SpecTagline() {
+/** Typed/erasing tagline used in the Spec hero bubble. Prefix + words come from Site Settings. */
+export default function SpecTagline({ prefix, words }: { prefix: string; words: string[] }) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -20,7 +12,7 @@ export default function SpecTagline() {
       del = false;
     let timer: ReturnType<typeof setTimeout>;
     const type = () => {
-      const word = WORDS[w];
+      const word = words[w];
       if (ref.current) ref.current.textContent = del ? word.slice(0, c--) : word.slice(0, c++);
       if (!del && c === word.length + 1) {
         del = true;
@@ -29,18 +21,18 @@ export default function SpecTagline() {
       }
       if (del && c < 0) {
         del = false;
-        w = (w + 1) % WORDS.length;
+        w = (w + 1) % words.length;
         c = 0;
       }
       timer = setTimeout(type, del ? 40 : 80);
     };
     timer = setTimeout(type, 600);
     return () => clearTimeout(timer);
-  }, []);
+  }, [words]);
 
   return (
     <span className="spec-tag">
-      From bet → <span ref={ref}>business outcome.</span>
+      {prefix} <span ref={ref}>{words[0]}</span>
       <span className="cur" />
     </span>
   );

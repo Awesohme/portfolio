@@ -2,7 +2,7 @@ import type { StructureResolver } from "sanity/structure";
 
 /**
  * Studio desk structure: pin Site Settings as a single editable document,
- * and list the three collection types normally.
+ * and list the collection types normally.
  */
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -16,6 +16,7 @@ export const structure: StructureResolver = (S) =>
         ),
       S.divider(),
       S.documentTypeListItem("project").title("Projects"),
+      S.documentTypeListItem("brand").title("Brands"),
       S.documentTypeListItem("musing").title("Musings"),
       S.documentTypeListItem("experience").title("Experiences"),
     ]);

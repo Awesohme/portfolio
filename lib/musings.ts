@@ -28,7 +28,7 @@ export type Musing = {
 };
 
 /** make a URL-safe slug from a title: "On killing features" -> "on-killing-features" */
-function slugify(s: string): string {
+export function slugify(s: string): string {
   return s
     .toLowerCase()
     .trim()
@@ -38,7 +38,7 @@ function slugify(s: string): string {
 }
 
 /** first ~160 chars of the note, cut on a word boundary, with an ellipsis if trimmed */
-function makePreview(note: string, max = 160): string {
+export function makePreview(note: string, max = 160): string {
   const clean = note.replace(/\s+/g, " ").trim();
   if (clean.length <= max) return clean;
   const cut = clean.slice(0, max);

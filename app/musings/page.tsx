@@ -2,7 +2,9 @@ import Link from "next/link";
 import SpecNav from "@/components/SpecNav";
 import NotifyButton from "@/components/NotifyButton";
 import { getMusings } from "@/lib/musings";
-import { getSiteSettings } from "@/lib/siteSettings";
+import { Fragment } from "react";
+import { getSiteSettings, notifyProps } from "@/lib/siteSettings";
+import { splitLines } from "@/lib/specText";
 
 export const metadata = {
   title: "Musings · Spec · Olamide Irojah",
@@ -14,20 +16,22 @@ export const dynamic = "force-dynamic";
 
 export default async function SpecMusings() {
   const [drafts, s] = await Promise.all([getMusings(), getSiteSettings()]);
+  const c = s.copy;
+  const [titleA, ...titleRest] = splitLines(c.musingsTitle);
 
   return (
     <main className="spec-doc editorial-musings">
       <SpecNav back={{ href: "/", label: "← Back to home" }} />
 
       <div className="spec-hero">
-        <div className="spec-doctype">Writing · notes from practice</div>
+        <div className="spec-doctype">{c.musingsEyebrow}</div>
         <h1 className="spec-name">
-          <span>Musings.</span>
-          <span className="editorial-muted">Thinking out loud.</span>
+          <span>{titleA}</span>
+          {titleRest.length > 0 && <span className="editorial-muted">{titleRest.join(" ")}</span>}
         </h1>
         <p style={{ marginTop: 22, maxWidth: "52ch", color: "#3b372e", lineHeight: 1.6 }}>
-          Short notes on product, building, and the hard part: deciding what <i>not</i> to build. Treated
-          like any other backlog, written when the idea has earned its place.
+          {/* *word* in Studio → italics */}
+          {c.musingsIntro.split(/\*([^*]+)\*/).map((part, i) => (i % 2 ? <i key={i}>{part}</i> : <Fragment key={i}>{part}</Fragment>))}
         </p>
       </div>
 
@@ -35,7 +39,7 @@ export default async function SpecMusings() {
         <div className="ln">01</div>
         <div className="body">
           <h2>
-            <span className="n">01 ·</span> The notebook
+            <span className="n">01 ·</span> {c.musingsNotebookTitle}
           </h2>
           <div className="mus-list">
             {drafts.map((d, i) => {
@@ -80,7 +84,7 @@ export default async function SpecMusings() {
       <div className="spec-signoff">
         <div className="spec-cta editorial-paired-actions">
           <NotifyButton
-            label="✉ Get Notified"
+            {...notifyProps(s)}
             className="spec-btn spec-btn-fill"
             style={{ textAlign: "center", border: "none", cursor: "pointer" }}
           />

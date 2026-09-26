@@ -5,7 +5,7 @@ import MusingBody from "@/components/MusingBody";
 import ReadProgress from "@/components/ReadProgress";
 import NotifyButton from "@/components/NotifyButton";
 import { getMusing } from "@/lib/musings";
-import { getSiteSettings } from "@/lib/siteSettings";
+import { getSiteSettings, notifyProps } from "@/lib/siteSettings";
 
 // always render fresh so edits/publishes in Strapi appear on refresh
 export const dynamic = "force-dynamic";
@@ -50,7 +50,8 @@ export default async function MusingPost({ params }: { params: Promise<{ slug: s
             ← All musings
           </Link>
           <NotifyButton
-            label="✉ Get notified of the next one"
+            {...notifyProps(s)}
+            label={s.copy.notifyPostLabel}
             className="spec-btn spec-btn-out"
             style={{ textAlign: "center", cursor: "pointer", background: "transparent" }}
           />

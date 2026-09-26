@@ -8,3 +8,7 @@ export const cleanDashes = (s: string): string =>
     .replace(/\s*[—–]\s*(Present|present|\d)/g, " to $1")
     .replace(/\s*[—–]\s*/g, ", ")
     .replace(/[—–]/g, ", ");
+
+/** Split multi-line CMS copy (headings typed with line breaks in Studio) into lines. */
+export const splitLines = (s: string): string[] =>
+  s.split("\n").map((l) => l.trim()).filter(Boolean);

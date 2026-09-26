@@ -6,10 +6,16 @@
  */
 
 import resumeUpdate from "@/content/resume-update.json";
+import siteCopy from "@/content/site-copy.json";
 import { sanityFetch } from "@/lib/sanityFetch";
 import { urlForImage, fileUrl } from "@/sanity/client";
 
+/** Fixed page wording (headings, labels, brand page copy). Defaults live in content/site-copy.json. */
+export type SiteCopy = typeof siteCopy;
+const COPY_KEYS = Object.keys(siteCopy) as (keyof SiteCopy)[];
+
 export type SiteSettings = {
+  copy: SiteCopy;
   heroExperience: string;
   heroMarket: string;
   heroStatus: string;
@@ -54,6 +60,7 @@ export type SiteSettings = {
 
 // Defaults mirror the current hardcoded copy + /public files; all sections ON.
 const FALLBACK: SiteSettings = {
+  copy: siteCopy,
   fullName: "Olamide Irojah",
   email: "irojaholamide@gmail.com",
   whatsapp: "2348121364213",
@@ -101,7 +108,8 @@ const SITE_SETTINGS_QUERY = `*[_id == "siteSettings"][0]{
   profileImage,
   showProfileImage, showResume, showProblem, showBet, showOutcome,
   showShipped, showAlsoBuilt, showTimeline, showMusingsNav, showSocials,
-  showContact, showSignoff
+  showContact, showSignoff,
+  ${COPY_KEYS.join(", ")}
 }`;
 
 export async function getSiteSettings(): Promise<SiteSettings> {
@@ -112,7 +120,18 @@ export async function getSiteSettings(): Promise<SiteSettings> {
     if (!s) return FALLBACK;
     const pick = (v: any, fb: string) => (typeof v === "string" && v.trim() ? v : fb);
     const bool = (v: any, fb: boolean) => (typeof v === "boolean" ? v : fb);
+    const copy = Object.fromEntries(
+      COPY_KEYS.map((k) => {
+        const fb = siteCopy[k];
+        if (Array.isArray(fb)) {
+          const v = s[k];
+          return [k, Array.isArray(v) && v.length > 0 && v.every((w: any) => typeof w === "string" && w.trim()) ? v : fb];
+        }
+        return [k, pick(s[k], fb as string)];
+      })
+    ) as SiteCopy;
     return {
+      copy,
       heroExperience: pick(s.heroExperience, FALLBACK.heroExperience),
       heroMarket: pick(s.heroMarket, FALLBACK.heroMarket),
       heroStatus: pick(s.heroStatus, FALLBACK.heroStatus),
@@ -157,4 +176,16 @@ export async function getSiteSettings(): Promise<SiteSettings> {
   } catch {
     return FALLBACK;
   }
+}
+
+/** Props for the "Get Notified" button: the sign-up form only when the email list is connected. */
+export function notifyProps(s: SiteSettings) {
+  const c = s.copy;
+  return {
+    label: c.notifyLabel,
+    signup: process.env.NOTIFY_SCRIPT_URL
+      ? { title: c.notifyTitle, body: c.notifyBody, success: c.notifySuccess }
+      : null,
+    comingSoon: { title: c.notifyComingSoonTitle, body: c.notifyComingSoonBody },
+  };
 }

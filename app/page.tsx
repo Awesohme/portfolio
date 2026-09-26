@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import BrandImage from "@/components/brands/BrandImage";
 import SpecMotion from "@/components/SpecMotion";
 import SpecTagline from "@/components/SpecTagline";
 import SpecNav from "@/components/SpecNav";
@@ -7,11 +7,16 @@ import SpecSocials from "@/components/SpecSocials";
 import SpecToolField from "@/components/SpecToolField";
 import { getProjects } from "@/lib/projectsCms";
 import { getSiteSettings } from "@/lib/siteSettings";
+import { getBrands } from "@/lib/brandsCms";
+import { splitLines } from "@/lib/specText";
 
 export const dynamic = "force-dynamic";
 
 export default async function SpecHome() {
-  const [projects, s] = await Promise.all([getProjects(), getSiteSettings()]);
+  const [projects, s, brands] = await Promise.all([getProjects(), getSiteSettings(), getBrands()]);
+  const c = s.copy;
+  const teaserBrand = brands[0];
+  const [teaserA, ...teaserRest] = splitLines(c.brandTeaserTitle);
   // split for §04: product cases primary, tool/personal builds in "Also built"
   const productCases = projects.filter((p) => p.category === "product" && p.status !== "discovery");
   const discoveryCases = projects.filter((p) => p.status === "discovery");
@@ -25,7 +30,7 @@ export default async function SpecHome() {
         <SpecNav />
 
       <div className="spec-hero">
-        <div className="spec-doctype">Product strategy / Design / Delivery</div>
+        <div className="spec-doctype">{c.homeEyebrow}</div>
         <h1 className="spec-name">
           <span>Olamide</span>
           <span className="editorial-muted">Irojah</span>
@@ -47,8 +52,8 @@ export default async function SpecHome() {
         <p className="editorial-intro">
           {s.heroThesis}
         </p>
-        <SpecTagline />
-        {s.show.shipped && <a href="#shipped" className="editorial-explore">Explore my work <span aria-hidden="true">↘</span></a>}
+        <SpecTagline prefix={c.taglinePrefix} words={c.taglineWords} />
+        {s.show.shipped && <a href="#shipped" className="editorial-explore">{c.exploreWorkLabel} <span aria-hidden="true">↘</span></a>}
       </div>
 
       {s.show.problem && (
@@ -56,7 +61,7 @@ export default async function SpecHome() {
         <div className="ln">01</div>
         <div className="body">
           <h2>
-            <span className="n">01 ·</span> Problem
+            <span className="n">01 ·</span> {c.problemTitle}
           </h2>
           <div className="spec-lead">{s.problemLead}</div>
           <p>{s.problemBody}</p>
@@ -69,7 +74,7 @@ export default async function SpecHome() {
         <div className="ln">02</div>
         <div className="body">
           <h2>
-            <span className="n">02 ·</span> Bet
+            <span className="n">02 ·</span> {c.betTitle}
           </h2>
           <div className="spec-lead">{s.betLead}</div>
           <p>{s.betBody}</p>
@@ -82,7 +87,7 @@ export default async function SpecHome() {
         <div className="ln">03</div>
         <div className="body">
           <h2>
-            <span className="n">03 ·</span> Outcome
+            <span className="n">03 ·</span> {c.outcomeTitle}
           </h2>
           <div className="spec-lead">{s.outcomeLead}</div>
           <div className="spec-otable">
@@ -103,10 +108,10 @@ export default async function SpecHome() {
         <div className="ln">04</div>
         <div className="body" style={{ paddingBottom: 0 }}>
           <h2>
-            <span className="n">04 ·</span> Selected work
+            <span className="n">04 ·</span> {c.selectedWorkTitle}
           </h2>
           <div className="spec-lead" style={{ marginBottom: 8 }}>
-            Product decisions, delivery, and the work behind them.
+            {c.selectedWorkLead}
           </div>
         </div>
       </section>
@@ -132,7 +137,7 @@ export default async function SpecHome() {
         <section className="spec-sec spec-reveal">
           <div className="ln">↗</div>
           <div className="body">
-            <h2>In discovery</h2>
+            <h2>{c.discoveryTitle}</h2>
             {discoveryCases.map(p => (
               <p key={p.slug}><Link href={`/work/${p.slug}`}><b>{p.name} →</b></Link><br />{p.tagline}</p>
             ))}
@@ -147,10 +152,10 @@ export default async function SpecHome() {
         <div className="ln">05</div>
         <div className="body" style={{ paddingBottom: 0 }}>
           <h2>
-            <span className="n">05 ·</span> Also built
+            <span className="n">05 ·</span> {c.alsoBuiltTitle}
           </h2>
           <div className="spec-lead" style={{ marginBottom: 8 }}>
-            Side projects, tools, and systems I have shipped along the way.
+            {c.alsoBuiltLead}
           </div>
         </div>
       </section>
@@ -174,14 +179,14 @@ export default async function SpecHome() {
 
       <section className="editorial-brand-feature" aria-labelledby="brand-feature-title">
         <div className="editorial-brand-copy">
-          <span className="spec-doctype">Another side of my practice</span>
-          <h2 id="brand-feature-title">Ideas, made<br /><em>recognisable.</em></h2>
-          <p>Five identities. Five different worlds. A collection of brand work across community, fashion, sport, and technology.</p>
-          <Link href="/brands" className="editorial-text-link">Explore brand design <span aria-hidden="true">↗</span></Link>
+          <span className="spec-doctype">{c.brandTeaserEyebrow}</span>
+          <h2 id="brand-feature-title">{teaserA}{teaserRest.length > 0 && <><br /><em>{teaserRest.join(" ")}</em></>}</h2>
+          <p>{c.brandTeaserBody}</p>
+          <Link href="/brands" className="editorial-text-link">{c.brandTeaserLink} <span aria-hidden="true">↗</span></Link>
         </div>
         <Link href="/brands" className="editorial-brand-visual" aria-label="Explore the brand identity collection">
-          <Image src="/brands/our-market/hero.webp" alt="Our Market brand identity applied to market signage" width={1672} height={941} sizes="(max-width: 760px) 100vw, 55vw" />
-          <span>Selected identities / 01—05 <span aria-hidden="true">↗</span></span>
+          {teaserBrand && <BrandImage asset={`${teaserBrand.slug}/hero`} pic={teaserBrand.pics.hero} alt={teaserBrand.heroAlt} sizes="(max-width: 760px) 100vw, 55vw" />}
+          <span>{c.brandTeaserImageLabel} / 01—{String(brands.length).padStart(2, "0")} <span aria-hidden="true">↗</span></span>
         </Link>
       </section>
 
@@ -194,7 +199,7 @@ export default async function SpecHome() {
         <div className="spec-cta">
           {s.show.contact && <a href={`mailto:${s.email}?subject=${encodeURIComponent("Product opportunity")}`} className="spec-btn spec-btn-fill">{s.contactCtaLabel} →</a>}
           <Link href="/about" className="spec-btn spec-btn-grey">
-            My Background →
+            {c.backgroundCtaLabel} →
           </Link>
           {s.show.resume && (
             <a href={s.resumeUrl} target="_blank" rel="noopener noreferrer" className="spec-btn spec-btn-out" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>

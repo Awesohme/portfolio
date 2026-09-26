@@ -7,18 +7,22 @@ import { AnimatePresence, motion } from "framer-motion";
 /**
  * Lightweight "coming soon" modal, styled to match the .spec theme (light cream
  * surface, monospace, ink text). Portals to document.body, closes on Escape or
- * backdrop click.
+ * backdrop click. Pass `children` to replace the "Got it" button (e.g. a form).
  */
 export default function ComingSoonModal({
   open,
   onClose,
   title = "Oops — still building this",
   body = "This isn't live yet. I'm working on it and it'll be here soon. Thanks for the interest.",
+  eyebrow = "Coming soon",
+  children,
 }: {
   open: boolean;
   onClose: () => void;
   title?: string;
   body?: string;
+  eyebrow?: string;
+  children?: React.ReactNode;
 }) {
   const [mounted, setMounted] = useState(false);
 
@@ -111,7 +115,7 @@ export default function ComingSoonModal({
                 opacity: 0.6,
               }}
             >
-              Coming soon
+              {eyebrow}
             </div>
             <h2 style={{ marginTop: 10, fontSize: 22, fontWeight: 700, lineHeight: 1.2 }}>
               {title}
@@ -120,6 +124,7 @@ export default function ComingSoonModal({
               {body}
             </p>
 
+            {children ?? (
             <button
               onClick={onClose}
               style={{
@@ -137,6 +142,7 @@ export default function ComingSoonModal({
             >
               Got it
             </button>
+            )}
           </motion.div>
         </motion.div>
       )}

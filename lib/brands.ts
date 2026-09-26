@@ -76,3 +76,15 @@ export const brands: Brand[] = [
     scope:["Visual identity","Custom wordmark","Colour & typography","Shapes & patterns","Retail & advertising applications"],
   },
 ];
+
+/** Gallery alt text for each brand's cover picture (also seeded into Sanity). */
+const HERO_ALTS: Record<string, string> = {
+  "our-market": "market entrance and signage",
+  "beams-by-edo": "sportswear packaging",
+  "damsel-b-design": "bespoke fashion packaging",
+  "beam-tech": "vehicle livery",
+  glaciers: "shopping bag",
+};
+export const brandHeroAlt = (b: Brand) => `${b.name} ${HERO_ALTS[b.slug] ?? "brand identity"} mockup`;
+
+export const BRAND_DEFAULT_FACTS = { design: "Olamide Irojah", credit: "Lightening Growth Consulting", discipline: "Brand identity" };
