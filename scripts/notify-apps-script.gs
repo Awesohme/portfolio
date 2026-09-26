@@ -74,13 +74,31 @@ function subscribe_(body) {
   for (let i = 1; i < rows.length; i++) {
     if (String(rows[i][0]).toLowerCase() === email) {
       // re-subscribing someone who left: flip them back to active
-      if (rows[i][2] !== "active") sh.getRange(i + 1, 3).setValue("active");
+      if (rows[i][2] !== "active") {
+        sh.getRange(i + 1, 3).setValue("active");
+        tellOwner_(sh, name || rows[i][4], email);
+      }
       if (name && !rows[i][4]) sh.getRange(i + 1, 5).setValue(name);
       return { ok: true, already: true };
     }
   }
   sh.appendRow([email, new Date(), "active", Utilities.getUuid(), name]);
+  tellOwner_(sh, name, email);
   return { ok: true };
+}
+
+/** Email the sheet owner (you) whenever someone new joins the list. */
+function tellOwner_(sh, name, email) {
+  const owner = Session.getEffectiveUser().getEmail();
+  if (!owner) return;
+  const active = sh.getDataRange().getValues().slice(1).filter((r) => r[2] === "active").length;
+  const who = name ? name + " (" + email + ")" : email;
+  MailApp.sendEmail({
+    to: owner,
+    subject: "New subscriber: " + (name || email),
+    body: who + " just joined your musings list.\n\nActive subscribers: " + active + "\n\nSheet: " + SpreadsheetApp.getActiveSpreadsheet().getUrl(),
+    name: "Portfolio",
+  });
 }
 
 function notify_(body) {
